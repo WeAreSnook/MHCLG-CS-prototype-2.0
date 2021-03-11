@@ -1,23 +1,20 @@
-{% extends "layout.html" %}
+{% extends "layout-logged-in.html" %}
 {% block pageTitle %} Question page {% endblock %}
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/index">Back</a>
+  <a class="govuk-back-link" href="/start-assessment">Back</a>
 {% endblock %}
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/create-account" method="post" novalidate>
+      <span class="govuk-caption-l">About you</span>
+      <h1 class="govuk-heading-l">
+  What is your home address?
+</h1>
+      <form action="#" method="post" novalidate>
         {{ govukRadios({
-  idPrefix: "sign-in",
-  name: "sign-in",
-  fieldset: {
-    legend: {
-      text: "Create an account or sign in to continue",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
+  idPrefix: "question-1",
+  name: "question-1",
   items: [
     {
       value: "sign-in",
