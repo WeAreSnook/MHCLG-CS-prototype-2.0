@@ -2,7 +2,7 @@
 $govuk-global-styles: true;
 
 // We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
-$govuk-assets-path: '/govuk/assets/';
+$govuk-assets-path: "/govuk/assets/";
 
 // Import GOV.UK Frontend and any extension styles if extensions have been configured
 @import "lib/extensions/extensions";
@@ -15,3 +15,15 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/related-items";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.govuk-header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.log_out_link {
+  transform: translateY(-6px);
+  @media (min-width: 40.0625em) {
+    transform: translateY(-2px);
+  }
+}

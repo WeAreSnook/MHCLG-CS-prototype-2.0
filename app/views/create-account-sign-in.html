@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block pageTitle %} Question page {% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/index">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/create-account" method="post" novalidate>
+        {{ govukRadios({
+  idPrefix: "sign-in",
+  name: "sign-in",
+  fieldset: {
+    legend: {
+      text: "Create an account or sign in to continue",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  items: [
+    {
+      value: "sign-in",
+      text: "Sign in",
+      hint: {
+        text: "You’ve already complteted the cyber health self assesement"
+      }
+    },
+    {
+      value: "govuk-verify",
+      text: "Create Account",
+      hint: {
+        text: "If you do not already have an account "
+      }
+    }
+  ]
+}) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
