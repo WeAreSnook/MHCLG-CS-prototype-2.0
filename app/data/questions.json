@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1.1.1",
+    "label": "There is a Board/Senior Management-level commitment to manage the risks arising from the cyber threat.",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "stage": "Stage 1"
+  },
+  {
+    "id": "1.1.2",
+    "label": "Is there appropriate data protection and information security policies and processes in place to direct the organisation’s overall approach to cyber security?",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "stage": "Stage 2"
+  },
+  {
+    "id": "1.1.3",
+    "label": "Is personal data that is processed catalogued, and is the purpose for processing it is defined and described?",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "stage": "Stage 2"
+  },
+  {
+    "id": "1.1.4",
+    "label": "Are there clear lines of responsibility and accountability to named individuals for the security of sensitive information and key operational services?",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "stage": "Stage 2"
+  },
+  {
+    "id": "1.1.5",
+    "label": "Have senior accountable individuals received appropriate training and guidance on cyber security and risk management?",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "stage": "Stage 2"
+  },
+  {
+    "id": "1.1.6",
+    "label": "Is there a culture of awareness and education about cyber security across the organisation?",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "stage": "Stage 2"
+  },
+  {
+    "id": "1.1.7",
+    "label": "Have significant risks to sensitive information and key operational services been identified and are being managed?",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "stage": "Stage 3"
+  },
+  {
+    "id": "1.1.8",
+    "label": "Are the security issues that arise because of dependencies on external suppliers or through the supply chain detailed, organised and managed?",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "stage": "Stage 3"
+  }
+]
