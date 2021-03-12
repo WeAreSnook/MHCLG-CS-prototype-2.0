@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirmation page example
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">Section met</h1>
+        <div class="govuk-panel__body">
+          Organisational governance<br>
+        </div>
+      </div>
+      <h2 class="govuk-heading-m">Start risk management</h2>      
+      <a href="/prototype-1/category/risk-management" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+        Start section</a>
+      <h2 class="govuk-heading-m">Your progress</h2>
+      <p class="">Check your progress against the full framework.</p>
+      <p><a href="/prototype-1/start-assessment">Visit full framework</p>
+
+
+    </div>
+  </div>
+
+{% endblock %}
