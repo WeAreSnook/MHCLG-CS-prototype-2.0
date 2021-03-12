@@ -1,0 +1,22 @@
+[
+    {
+      "name": "Section 1: MANAGE security risk",
+      "body": "This section covers the organisational structures, policies and processes necessary to understand, assess and systematically manage security risks to English public sector organisations’ network and information systems and essential services. The security control categories under this section cover:",
+      "categories": "Organisational governance,Risk management,Asset management,Supplier management"
+    },
+    {
+      "name": "Section 2: PROTECT against cyber-attack",
+      "body": "This section covers the requirement for proportionate security measures to be in place to protect English public sector organisations (and their essential services and systems) from cyber-attack. The security control categories under this section cover:",
+      "categories": "Information security management,Physical/building security,Operational security,Environmental Security,System Management,Services Resilience,Media Management,Access Control,People,Network Security"
+    },
+    {
+      "name": "Section 3: DETECT cyber security event",
+      "body": "This section covers measures to ensure security defences remain effective and to detect cyber security events affecting, or with the potential to affect, English public sector organisations (and their essential services and systems). The security control categories under this section cover:",
+      "categories": "Incident detection"
+    },
+    {
+      "name": "Section 4: RESPOND and RECOVER",
+      "body": "This section covers measures to minimise the impact of a cyber security incident on English Local Authorities (and their essential services and systems), including the restoration of services where necessary. The security control categories under this domain cover:",
+      "categories": "Incident mangement,Business continuity"
+    }
+  ]
