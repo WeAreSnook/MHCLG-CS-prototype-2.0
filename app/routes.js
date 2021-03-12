@@ -103,7 +103,8 @@ router.get("/prototype-2/category/:categorySlug/finished", (req, res) => {
 });
 
 router.get("/prototype-1/question/:questionID", (req, res) => {
-  const p1Questions = questions.slice(0, 4);
+  // const p1Questions = questions.slice(0, 4);
+  const p1Questions = questions.filter(question => question.stage == 'Stage 1');
   const question = p1Questions.find(({ id }) => id === req.params.questionID);
 
   const currentIndex = p1Questions.indexOf(question);
