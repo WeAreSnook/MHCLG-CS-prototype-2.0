@@ -29,7 +29,8 @@
   ]
 }) }}
         {{ govukButton({
-          text: "Continue"
+          text: "Continue",
+          href: "/prototype-2/topic/" + question.topic | slugify | lower
         }) }}
 
       </form>
