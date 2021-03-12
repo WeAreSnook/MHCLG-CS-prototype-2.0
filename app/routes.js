@@ -94,6 +94,30 @@ router.get("/prototype-2/category/:categorySlug", (req, res) => {
     ({ slug }) => slug === req.params.categorySlug
   );
   res.render("prototype-2/category", { category: category });
+router.get('/prototype-2/topic/:topicSlug', (req, res) => {
+    let topic = topics.find( ({ slug }) => slug === req.params.topicSlug );
+    // Convert question CSVs into an array of objects
+    if(typeof topic.questions === 'string') {
+        let splitQuestions = topic.questions.split(',');
+        let fullQuestions = [];
+        splitQuestions.forEach(questionID => {
+            // Find question object by ID
+            const fullQuestion = questions.find( ({ id }) => id === questionID );
+            fullQuestions.push(fullQuestion);
+        });
+        topic.questions = fullQuestions;
+    }
+    res.render('prototype-2/topic', { topic: topic })
+});
+
+router.get('/prototype-2/category/:categorySlug/', (req, res) => {
+    const category = categories.find( ({ slug }) => slug === req.params.categorySlug );
+    res.render('prototype-2/category', { category: category })
+});
+
+router.get('/prototype-2/category/:categorySlug/finished', (req, res) => {
+    const category = categories.find( ({ slug }) => slug === req.params.categorySlug );
+    res.render('prototype-2/category-finished', { category: category })
 });
 
 router.get("/prototype-1/question/:questionID", (req, res) => {
@@ -134,6 +158,10 @@ router.get("/prototype-1/category/:categorySlug", (req, res) => {
 
 router.get("/prototype-2/start-assessment/", (req, res) => {
   res.render("prototype-2/start-assessment", { sections: sections });
+});
+
+router.get("/prototype-2/result/", (req, res) => {
+  res.render("prototype-2/result", { sections: sections });
 });
 
 router.get("/prototype-2/assessment-index/", (req, res) => {

@@ -4,9 +4,8 @@
   Assessment index - Prototype 2
 {% endblock %}
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/prototype-2/assessment-index">Back</a>
+  <a class="govuk-back-link" href="/prototype-2/result">Back</a>
 {% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -15,10 +14,10 @@
         {{ category.name }}
       </h1>
 
+      <p><a class="govuk-button" href="/prototype-2/result">See results</a></p>
       <p>
       {{ category.description }}
       </p>
-      <p><a href="/prototype-2/category/{{ category.name | slugify | lower }}/finished">See this page with Stage One complete.</a></p>
       <!-- <ul class="app-task-list__items govuk-!-padding-left-0">
         {% for topic in category.topics %}
         <li class="app-task-list__item">
@@ -45,9 +44,10 @@
           {% for topic in category.topics %}
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header"><a href="/prototype-2/topic/{{ topic | slugify | lower }}" >{{ topic }}</a></th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">0/1</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">0/4</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">0/1</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <strong class="govuk-tag govuk-tag--blue">1/1</strong></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">0/4</strong></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">0/1</strong></td>
           </tr>
           {% endfor %}
         </tbody>
