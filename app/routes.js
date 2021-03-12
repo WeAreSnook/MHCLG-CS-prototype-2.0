@@ -59,7 +59,7 @@ router.get("/prototype-2/assessment-index/", (req, res) => {
 });
 
 router.get("/prototype-1/start-assessment/", (req, res) => {
-  res.render("prototype-2/assessment-index", { sections: sections });
+  res.render("prototype-1/start-assessment", { sections: sections });
 });
 
 module.exports = router;
