@@ -75,7 +75,6 @@ router.get("/prototype-2/question/:questionID", (req, res) => {
 
 router.get('/prototype-2/topic/:topicSlug', (req, res) => {
     let topic = topics.find( ({ slug }) => slug === req.params.topicSlug );
-    console.log(topic);
     // Convert question CSVs into an array of objects
     if(typeof topic.questions === 'string') {
         let splitQuestions = topic.questions.split(',');
@@ -90,9 +89,14 @@ router.get('/prototype-2/topic/:topicSlug', (req, res) => {
     res.render('prototype-2/topic', { topic: topic })
 });
 
-router.get('/prototype-2/category/:categorySlug', (req, res) => {
+router.get('/prototype-2/category/:categorySlug/', (req, res) => {
     const category = categories.find( ({ slug }) => slug === req.params.categorySlug );
     res.render('prototype-2/category', { category: category })
+});
+
+router.get('/prototype-2/category/:categorySlug/finished', (req, res) => {
+    const category = categories.find( ({ slug }) => slug === req.params.categorySlug );
+    res.render('prototype-2/category-finished', { category: category })
 });
 
 router.get("/prototype-1/question/:questionID", (req, res) => {
