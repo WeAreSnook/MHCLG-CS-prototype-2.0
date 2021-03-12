@@ -4,21 +4,19 @@
   Assessment index - Prototype 2
 {% endblock %}
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/prototype-2/assessment-index">Back</a>
+  <a class="govuk-back-link" href="/prototype-2/category/{{ topic.category | slugify | lower }}">Back</a>
 {% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        {{ category.name }}
+        {{ topic.name }}
       </h1>
 
       <p>
-      {{ category.description }}
+      {{ topic.description }}
       </p>
-      <p><a href="/prototype-2/category/{{ category.name | slugify | lower }}/finished">See this page with Stage One complete.</a></p>
       <!-- <ul class="app-task-list__items govuk-!-padding-left-0">
         {% for topic in category.topics %}
         <li class="app-task-list__item">
@@ -35,19 +33,19 @@
         <caption class="govuk-table__caption govuk-table__caption--m">Topics</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Topic</th>
-            <th scope="col" class="govuk-table__header govuk-table__header--numeric">Stage one</th>
-            <th scope="col" class="govuk-table__header govuk-table__header--numeric">Stage two</th>
-            <th scope="col" class="govuk-table__header govuk-table__header--numeric">Stage three</th>
+              <th scope="col" class="govuk-table__header">Question</th>
+            <th scope="col" class="govuk-table__header">Stage</th>
+            <th scope="col" class="govuk-table__header">Status</th>
+            <th scope="col" class="govuk-table__header">Action</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-          {% for topic in category.topics %}
+          {% for question in topic.questions %}
           <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header"><a href="/prototype-2/topic/{{ topic | slugify | lower }}" >{{ topic }}</a></th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">0/1</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">0/4</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">0/1</td>
+            <th scope="row" class="govuk-table__header"><a href="/prototype-2/question/{{ question.id | slugify | lower }}" >{{ question.label }}</a></th>
+            <td class="govuk-table__cell">{{ question.stage }}</td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Not started</strong></td>
+            <td class="govuk-table__cell"><a href="/prototype-2/question/{{ question.id | slugify | lower }}">Answer</a></td>
           </tr>
           {% endfor %}
         </tbody>

@@ -1,0 +1,594 @@
+[
+    {
+      "name": "Governance Framework",
+      "description": "Having effective organisational security management led at board level and articulated clearly in corresponding policies is essential for cyber resilience. \n\nThose responsible for cyber security are encouraged to use the NCSC Board Toolkit with their executive team or board.",
+      "category": "Organisational governance",
+      "questions": "1.1.1,1.1.2,1.1.3,1.1.4,1.1.5,1.1.6,1.1.7,1.1.8",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "governance-framework"
+    },
+    {
+      "name": "Leadership & responsibility",
+      "description": "",
+      "category": "Organisational governance",
+      "questions": "1.2.1,1.2.2,1.2.3,1.2.4,1.2.5,1.2.6,1.2.7,1.2.8,1.2.9,1.2.10,1.2.11",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "leadership-&-responsibility"
+    },
+    {
+      "name": "Adoption of assurance standards",
+      "description": "",
+      "category": "Organisational governance",
+      "questions": "1.3.1,1.3.2,1.3.3,1.3.4,1.3.5",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "adoption-of-assurance-standards"
+    },
+    {
+      "name": "Information asset register",
+      "description": "",
+      "category": "Organisational governance",
+      "questions": "1.4.1,1.4.2,1.4.3,1.4.4,1.4.5,1.4.6",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "information-asset-register"
+    },
+    {
+      "name": "Audit/assurance compliance",
+      "description": "",
+      "category": "Organisational governance",
+      "questions": "1.5.1,1.5.2,1.5.3,1.5.4,1.5.5",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "audit/assurance-compliance"
+    },
+    {
+      "name": "Risk management policy & process",
+      "description": "",
+      "category": "Risk management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--risk-management-policy-&-process\n--"
+    },
+    {
+      "name": "Cyber / Information Risk Assessment",
+      "description": "",
+      "category": "Risk management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--cyber-/-information-risk-assessment\n--"
+    },
+    {
+      "name": "Risk treatment & tolerance",
+      "description": "",
+      "category": "Risk management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--risk-treatment-&-tolerance\n--"
+    },
+    {
+      "name": "Risk governance",
+      "description": "",
+      "category": "Risk management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--risk-governance\n--"
+    },
+    {
+      "name": "Supply chain security assurance & management",
+      "description": "",
+      "category": "Supplier management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--supply-chain-security-assurance-&-management\n--"
+    },
+    {
+      "name": "Roles & responsibilities defined",
+      "description": "",
+      "category": "Supplier management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--roles-&-responsibilities-defined\n--"
+    },
+    {
+      "name": "Access control",
+      "description": "",
+      "category": "Supplier management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--access-control\n--"
+    },
+    {
+      "name": "Security in system procurements",
+      "description": "",
+      "category": "Supplier management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--security-in-system-procurements\n--"
+    },
+    {
+      "name": "Hardware assets register & management",
+      "description": "",
+      "category": "Asset management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--hardware-assets-register-&-management\n--"
+    },
+    {
+      "name": "Software assets register & management",
+      "description": "",
+      "category": "Asset management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--software-assets-register-&-management\n--"
+    },
+    {
+      "name": "Infrastructure management",
+      "description": "",
+      "category": "Asset management",
+      "questions": "",
+      "section": "Section 1: MANAGE security risk",
+      "slug": "--infrastructure-management\n--"
+    },
+    {
+      "name": "Security policy & processes",
+      "description": "",
+      "category": "Information security management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "security-policy-&-processes"
+    },
+    {
+      "name": "Lifecycle management",
+      "description": "",
+      "category": "Information security management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "lifecycle-management"
+    },
+    {
+      "name": "Storage",
+      "description": "",
+      "category": "Information security management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "storage-"
+    },
+    {
+      "name": "Information/data classification",
+      "description": "",
+      "category": "Information security management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "information/data-classification"
+    },
+    {
+      "name": "Information assets register",
+      "description": "",
+      "category": "Information security management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "information-assets-register"
+    },
+    {
+      "name": "Information/data transfer controls",
+      "description": "",
+      "category": "Information security management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "information/data-transfer-controls"
+    },
+    {
+      "name": "Prior to employment",
+      "description": "",
+      "category": "People",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--prior-to-employment\n--"
+    },
+    {
+      "name": "During employment",
+      "description": "",
+      "category": "People",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--during-employment\n--"
+    },
+    {
+      "name": "Staff training & awareness culture",
+      "description": "",
+      "category": "People",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--staff-training-&-awareness-culture\n--"
+    },
+    {
+      "name": "Staff skills assessment",
+      "description": "",
+      "category": "People",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--staff-skills-assessment\n--"
+    },
+    {
+      "name": "Mobile/remote working policy",
+      "description": "",
+      "category": "People",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--mobile/remote-working-policy\n--"
+    },
+    {
+      "name": "Account management",
+      "description": "",
+      "category": "Access Control",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--account-management\n--"
+    },
+    {
+      "name": "Identity authentication",
+      "description": "",
+      "category": "Access Control",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--identity-authentication\n--"
+    },
+    {
+      "name": "Privilege management",
+      "description": "",
+      "category": "Access Control",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--privilege-management\n--"
+    },
+    {
+      "name": "Administrator account management",
+      "description": "",
+      "category": "Access Control",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--administrator-account-management\n--"
+    },
+    {
+      "name": "Storage media management",
+      "description": "",
+      "category": "Media Management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--storage-media-management\n--"
+    },
+    {
+      "name": "Cryptography",
+      "description": "",
+      "category": "Media Management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--cryptography\n--"
+    },
+    {
+      "name": "Remote wipe capability",
+      "description": "",
+      "category": "Media Management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--remote-wipe-capability\n--"
+    },
+    {
+      "name": "Equipment location",
+      "description": "",
+      "category": "Environmental Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--equipment-location\n--"
+    },
+    {
+      "name": "Power resilience",
+      "description": "",
+      "category": "Environmental Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--power-resilience\n--"
+    },
+    {
+      "name": "Access control",
+      "description": "",
+      "category": "Physical/building security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--access-control\n--"
+    },
+    {
+      "name": "Internal security",
+      "description": "",
+      "category": "Physical/building security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--internal-security\n--"
+    },
+    {
+      "name": "Secure configuration",
+      "description": "",
+      "category": "System Management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--secure-configuration -\n--"
+    },
+    {
+      "name": "Secure design/development",
+      "description": "",
+      "category": "System Management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--secure-design/development\n--"
+    },
+    {
+      "name": "Change control procedures",
+      "description": "",
+      "category": "System Management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--change-control-procedures\n--"
+    },
+    {
+      "name": "System Testing",
+      "description": "",
+      "category": "System Management",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--system-testing\n--"
+    },
+    {
+      "name": "Malware policies & protection",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--malware-policies-&-protection\n--"
+    },
+    {
+      "name": "Email security",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--email-security\n--"
+    },
+    {
+      "name": "Application security",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--application-security\n--"
+    },
+    {
+      "name": "Vulnerability management & scanning",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--vulnerability-management-&-scanning\n--"
+    },
+    {
+      "name": "Data exfiltration monitoring",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--data-exfiltration-monitoring\n--"
+    },
+    {
+      "name": "Software supported & updated",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--software-supported-&-updated\n--"
+    },
+    {
+      "name": "Web site screening",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--web-site-screening\n--"
+    },
+    {
+      "name": "Browser management",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--browser-management\n--"
+    },
+    {
+      "name": "Monitor/audit user activity",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--monitor/audit-user-activity\n--"
+    },
+    {
+      "name": "Disabled auto-run",
+      "description": "",
+      "category": "Operational security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--disabled-auto-run\n--"
+    },
+    {
+      "name": "Patch management",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--patch-management\n--"
+    },
+    {
+      "name": "Device management",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--device-management\n--"
+    },
+    {
+      "name": "Content screening",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--content-screening\n--"
+    },
+    {
+      "name": "Internal segregation",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--internal-segregation\n--"
+    },
+    {
+      "name": "Wireless security",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--wireless-security\n--"
+    },
+    {
+      "name": "Boundary/Firewall management",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--boundary/firewall-management\n--"
+    },
+    {
+      "name": "Administrator control",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--administrator-control\n--"
+    },
+    {
+      "name": "Error message management",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--error-message-management\n--"
+    },
+    {
+      "name": "Penetration testing",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--penetration-testing\n--"
+    },
+    {
+      "name": "IP & DNS management",
+      "description": "",
+      "category": "Network Security",
+      "questions": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "slug": "--ip-&-dns-management\n--"
+    },
+    {
+      "name": "Detection capability",
+      "description": "",
+      "category": "Incident detection",
+      "questions": "",
+      "section": "Section 3: DETECT cyber security event",
+      "slug": "--detection-capability\n--"
+    },
+    {
+      "name": "Security Monitoring",
+      "description": "",
+      "category": "Incident detection",
+      "questions": "",
+      "section": "Section 3: DETECT cyber security event",
+      "slug": "--security-monitoring\n--"
+    },
+    {
+      "name": "Incident response protocol",
+      "description": "",
+      "category": "Incident mangement",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--incident-response-protocol\n--"
+    },
+    {
+      "name": "Incident reporting procedure",
+      "description": "",
+      "category": "Incident mangement",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--incident-reporting-procedure\n--"
+    },
+    {
+      "name": "Staff training & testing",
+      "description": "",
+      "category": "Incident mangement",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--staff-training-&-testing\n--"
+    },
+    {
+      "name": "Post-incident review & learning",
+      "description": "",
+      "category": "Incident mangement",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--post-incident-review-&-learning\n--"
+    },
+    {
+      "name": "Data recovery capability",
+      "description": "",
+      "category": "Business continuity",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--data-recovery-capability\n--"
+    },
+    {
+      "name": "Back up policies & procedures",
+      "description": "",
+      "category": "Business continuity",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--back-up-policies-&-procedures\n--"
+    },
+    {
+      "name": "Disaster recovery policies & procedures",
+      "description": "",
+      "category": "Business continuity",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--disaster-recovery-policies-&-procedures\n--"
+    },
+    {
+      "name": "BC/DR testing policies & procedures",
+      "description": "",
+      "category": "Business continuity",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--bc/dr-testing-policies-&-procedures\n--"
+    },
+    {
+      "name": "Data Loss impact assessments",
+      "description": "",
+      "category": "Business continuity",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--data-loss-impact-assessments\n--"
+    },
+    {
+      "name": "BC contingency plan",
+      "description": "",
+      "category": "Business continuity",
+      "questions": "",
+      "section": "Section 4: RESPOND and RECOVER",
+      "slug": "--bc-contingency-plan\n--"
+    }
+  ]
