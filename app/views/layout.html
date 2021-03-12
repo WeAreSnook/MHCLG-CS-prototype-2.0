@@ -62,9 +62,22 @@ GOV.UK Prototype Kit {% endblock %}
 {% block header %}
     {# Set serviceName in
 config.js. #}
-    {{ govukHeader({ homepageUrl: "/", serviceName: serviceName,
-serviceUrl: "/",
-containerClasses: "govuk-width-container" }) }}
+    {{ govukHeader(
+        { homepageUrl: "/", 
+        serviceName: serviceName,
+        serviceUrl: "/",
+        containerClasses: "govuk-width-container",
+        navigation: [
+            {
+                href: "/prototype-1/get-ready",
+                text: "Prototype 1"
+            },
+            {
+                href: "/prototype-2/start-assessment",
+                text: "Prototype 2"
+            }
+        ] 
+    }) }}
     {{ govukPhaseBanner({ tag: {
 text: "prototype" }, classes:"govuk-width-container", text: 'This is a prototype to help inform a potential new service' }) }}
 {% endblock %}
