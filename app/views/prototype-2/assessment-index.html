@@ -12,6 +12,12 @@
         Cyber health framework self-assessment
       </h1>
       <p><a class="govuk-button" href="./result">See results</a></p>
+      <h2 class="govuk-heading-s">How to use this tool:</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Click on the categories below to explore each one in more detail.</li>
+        <li>Depending on what stage you’re trying to meet, you will need to answer a series of questions.</li>
+        <li>You’ll then be able to see what stage you’re at and how to reach the next one.</li>
+      </ul>
       {% for section in sections %}
         <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ section.name }}</h2>
         <p>{{ section.body }}</p>
