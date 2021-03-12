@@ -1,3 +1,5 @@
+var slugify = require('slugify')
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -37,7 +39,9 @@ module.exports = function (env) {
     documentation.
 
   ------------------------------------------------------------------ */
-
+  filters.slugify = function(text) {
+    return slugify(text);
+}
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

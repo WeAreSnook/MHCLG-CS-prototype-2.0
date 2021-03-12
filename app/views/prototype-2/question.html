@@ -7,28 +7,24 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">About you</span>
-      <h1 class="govuk-heading-l">
-  What is your home address?
-</h1>
+      <span class="govuk-caption-l">{{ question.topic}}</span>
+      <h1 class="govuk-heading-l">{{question.label}}</h1>
       <form action="#" method="post" novalidate>
-        {{ govukRadios({
-  idPrefix: "question-1",
-  name: "question-1",
+{{ govukRadios({
+  idPrefix: "question-" + question.id,
+  name: "question-" + question.id,
   items: [
     {
-      value: "sign-in",
-      text: "Sign in",
-      hint: {
-        text: "You’ve already complteted the cyber health self assesement"
-      }
+      value: "no",
+      text: "No"
     },
     {
-      value: "govuk-verify",
-      text: "Create Account",
-      hint: {
-        text: "If you do not already have an account "
-      }
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "na",
+      text: "N/A"
     }
   ]
 }) }}

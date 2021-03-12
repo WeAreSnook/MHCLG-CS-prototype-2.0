@@ -14,7 +14,7 @@ Framework {% endblock %} {% block content %}
     </p>
 
     <a
-      href="/question1"
+      href="/prototype-2/assessment-index"
       role="button"
       draggable="false"
       class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"
@@ -33,50 +33,17 @@ Framework {% endblock %} {% block content %}
         <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
       </svg>
     </a>
-    <h2 class="govuk-heading-m">Section 1: MANAGE security risk</h2>
-    <p>
-      This section covers the organisational structures, policies and processes
-      necessary to understand, assess and systematically manage security risks
-      to English public sector organisations’ network and information systems
-      and essential services. The security control categories under this section
-      cover:
-    </p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>Organisational Governence</li>
-      <li>Risk Management</li>
-      <li>Supplier Management</li>
-      <li>Asset Management</li>
-    </ul>
-    <h2 class="govuk-heading-m">Section 2: PROTECT against cyber-attack</h2>
-    <p>
-      This section covers the requirement for proportionate security measures to
-      be in place to protect English public sector organisations (and their
-      essential services and systems) from cyber-attack. The security control
-      categories under this section cover:
-    </p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>Information security management</li>
-      <li>Physical/building security</li>
-      <li>Operational security</li>
-      <li>Environmental Security</li>
-      <li>System Management</li>
-      <li>Services Resilience</li>
-      <li>Media Management</li>
-      <li>Access Control</li>
-      <li>People</li>
-      <li>Network Security</li>
-    </ul>
-    <h2 class="govuk-heading-m">Section 3: DETECT cyber security event</h2>
-    <p>
-      This section covers measures to ensure security defences remain effective
-      and to detect cyber security events affecting, or with the potential to
-      affect, English public sector organisations (and their essential services
-      and systems). The security control categories under this section cover:
-    </p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>Incident detection</li>
-    </ul>
+    {% for section in sections %}
+        <h2 class="govuk-heading-m">{{ section.name }}</h2>
+        <p>{{ section.body }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          {% for category in section.categories %}
+            <li>{{ category }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No sections were found</p>
+    {% endfor %}
   </div>
 
   <div class="govuk-grid-column-one-third">

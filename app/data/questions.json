@@ -1,0 +1,282 @@
+[
+  {
+    "id": "1.1.1",
+    "label": "There is a Board/Senior Management-level commitment to manage the risks arising from the cyber threat.",
+    "stage": "Stage 1",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.1.2",
+    "label": "Is there appropriate data protection and information security policies and processes in place to direct the organisation’s overall approach to cyber security?",
+    "stage": "Stage 2",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.1.3",
+    "label": "Is personal data that is processed catalogued, and is the purpose for processing it is defined and described?",
+    "stage": "Stage 2",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.1.4",
+    "label": "Are there clear lines of responsibility and accountability to named individuals for the security of sensitive information and key operational services?",
+    "stage": "Stage 2",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.1.5",
+    "label": "Have senior accountable individuals received appropriate training and guidance on cyber security and risk management?",
+    "stage": "Stage 2",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.1.6",
+    "label": "Is there a culture of awareness and education about cyber security across the organisation?",
+    "stage": "Stage 2",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.1.7",
+    "label": "Have significant risks to sensitive information and key operational services been identified and are being managed?",
+    "stage": "Stage 3",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.1.8",
+    "label": "Are the security issues that arise because of dependencies on external suppliers or through the supply chain detailed, organised and managed?",
+    "stage": "Stage 3",
+    "topic": "Governance Framework",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.1",
+    "label": "A named Board and Senior Management member of staff have been identified as responsible for organisational cyber resilience arrangements.",
+    "stage": "Stage 1",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.2",
+    "label": "There are clear lines of responsibility and accountability to named individuals for the cyber resilience of sensitive information and key operational services, which have been defined and understood.",
+    "stage": "Stage 1",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.3",
+    "label": "There is a written information security policy in place, which is championed by senior management.",
+    "stage": "Stage 1",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.4",
+    "label": "There is regular staff training in cyber security and information risk management.",
+    "stage": "Stage 1",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.5",
+    "label": "Senior accountable individuals have received appropriate training and guidance on cyber security and risk management.",
+    "stage": "Stage 2",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.6",
+    "label": "There is a culture of awareness and education about cyber security across the organisation.",
+    "stage": "Stage 2",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.7",
+    "label": "Direction set at board level is translated into effective organisational practices that direct and control the security of the organisation’s networks and information systems.",
+    "stage": "Stage 3",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.8",
+    "label": "The board shall ensure that the organisation has planned and budgeted for adequate resources for the delivery, maintenance and improvement of cyber resilience and network and information security, and that these activities are supported by senior management.",
+    "stage": "Stage 3",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.9",
+    "label": "The organisation has established roles and responsibilities for the security of networks and information systems at all levels.",
+    "stage": "Stage 3",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.10",
+    "label": "There are clear and well-understood channels for communicating and escalating risks.",
+    "stage": "Stage 3",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.2.11",
+    "label": "There is senior-level accountability for the security of networks and information systems with delegated decision-making authority.",
+    "stage": "Stage 3",
+    "topic": "Leadership & responsibility",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.3.1",
+    "label": "There is demonstrable and appropriate independent assurance that the five critical network controls of Cyber Essentials are in place: a)\tfirewalls b)\tsecure configuration  c)\tuser access control\td)\tmalware protection  e)\tpatch management",
+    "stage": "Stage 1",
+    "topic": "Adoption of assurance standards",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.3.2",
+    "label": "The organisation has obtained assurance that suppliers of 3rd party services have appropriate, proportionate and adequate cyber security policies and practices that are certified or aligned with recognised standards or their equivalent. (e.g. HMG Cyber Security Standard, Cyber Essentials, ISO 27001).",
+    "stage": "Stage 2",
+    "topic": "Adoption of assurance standards",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.3.3",
+    "label": "Security as it relates to technology, people, and processes can be demonstrated and verified by a third party audit.",
+    "stage": "Stage 3",
+    "topic": "Adoption of assurance standards",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.3.4",
+    "label": "There are procedures to ensure security measures that are in place to protect the networks and information systems are effective, and remain effective for the service lifetime.",
+    "stage": "Stage 3",
+    "topic": "Adoption of assurance standards",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.3.5",
+    "label": "The assurance methods available are recognised and appropriate methods to gain confidence in the security of essential services are adopted and implemented.",
+    "stage": "Stage 3",
+    "topic": "Adoption of assurance standards",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.4.1",
+    "label": "Key information  assets have been identified and recorded.",
+    "stage": "Stage 1",
+    "topic": "Information asset register",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.4.2",
+    "label": "Key information assets  have been assessed for their vulnerability to cyber-attack.",
+    "stage": "Stage 1",
+    "topic": "Information asset register",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.4.3",
+    "label": "Organisations shall know and record: a)\tWhat sensitive information they hold or process b)\tWhy they hold or process that information c)\tWhere the information is held d)\tWhich computer systems or services process it e)\tThe impact of its loss, compromise or disclosure",
+    "stage": "Stage 2",
+    "topic": "Information asset register",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.4.4",
+    "label": "Assets associated with information and information processing have been identified",
+    "stage": "Stage 3",
+    "topic": "Information asset register",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.4.5",
+    "label": "An inventory of these assets has been established and is maintained through recognised process.",
+    "stage": "Stage 3",
+    "topic": "Information asset register",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.4.6",
+    "label": "Assets maintained in the inventory have ascribed owners.",
+    "stage": "Stage 3",
+    "topic": "Information asset register",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.5.1",
+    "label": "There is demonstrable and appropriate independent assurance that the five critical network controls of Cyber Essentials are in place: a)\tfirewalls b)\tsecure configuration  c)\tuser access control\td)\tmalware protection  e)\tpatch management",
+    "stage": "Stage 1",
+    "topic": "Audit/assurance compliance",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.5.2",
+    "label": "The organisation has obtained assurance that suppliers of 3rd party services have appropriate, proportionate and adequate cyber security policies and practices that are certified or aligned with recognised standards or their equivalent. (e.g. HMG Cyber Security Standard, Cyber Essentials, ISO 27001). In addition for PSN: You must implement regular IT Health Checks and ensure the IA conditions of the PSN Code of Connection are met.",
+    "stage": "Stage 2",
+    "topic": "Audit/assurance compliance",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.5.3",
+    "label": "Audit requirements and activities involving verification of operational systems shall be carefully planned and agreed to minimise disruptions to business processes.",
+    "stage": "Stage 3",
+    "topic": "Audit/assurance compliance",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.5.4",
+    "label": "The organisation’s approach to managing information security and its implementation (i.e. control objectives, controls, policies, processes and procedures for information security) shall be reviewed independently at planned intervals or when significant changes occur.",
+    "stage": "Stage 3",
+    "topic": "Audit/assurance compliance",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  },
+  {
+    "id": "1.5.5",
+    "label": "Managers regularly review the compliance of information processing and procedures within their area of responsibility with the appropriate security policies, standards and any other security requirements.",
+    "stage": "Stage 3",
+    "topic": "Audit/assurance compliance",
+    "category": "Organisational governance",
+    "section": "Section 1: MANAGE security risk"
+  }
+]

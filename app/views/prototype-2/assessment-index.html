@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Assessment index - Prototype 2
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Cyber health framework self-assessment
+      </h1>
+
+      {% for section in sections %}
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ section.name }}</h2>
+        <p>{{ section.body }}</p>
+        <!-- <ul class="govuk-list">
+            {% for category in section.categories %}
+            <li>{{ category }}</li>
+            {% endfor %}
+        </ul> -->
+        <ul class="app-task-list__items govuk-!-padding-left-0">
+            {% for category in section.categories %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="/prototype-2/category/{{ category | slugify | lower }}" aria-describedby="{{ category | slugify | lower }}">
+                  {{ category }}
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag" id="{{ category | slugify | lower }}">To do</strong>
+            </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+        <p>No sections were found</p>
+    {% endfor %}
+
+    </div>
+  </div>
+
+{% endblock %}

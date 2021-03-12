@@ -1,0 +1,138 @@
+[
+    {
+      "name": "Organisational governance",
+      "description": "This section will help you assess if the appropriate organisational structures, policies, and processes are in place to understand, assess and systematically manage security risks to your organisation’s network and information systems.\n\nThis section includes five topics:",
+      "topics": "Governance Framework,Leadership & responsibility,Adoption of assurance standards,Information asset register,Audit/assurance compliance",
+      "section": "Section 1: MANAGE security risk",
+      "id": 1,
+      "slug": "organisational-governance"
+    },
+    {
+      "name": "Risk management",
+      "description": "Appropriate steps are in place to identify, assess and understand security risks to the network and information systems. This includes an overall organisational approach to risk management.",
+      "topics": "\n  Risk management policy & process\n  \",\"\n  Cyber / Information Risk Assessment\n  \",\"\n  Risk treatment & tolerance\n  \",\"\n  Risk governance\n  ",
+      "section": "Section 1: MANAGE security risk",
+      "id": 2,
+      "slug": "risk-management"
+    },
+    {
+      "name": "Asset management",
+      "description": "Everything required to deliver, maintain or support networks and information systems and services is determined and understood.",
+      "topics": "\n  Hardware assets register & management\n  \",\"\n  Software assets register & management\n  \",\"\n  Infrastructure management\n  ",
+      "section": "Section 1: MANAGE security risk",
+      "id": 3,
+      "slug": "asset-management"
+    },
+    {
+      "name": "Supplier management",
+      "description": "The organisation understands and manages security risks to that arise as a result of dependencies on external suppliers",
+      "topics": "\n  Supply chain security assurance & management\n  \",\"\n  Roles & responsibilities defined\n  \",\"\n  Access control\n  \",\"\n  Security in system procurements\n  ",
+      "section": "Section 1: MANAGE security risk",
+      "id": 4,
+      "slug": "supplier-management"
+    },
+    {
+      "name": "Information security management",
+      "description": "",
+      "topics": "Security policy & processes,Lifecycle management,Storage ,Information/data classification,Information assets register,Information/data transfer controls",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "information-security-management"
+    },
+    {
+      "name": "Physical/building security",
+      "description": "",
+      "topics": "\n  Access control\n  \",\"\n  Internal security\n  ",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "physical/building-security"
+    },
+    {
+      "name": "Operational security",
+      "description": "",
+      "topics": "\n  Malware policies & protection\n  \",\"\n  Email security\n  \",\"\n  Application security\n  \",\"\n  Vulnerability management & scanning\n  \",\"\n  Data exfiltration monitoring\n  \",\"\n  Software supported & updated\n  \",\"\n  Web site screening\n  \",\"\n  Browser management\n  \",\"\n  Monitor/audit user activity\n  \",\"\n  Disabled auto-run\n  ",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "operational-security"
+    },
+    {
+      "name": "Environmental Security",
+      "description": "",
+      "topics": "\n  Equipment location\n  \",\"\n  Power resilience\n  ",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "environmental-security"
+    },
+    {
+      "name": "System Management",
+      "description": "",
+      "topics": "\n  Secure configuration  \n  \",\"\n  Secure design/development\n  \",\"\n  Change control procedures\n  \",\"\n  System Testing\n  ",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "system-management"
+    },
+    {
+      "name": "Services Resilience",
+      "description": "",
+      "topics": "",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "services-resilience"
+    },
+    {
+      "name": "Media Management",
+      "description": "",
+      "topics": "\n  Storage media management\n  \",\"\n  Cryptography\n  \",\"\n  Remote wipe capability\n  ",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "media-management"
+    },
+    {
+      "name": "Access Control",
+      "description": "",
+      "topics": "\n  Account management\n  \",\"\n  Identity authentication\n  \",\"\n  Privilege management\n  \",\"\n  Administrator account management\n  ",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "access-control"
+    },
+    {
+      "name": "People",
+      "description": "",
+      "topics": "\n  Prior to employment\n  \",\"\n  During employment\n  \",\"\n  Staff training & awareness culture\n  \",\"\n  Staff skills assessment\n  \",\"\n  Mobile/remote working policy\n  ",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "people"
+    },
+    {
+      "name": "Network Security",
+      "description": "",
+      "topics": "\n  Patch management\n  \",\"\n  Device management\n  \",\"\n  Content screening\n  \",\"\n  Internal segregation\n  \",\"\n  Wireless security\n  \",\"\n  Boundary/Firewall management\n  \",\"\n  Administrator control\n  \",\"\n  Error message management\n  \",\"\n  Penetration testing\n  \",\"\n  IP & DNS management\n  ",
+      "section": "Section 2: PROTECT against cyber-attack",
+      "id": "",
+      "slug": "network-security"
+    },
+    {
+      "name": "Incident detection",
+      "description": "",
+      "topics": "\n  Detection capability\n  \",\"\n  Security Monitoring\n  ",
+      "section": "Section 3: DETECT cyber security event",
+      "id": "",
+      "slug": "incident-detection"
+    },
+    {
+      "name": "Incident mangement",
+      "description": "",
+      "topics": "\n  Incident response protocol\n  \",\"\n  Incident reporting procedure\n  \",\"\n  Staff training & testing\n  \",\"\n  Post-incident review & learning\n  ",
+      "section": "Section 4: RESPOND and RECOVER",
+      "id": "",
+      "slug": "incident-mangement"
+    },
+    {
+      "name": "Business continuity",
+      "description": "",
+      "topics": "\n  Data recovery capability\n  \",\"\n  Back up policies & procedures\n  \",\"\n  Disaster recovery policies & procedures\n  \",\"\n  BC/DR testing policies & procedures\n  \",\"\n  Data Loss impact assessments\n  \",\"\n  BC contingency plan\n  ",
+      "section": "Section 4: RESPOND and RECOVER",
+      "id": "",
+      "slug": "business-continuity"
+    }
+  ]
