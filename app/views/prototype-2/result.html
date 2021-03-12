@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Assessment index - Prototype 2
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Your council's results
+      </h1>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <span class="govuk-caption-l">Stage one</span>
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        80/80
+      </h1>
+      <strong class="govuk-tag govuk-tag--blue">Stage one Met</strong>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <span class="govuk-caption-l">Stage two</span>
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        0/50
+      </h1>
+      <!-- <strong class="govuk-tag govuk-tag--orange">Stage two Met</strong> -->
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <span class="govuk-caption-l">Stage three</span>
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        0/40
+      <!-- </h1>
+      <strong class="govuk-tag govuk-tag--green">Stage three Met</strong> -->
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-top-9">
+
+      {% for section in sections %}
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-5">{{ section.name }}</h2>
+        <p class="govuk-!-margin-bottom-4">{{ section.body }}</p>
+        <!-- <ul class="govuk-list">
+            {% for category in section.categories %}
+            <li>{{ category }}</li>
+            {% endfor %}
+        </ul> -->
+        <ul class="app-task-list__items govuk-!-padding-left-0 govuk-!-margin-bottom-9">
+            {% for category in section.categories %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="/prototype-2/category/{{ category | slugify | lower }}" aria-describedby="{{ category | slugify | lower }}">
+                  {{ category }}
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--blue" id="{{ category | slugify | lower }}">Stage One Met</strong>
+            </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+        <p>No sections were found</p>
+    {% endfor %}
+
+    </div>
+  </div>
+
+{% endblock %}
