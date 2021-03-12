@@ -137,6 +137,10 @@ router.get("/prototype-2/start-assessment/", (req, res) => {
   res.render("prototype-2/start-assessment", { sections: sections });
 });
 
+router.get("/prototype-2/result/", (req, res) => {
+  res.render("prototype-2/result", { sections: sections });
+});
+
 router.get("/prototype-2/assessment-index/", (req, res) => {
   res.render("prototype-2/assessment-index", { sections: sections });
 });
