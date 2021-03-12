@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Assessment index - Prototype 2
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{ category.name }}
+      </h1>
+
+      <p>
+      {{ category.description }}
+      </p>
+      <ul class="app-task-list__items govuk-!-padding-left-0">
+        {% for topic in category.topics %}
+        <li class="app-task-list__item">
+          <span class="app-task-list__task-name">
+            <a href="/prototype-2/topics/{{ topic | slugify | lower }}" aria-describedby="{{ topic | slugify | lower }}">
+              {{ topic }}
+            </a>
+          </span>
+          <strong class="govuk-tag app-task-list__tag" id="{{ topic | slugify | lower }}">To do</strong>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}
