@@ -44,7 +44,7 @@ fs.readFile(topicsPath, 'utf8', (err, data) => {
       throw err;
     }
     topics = JSON.parse(data);
-}
+});
 
 fs.readFile(sectionsPath, "utf8", (err, data) => {
   if (err) {
