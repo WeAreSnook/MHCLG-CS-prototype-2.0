@@ -1,41 +1,25 @@
 {% extends "layout-logged-in.html" %}
 {% block pageTitle %} Question page {% endblock %}
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/">Back</a>
+  <a class="govuk-back-link" href="start-assessment">Back</a>
 {% endblock %}
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">About you</span>
+      <span class="govuk-caption-l">Governance framework</span>
       <h1 class="govuk-heading-l">
-  What is your home address?
-</h1>
+      Is there a Board/Senior Management-level commitment to manage the risks
+      arising from the cyber threat?
+    </h1>
+      <div id="changed-name-hint" class="govuk-hint">
+      Having effective organisational security management led at board level and articulated clearly in corresponding policies is essential for cyber resilience. 
+    </div>
       <form action="#" method="post" novalidate>
-        {{ govukRadios({
-  idPrefix: "question-1",
-  name: "question-1",
-  items: [
-    {
-      value: "sign-in",
-      text: "Sign in",
-      hint: {
-        text: "You’ve already complteted the cyber health self assesement"
-      }
-    },
-    {
-      value: "govuk-verify",
-      text: "Create Account",
-      hint: {
-        text: "If you do not already have an account "
-      }
-    }
-  ]
-}) }}
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
+        {{ govukRadios({ idPrefix: "question-1", name: "question-1", items: [ {
+      value: "sign-in", text: "yes" }, { value: "govuk-verify",
+      text: "no" } ] }) }}
+        {{ govukButton({ text: "Continue" }) }}
       </form>
     </div>
   </div>
