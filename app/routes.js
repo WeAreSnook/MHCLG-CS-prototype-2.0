@@ -43,11 +43,26 @@ router.get("/prototype-2/question/:questionID", (req, res) => {
   res.render("prototype-2/question", { question: question });
 });
 
+router.get("/prototype-1/question/:questionID", (req, res) => {
+  const question = questions.find(({ id }) => id === req.params.questionID);
+  const currentIndex = questions.indexOf(question);
+  const nextId = questions[currentIndex + 1].id;
+  res.render("prototype-1/question", { question, nextId });
+});
+
 router.get("/prototype-2/category/:categorySlug", (req, res) => {
   const category = categories.find(
     ({ slug }) => slug === req.params.categorySlug
   );
   res.render("prototype-2/category", { category: category });
+});
+
+router.get("/prototype-1/category/:categorySlug", (req, res) => {
+  const category = categories.find(
+    ({ slug }) => slug === req.params.categorySlug
+  );
+  const firstQuestionId = "1.1.1";
+  res.render("prototype-1/category", { category, firstQuestionId });
 });
 
 router.get("/prototype-2/start-assessment/", (req, res) => {
