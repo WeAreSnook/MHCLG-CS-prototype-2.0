@@ -3,13 +3,14 @@ const router = express.Router();
 const fs = require("fs");
 
 // Add your routes here - above the module.exports line
-
-const questionsPath = "./app/data/questions.json";
+const questionsPath = './app/data/questions.json';
 let questions;
 const sectionsPath = "./app/data/sections.json";
 let sections;
 const categoriesPath = "./app/data/categories.json";
 let categories;
+const topicsPath = './app/data/topics.json';
+let topics;
 
 fs.readFile(questionsPath, "utf8", (err, data) => {
   if (err) {
@@ -17,6 +18,34 @@ fs.readFile(questionsPath, "utf8", (err, data) => {
   }
   questions = JSON.parse(data);
 });
+fs.readFile(sectionsPath, 'utf8', (err, data) => {
+    if (err) {
+      throw err;
+    }
+    sections = JSON.parse(data);
+    // Convert category CSVs into array
+    sections.forEach(section => {
+        section.categories = section.categories.split(',');
+    });
+});
+fs.readFile(categoriesPath, 'utf8', (err, data) => {
+    if (err) {
+      throw err;
+    }
+    categories = JSON.parse(data);
+    // Convert topic CSVs into array
+    categories.forEach(category => {
+        category.topics = category.topics.split(',');
+    });
+});
+
+fs.readFile(topicsPath, 'utf8', (err, data) => {
+    if (err) {
+      throw err;
+    }
+    topics = JSON.parse(data);
+}
+
 fs.readFile(sectionsPath, "utf8", (err, data) => {
   if (err) {
     throw err;
@@ -38,9 +67,32 @@ fs.readFile(categoriesPath, "utf8", (err, data) => {
   });
 });
 
+
 router.get("/prototype-2/question/:questionID", (req, res) => {
   const question = questions.find(({ id }) => id === req.params.questionID);
   res.render("prototype-2/question", { question: question });
+});
+
+router.get('/prototype-2/topic/:topicSlug', (req, res) => {
+    let topic = topics.find( ({ slug }) => slug === req.params.topicSlug );
+    console.log(topic);
+    // Convert question CSVs into an array of objects
+    if(typeof topic.questions === 'string') {
+        let splitQuestions = topic.questions.split(',');
+        let fullQuestions = [];
+        splitQuestions.forEach(questionID => {
+            // Find question object by ID
+            const fullQuestion = questions.find( ({ id }) => id === questionID );
+            fullQuestions.push(fullQuestion);
+        });
+        topic.questions = fullQuestions;
+    }
+    res.render('prototype-2/topic', { topic: topic })
+});
+
+router.get('/prototype-2/category/:categorySlug', (req, res) => {
+    const category = categories.find( ({ slug }) => slug === req.params.categorySlug );
+    res.render('prototype-2/category', { category: category })
 });
 
 router.get("/prototype-1/question/:questionID", (req, res) => {
