@@ -46,8 +46,20 @@ router.get("/prototype-2/question/:questionID", (req, res) => {
 router.get("/prototype-1/question/:questionID", (req, res) => {
   const question = questions.find(({ id }) => id === req.params.questionID);
   const currentIndex = questions.indexOf(question);
-  const nextId = questions[currentIndex + 1].id;
-  res.render("prototype-1/question", { question, nextId });
+  let nextId;
+  if (questions.length - 1 != currentIndex) {
+    nextId = questions[currentIndex + 1].id;
+  } else {
+    nextId = null;
+  }
+  let prevId;
+  if (currentIndex != 0) {
+    prevId = questions[currentIndex - 1].id;
+  } else {
+    prevId = null;
+  }
+
+  res.render("prototype-1/question", { question, prevId, nextId });
 });
 
 router.get("/prototype-2/category/:categorySlug", (req, res) => {

@@ -1,7 +1,9 @@
 {% extends "layout-logged-in.html" %} {% block pageTitle %} Question page {%
-endblock %} {% block beforeContent %}
-<a class="govuk-back-link" href="/start-assessment">Back</a>
-{% endblock %} {% block content %}
+endblock %} {% block beforeContent %} {% if (prevId == null) %}
+<a class="govuk-back-link" href="/prototype-1/start-assessment">Back</a>
+{% else %}
+<a class="govuk-back-link" href="/prototype-1/question/{{prevId}}">Back</a>
+{% endif %} {% endblock %} {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -9,9 +11,30 @@ endblock %} {% block beforeContent %}
     <h1 class="govuk-heading-l">{{question.label}}</h1>
     <form action="#" method="post" novalidate>
       {{ govukRadios({ idPrefix: "question-" + question.id, name: "question-" +
-      question.id, items: [ { value: "no", text: "No" }, { value: "yes", text:
-      "Yes" }, { value: "na", text: "N/A" } ] }) }} {{ govukButton({ text:
-      "Continue", href: "/prototype-1/question/" + nextId}) }}
+      question.id, items: [ { value: "yes", text: "Yes" },{ value: "no", text:
+      "No" }, { value: "na", text: "Not applicable" } ] }) }}
+      <!--  -->
+      {% if (nextId == null) %}
+      <a
+        href="/prototype-1/confirmation"
+        role="button"
+        draggable="false"
+        class="govuk-button"
+        data-module="govuk-button"
+      >
+        Finish
+      </a>
+      {% else %}
+      <a
+        href="/prototype-1/question/{{nextId}}"
+        role="button"
+        draggable="false"
+        class="govuk-button"
+        data-module="govuk-button"
+      >
+        Next
+      </a>
+      {% endif %}
     </form>
   </div>
 </div>
