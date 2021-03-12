@@ -15,7 +15,6 @@
       <p>
       {{ category.description }}
       </p>
-      <p><a href="/prototype-2/category/{{ category.name | slugify | lower }}/finished">See this page with Stage One complete.</a></p>
       <!-- <ul class="app-task-list__items govuk-!-padding-left-0">
         {% for topic in category.topics %}
         <li class="app-task-list__item">
@@ -42,7 +41,7 @@
           {% for topic in category.topics %}
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header"><a href="/prototype-2/topic/{{ topic | slugify | lower }}" >{{ topic }}</a></th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">0/1</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">1/1</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">0/4</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">0/1</td>
           </tr>
