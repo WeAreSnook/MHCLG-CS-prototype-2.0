@@ -103,25 +103,34 @@ router.get("/prototype-2/category/:categorySlug/finished", (req, res) => {
 });
 
 router.get("/prototype-1/question/:questionID", (req, res) => {
-  // const p1Questions = questions.slice(0, 4);
-  const p1Questions = questions.filter(question => question.stage == 'Stage 1');
+  const p1Questions = questions.filter(
+    (question) => question.stage == "Stage 1"
+  );
   const question = p1Questions.find(({ id }) => id === req.params.questionID);
 
   const currentIndex = p1Questions.indexOf(question);
-  let nextId;
+
+  let nextQuestionHref;
   if (p1Questions.length - 1 != currentIndex) {
-    nextId = p1Questions[currentIndex + 1].id;
+    nextQuestionHref =
+      "/prototype-1/question/" + p1Questions[currentIndex + 1].id;
   } else {
-    nextId = null;
-  }
-  let prevId;
-  if (currentIndex != 0) {
-    prevId = p1Questions[currentIndex - 1].id;
-  } else {
-    prevId = null;
+    nextQuestionHref = "/prototype-1/confirmation";
   }
 
-  res.render("prototype-1/question", { question, prevId, nextId });
+  let prevQuestionHref;
+  if (currentIndex != 0) {
+    prevQuestionHref =
+      "/prototype-1/question/" + p1Questions[currentIndex - 1].id;
+  } else {
+    prevQuestionHref = "/prototype-1/start-assessment";
+  }
+
+  res.render("prototype-1/question", {
+    question,
+    prevQuestionHref,
+    nextQuestionHref,
+  });
 });
 
 router.get("/prototype-2/category/:categorySlug", (req, res) => {
