@@ -5,13 +5,10 @@
   {% endblock %}
 
 {% block beforeContent %}
-  {% if (prevId == null) %}
-    <a class="govuk-back-link" href="/prototype-1/start-assessment">
+ 
+    <a class="govuk-back-link" href={{prevQuestionHref}}>
       Back 
     </a>
-  {% else %}
-    <a class="govuk-back-link" href="/prototype-1/question/{{prevId}}">Back</a>
-  {% endif %}
 {% endblock %}
 {% block content %}
 
@@ -29,18 +26,12 @@
             { value: "na", text: "Not applicable" } 
           ] })
         }}
-        <!--  -->
-        {% if (nextId == null) %}
-          <a href="/prototype-1/confirmation" role="button" draggable="false" class="govuk-button"
+      
+          <a href={{nextQuestionHref}} role="button" draggable="false" class="govuk-button"
         data-module="govuk-button">
-        Finish
+        {{ "Finish" if (nextQuestionHref === "/prototype-1/confirmation") else "Next" }}
       </a>
-        {% else %}
-          <a href="/prototype-1/question/{{nextId}}" role="button" draggable="false" class="govuk-button"
-        data-module="govuk-button">
-        Next
-      </a>
-        {% endif %}
+     
       </form>
     </div>
   </div>
