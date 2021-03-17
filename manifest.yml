@@ -5,3 +5,7 @@ applications:
     memory: 256M
     buildpacks:
       - nodejs_buildpack
+  - env:
+      NODE_ENV: production
+      PASSWORD: "j9KU*wRCm"
+      USERNAME: theuser
