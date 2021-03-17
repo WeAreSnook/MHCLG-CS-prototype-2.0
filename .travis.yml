@@ -14,9 +14,6 @@ deploy:
     space: sandbox
     on:
       branch: main
-    env:
-      USERNAME: theuser
-      PASSWORD: j9K!f*U$6*wRCm
   - provider: cloudfoundry
     edge: true
     skip_cleanup: true
@@ -27,10 +24,11 @@ deploy:
     space: staging
     on:
       branch: staging
-    env:
-      USERNAME: theuser
-      PASSWORD: j9K!f*U$6*wRCm
 branches:
   only:
     - main
     - staging
+env:
+  global:
+    - USERNAME: theuser
+    - PASSWORD: j9K!f*U$6*wRCm
