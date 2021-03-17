@@ -17,6 +17,20 @@ deploy:
     env:
       USERNAME: theuser
       PASSWORD: j9K!f*U$6*wRCm
+  - provider: cloudfoundry
+    edge: true
+    skip_cleanup: true
+    username: joel.stobart@wearesnook.com
+    password: S220tEq9893Uw44Igsq
+    api: https://api.london.cloud.service.gov.uk
+    organization: mhclg-local-digital
+    space: staging
+    on:
+      branch: staging
+    env:
+      USERNAME: theuser
+      PASSWORD: j9K!f*U$6*wRCm
 branches:
   only:
     - main
+    - staging
