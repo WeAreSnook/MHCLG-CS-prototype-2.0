@@ -12,6 +12,7 @@ deploy:
     api: https://api.london.cloud.service.gov.uk
     organization: mhclg-local-digital
     space: sandbox
+    app_name: Cyber-Health-Prototype-Sandbox
     on:
       branch: main
   - provider: cloudfoundry
@@ -22,6 +23,7 @@ deploy:
     api: https://api.london.cloud.service.gov.uk
     organization: mhclg-local-digital
     space: staging
+    app_name: Cyber-Health-Prototype-Staging
     on:
       branch: staging
 branches:
