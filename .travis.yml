@@ -14,6 +14,9 @@ deploy:
     space: sandbox
     on:
       branch: main
+    env:
+      USERNAME: theuser
+      PASSWORD: j9K!f*U$6*wRCm
 branches:
   only:
     - main
