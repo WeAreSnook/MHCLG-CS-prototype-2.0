@@ -1,0 +1,7 @@
+---
+applications:
+  - name: Cyber-Health-Prototype
+    command: node start.js
+    memory: 128M
+    buildpacks:
+      - nodejs_buildpack
