@@ -7,9 +7,9 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">Data protection</span>
-      <h1 class="govuk-heading-l">Have you put policies and procedures in place to mitigate risks to personal data?</h1>
-      <p>To effectively manage risks to personal data you need a set of policies that set out your expectations and requirements around handling personal data</p>
+      <span class="govuk-caption-l">Incident Management</span>
+      <h1 class="govuk-heading-l">Are all information security incidents or suspected weaknesses reported and recorded, and do you provide a method for all employees and contractors to report security incidents without risk of recrimination (or anonymously)?</h1>
+      <p>You must provide a route for staff and contractors to report any security weaknesses they encounter - including staff acting incorrectly and configuration issues. It is important that staff can do this either anonymously or in a way that makes it clear there is no risk of negative consequences to them for highlighting an issue.</p>
       <form action="/sprint-5/prototype-1/question-2" method="post" class="form" novalidate>
         {{ govukRadios({ 
           idPrefix: "question-1",
@@ -20,8 +20,8 @@
             { value: "na", text: "Not applicable" } 
           ] })
         }}
-        <input name="questions[question-1][level]" type="hidden" value="medium">
-        <input name="questions[question-1][threat]" type="hidden" value="No policies and procedures in place to mitigate risks to personal data">
+        <input name="questions[question-1][level]" type="hidden" value="high">
+        <input name="questions[question-1][threat]" type="hidden" value="Are all information security incidents or suspected weaknesses reported and recorded, and do you provide a method for all employees and contractors to report security incidents without risk of recrimination (or anonymously)?">
         <button class="govuk-button" data-module="govuk-button">Continue</button>
     </div>
   </div>
