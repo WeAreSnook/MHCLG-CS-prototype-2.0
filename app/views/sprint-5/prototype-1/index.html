@@ -10,7 +10,9 @@ endblock %} {% block content %}
       Welcome to the Cyber Health Framework for local authorities in England. This framework has been developed by MHCLG to
       support local authorities to:
     </p>
-    <p>The self assessment will take around 3 weeks to complete.</p>
+    {{ govukInsetText({
+      text: "This self assessment will take around 3 weeks to complete."
+    }) }}
     <ul class="govuk-list govuk-list--bullet">
       <li>Understand the levels of cyber security they should be reaching</li>
       <li>Determine their own organisation’s level of cyber security</li>
