@@ -1,0 +1,34 @@
+{% extends "sprint-5/prototype-1/layout.html" %}
+{% block pageTitle %} Question page {% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/sprint-5/prototype-1/question-3">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Incident Management</span>
+      <h1 class="govuk-heading-l">
+        If required as a result of an incident, is data isolated to facilitate forensic examination? How is this done?
+
+      </h1>
+      <p>
+        Forensic examination of data can help identify the cause of an incident. You can use an external company to provide this service to you if needed
+      </p>
+      <form action="/sprint-5/prototype-1/question-5" method="post" class="form" novalidate>
+        {{ govukRadios({ 
+          idPrefix: "question-4",
+          name: "questions[question-4][answer]",
+          items: [ 
+            { value: "yes", text: "Yes" },
+            { value: "no", text: "No" }, 
+            { value: "na", text: "Not applicable" } 
+          ] })
+        }}
+        <input name="questions[question-4][level]" type="hidden" value="medium">
+        <input name="questions[question-4][threat]" type="hidden" value="If required as a result of an incident, is data isolated to facilitate forensic examination? How is this done?">
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </div>
+  </div>
+
+{% endblock %}
