@@ -179,8 +179,6 @@ router.get("/sprint-5/prototype-1/risk", (req, res) => {
       }
     }
   }
-  // Fake boost the score
-  score = score * 5;
   let riskLevel = 'bad';
   if(score >= 8) {
     riskLevel = 'pretty bad';
