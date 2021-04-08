@@ -10,17 +10,18 @@
       <span class="govuk-caption-l">Data protection</span>
       <h1 class="govuk-heading-l">Have you put policies and procedures in place to mitigate risks to personal data?</h1>
       <p>To effectively manage risks to personal data you need a set of policies that set out your expectations and requirements around handling personal data</p>
-      <form action="/sprint-5/prototype-1/risk" method="post" class="form" novalidate>
+      <form action="/sprint-5/prototype-1/question-2" method="post" class="form" novalidate>
         {{ govukRadios({ 
           idPrefix: "question-1",
-          name: "question-1",
+          name: "questions[question-1][answer]",
           items: [ 
-            { value: "High", text: "Yes", checked: checked("question-1", "High risk") },
-            { value: "Low", text: "No", checked: checked("question-1", "no") }, 
+            { value: "yes", text: "Yes" },
+            { value: "no", text: "No" }, 
             { value: "na", text: "Not applicable" } 
           ] })
         }}
-      
+        <input name="questions[question-1][level]" type="hidden" value="low">
+        <input name="questions[question-1][threat]" type="hidden" value="No policies and procedures in place to mitigate risks to personal data">
         <button class="govuk-button" data-module="govuk-button">Continue</button>
     </div>
   </div>
