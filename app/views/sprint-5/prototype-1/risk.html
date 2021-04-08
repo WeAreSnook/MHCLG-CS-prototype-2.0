@@ -13,6 +13,10 @@
       <h1 class="govuk-heading-xl">
         Risk assessment
       </h1>
+      {{ govukPanel({
+        titleText: "Your risk level is " + riskLevel,
+        html: "Your scored <strong>" + score + " out of 14</strong>"
+      }) }}
       <p>These threats are based on your previous answers and could be mitigated.</p>
       <table class="govuk-table">
         <thead class="govuk-table__head">
@@ -24,7 +28,6 @@
         </thead>
         <tbody class="govuk-table__body">
           
-            
         {% for qId, question in data['questions'] %}
           {% if question.answer == 'no' %}
             {% if question.level == 'high' %}

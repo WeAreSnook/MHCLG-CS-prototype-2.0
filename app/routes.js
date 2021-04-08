@@ -164,4 +164,34 @@ router.get("/prototype-1/start-assessment/", (req, res) => {
   res.render("prototype-1/start-assessment", { sections: sections });
 });
 
+router.get("/sprint-5/prototype-1/risk", (req, res) => {
+  const questions = req.session.data['questions'];
+  let score = 0;
+  for (const key in questions) {
+    const question = questions[key];
+    if(question.answer == 'yes') {
+      const level = question.level;
+      if (level == 'medium') {
+        score++;
+      }
+      else if (level == 'high') {
+        score = score + 2;
+      }
+    }
+  }
+  // Fake boost the score
+  score = score * 5;
+  let riskLevel = 'bad';
+  if(score >= 8) {
+    riskLevel = 'pretty bad';
+  }
+  if(score >= 11) {
+    riskLevel = 'acceptable';
+  }
+  if(score >= 14) {
+    riskLevel = 'excellent';
+  }
+  res.render("sprint-5/prototype-1/risk", { riskLevel: riskLevel, score: score });
+});
+
 module.exports = router;
