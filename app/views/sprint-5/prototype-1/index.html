@@ -5,19 +5,24 @@ endblock %} {% block content %}
     <h1 class="govuk-heading-xl">
       {% if serviceName %} {{ serviceName }} {% endif %}
     </h1>
-
     <p>
       Welcome to the Cyber Health Framework for local authorities in England. This framework has been developed by MHCLG to
       support local authorities to:
     </p>
-    {{ govukInsetText({
-      text: "This self assessment will take around 3 weeks to complete."
-    }) }}
+
     <ul class="govuk-list govuk-list--bullet">
       <li>Understand the levels of cyber security they should be reaching</li>
       <li>Determine their own organisation’s level of cyber security</li>
       <li>Devise a path to build greater resilience</li>
     </ul>
+    
+    <p>This is an automatic assessment that will provide bespoke recommendations based on your answers.</p>
+
+    {{ govukInsetText({
+      text: "This self assessment will take around 3 weeks to complete."
+    }) }}
+
+    <p>You can save your progress and resume at any time.</p>
 
     <a
       href="/sprint-5/prototype-1/question-1"
