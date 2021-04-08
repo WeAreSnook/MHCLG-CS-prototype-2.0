@@ -1,0 +1,28 @@
+{% extends "sprint-5/prototype-1/layout.html" %}
+{% block pageTitle %} Question page {% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/sprint-5/prototype-1">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Data protection</span>
+      <h1 class="govuk-heading-l">Have you put policies and procedures in place to mitigate risks to personal data?</h1>
+      <p>To effectively manage risks to personal data you need a set of policies that set out your expectations and requirements around handling personal data</p>
+      <form action="/sprint-5/prototype-1/risk" method="post" class="form" novalidate>
+        {{ govukRadios({ 
+          idPrefix: "question-1",
+          name: "question-1",
+          items: [ 
+            { value: "High", text: "Yes", checked: checked("question-1", "High risk") },
+            { value: "Low", text: "No", checked: checked("question-1", "no") }, 
+            { value: "na", text: "Not applicable" } 
+          ] })
+        }}
+      
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </div>
+  </div>
+
+{% endblock %}

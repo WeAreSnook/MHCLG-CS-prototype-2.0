@@ -1,0 +1,48 @@
+{% extends "sprint-5/prototype-1/layout.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/sprint-5/prototype-1/risk">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <strong class="govuk-tag govuk-tag--red">High Risk</strong>
+      <h1 class="govuk-heading-xl govuk-!-padding-top-4">
+        No policies and procedures in place to mitigate risks to personal data
+      </h1>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Priority</th>
+            <th scope="col" class="govuk-table__header">Suggested action</th>
+            <th scope="col" class="govuk-table__header">Status</th>
+            <th scope="col" class="govuk-table__header"></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag govuk-tag--red">High</strong></td>
+            <td class="govuk-table__cell govuk-!-width-one-half">Do something about it</td>
+            <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag govuk-tag--grey">To do</strong></td>
+            <td class="govuk-table__cell table-cell-vertical-centre govuk-table__header--numeric"><a href="">Update</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag govuk-tag--yellow">Medium</strong></td>
+            <td class="govuk-table__cell govuk-!-width-one-half">Do something else about it</td>
+            
+            <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag">Done</strong></td>
+            <td class="govuk-table__cell table-cell-vertical-centre govuk-table__header--numeric"><a href="">Update</a></td>
+          </tr>
+        </tbody>
+      </table>
+      
+
+    </div>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "sprint-5/prototype-1/layout.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/sprint-5/prototype-1/question">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Risk assessment
+      </h1>
+      <p>These threats are based on your previous answers and could be mitigated.</p>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Threat</th>
+            <th scope="col" class="govuk-table__header">Risk level</th>
+            <th scope="col" class="govuk-table__header govuk-table__header--numeric"></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell govuk-!-width-two-thirds">No policies and procedures in place to mitigate risks to personal data</td>
+            <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag govuk-tag--red">High</strong></td>
+            <td class="govuk-table__cell table-cell-vertical-centre govuk-table__header--numeric"><a href="/sprint-5/prototype-1/action">Actions</a></td>
+          </tr>
+        </tbody>
+      </table>
+      
+
+    </div>
+
+  </div>
+
+{% endblock %}
