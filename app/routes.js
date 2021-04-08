@@ -189,7 +189,32 @@ router.get("/sprint-5/prototype-1/risk", (req, res) => {
   if(score >= 14) {
     riskLevel = 'excellent';
   }
-  res.render("sprint-5/prototype-1/risk", { riskLevel: riskLevel, score: score });
+  res.render("sprint-5/prototype-1/risk", { riskLevel: riskLevel, score: score, wrongQuestions: wrongQuestionsOnly(questions) });
 });
+
+// Returns an array of questions with the answer "no", sorted by level
+function wrongQuestionsOnly(questions) {
+  let wrongQuestions = [];
+  for (const key in questions) {
+    const question = questions[key];
+    if(question.answer == 'no') {
+      wrongQuestions.push(question)
+    }
+  }
+  wrongQuestions.sort(function(a, b) {
+    var levelA = a.level.toUpperCase(); 
+    var levelB = b.level.toUpperCase(); 
+    if (levelA < levelB) {
+      return -1;
+    }
+    if (levelA > levelB) {
+      return 1;
+    }
+  
+    // equal
+    return 0;
+  });
+  return wrongQuestions;
+}
 
 module.exports = router;

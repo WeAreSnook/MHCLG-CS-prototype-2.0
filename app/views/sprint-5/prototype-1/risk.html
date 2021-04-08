@@ -28,7 +28,7 @@
         </thead>
         <tbody class="govuk-table__body">
           
-        {% for qId, question in data['questions'] %}
+        {% for question in wrongQuestions %}
           {% if question.answer == 'no' %}
             {% if question.level == 'high' %}
               {% set levelClass = 'govuk-tag--red' %}
