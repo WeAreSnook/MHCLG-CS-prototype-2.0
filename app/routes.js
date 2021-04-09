@@ -67,12 +67,12 @@ fs.readFile(categoriesPath, "utf8", (err, data) => {
   });
 });
 
-router.get("/prototype-2/question/:questionID", (req, res) => {
+router.get("/sprint-3/prototype-2/question/:questionID", (req, res) => {
   const question = questions.find(({ id }) => id === req.params.questionID);
-  res.render("prototype-2/question", { question: question });
+  res.render("sprint-3/prototype-2/question", { question: question });
 });
 
-router.get("/prototype-2/topic/:topicSlug", (req, res) => {
+router.get("/sprint-3/prototype-2/topic/:topicSlug", (req, res) => {
   let topic = topics.find(({ slug }) => slug === req.params.topicSlug);
   // Convert question CSVs into an array of objects
   if (typeof topic.questions === "string") {
@@ -85,24 +85,24 @@ router.get("/prototype-2/topic/:topicSlug", (req, res) => {
     });
     topic.questions = fullQuestions;
   }
-  res.render("prototype-2/topic", { topic: topic });
+  res.render("sprint-3/prototype-2/topic", { topic: topic });
 });
 
-router.get("/prototype-2/category/:categorySlug/", (req, res) => {
+router.get("/sprint-3/prototype-2/category/:categorySlug/", (req, res) => {
   const category = categories.find(
     ({ slug }) => slug === req.params.categorySlug
   );
-  res.render("prototype-2/category", { category: category });
+  res.render("sprint-3/prototype-2/category", { category: category });
 });
 
-router.get("/prototype-2/category/:categorySlug/finished", (req, res) => {
+router.get("/sprint-3/prototype-2/category/:categorySlug/finished", (req, res) => {
   const category = categories.find(
     ({ slug }) => slug === req.params.categorySlug
   );
-  res.render("prototype-2/category-finished", { category: category });
+  res.render("sprint-3/prototype-2/category-finished", { category: category });
 });
 
-router.get("/prototype-1/question/:questionID", (req, res) => {
+router.get("/sprint-3/prototype-1/question/:questionID", (req, res) => {
   const p1Questions = questions.filter(
     (question) => question.stage == "Stage 1"
   );
@@ -113,55 +113,55 @@ router.get("/prototype-1/question/:questionID", (req, res) => {
   let nextQuestionHref;
   if (p1Questions.length - 1 != currentIndex) {
     nextQuestionHref =
-      "/prototype-1/question/" + p1Questions[currentIndex + 1].id;
+      "/sprint-3/prototype-1/question/" + p1Questions[currentIndex + 1].id;
   } else {
-    nextQuestionHref = "/prototype-1/confirmation";
+    nextQuestionHref = "/sprint-3/prototype-1/confirmation";
   }
 
   let prevQuestionHref;
   if (currentIndex != 0) {
     prevQuestionHref =
-      "/prototype-1/question/" + p1Questions[currentIndex - 1].id;
+      "/sprint-3/prototype-1/question/" + p1Questions[currentIndex - 1].id;
   } else {
-    prevQuestionHref = "/prototype-1/start-assessment";
+    prevQuestionHref = "/sprint-3/prototype-1/start-assessment";
   }
 
-  res.render("prototype-1/question", {
+  res.render("sprint-3/prototype-1/question", {
     question,
     prevQuestionHref,
     nextQuestionHref,
   });
 });
 
-router.get("/prototype-2/category/:categorySlug", (req, res) => {
+router.get("/sprint-3/prototype-2/category/:categorySlug", (req, res) => {
   const category = categories.find(
     ({ slug }) => slug === req.params.categorySlug
   );
-  res.render("prototype-2/category", { category: category });
+  res.render("sprint-3/prototype-2/category", { category: category });
 });
 
-router.get("/prototype-1/category/:categorySlug", (req, res) => {
+router.get("/sprint-3/prototype-1/category/:categorySlug", (req, res) => {
   const category = categories.find(
     ({ slug }) => slug === req.params.categorySlug
   );
   const firstQuestionId = "1.1.1";
-  res.render("prototype-1/category", { category, firstQuestionId });
+  res.render("sprint-3/prototype-1/category", { category, firstQuestionId });
 });
 
-router.get("/prototype-2/start-assessment/", (req, res) => {
-  res.render("prototype-2/start-assessment", { sections: sections });
+router.get("/sprint-3/prototype-2/start-assessment/", (req, res) => {
+  res.render("sprint-3/prototype-2/start-assessment", { sections: sections });
 });
 
-router.get("/prototype-2/result/", (req, res) => {
-  res.render("prototype-2/result", { sections: sections });
+router.get("/sprint-3/prototype-2/result/", (req, res) => {
+  res.render("sprint-3/prototype-2/result", { sections: sections });
 });
 
-router.get("/prototype-2/assessment-index/", (req, res) => {
-  res.render("prototype-2/assessment-index", { sections: sections });
+router.get("/sprint-3/prototype-2/assessment-index/", (req, res) => {
+  res.render("sprint-3/prototype-2/assessment-index", { sections: sections });
 });
 
-router.get("/prototype-1/start-assessment/", (req, res) => {
-  res.render("prototype-1/start-assessment", { sections: sections });
+router.get("/sprint-3/prototype-1/start-assessment/", (req, res) => {
+  res.render("sprint-3/prototype-1/start-assessment", { sections: sections });
 });
 
 router.get("/sprint-5/prototype-1/risk", (req, res) => {
