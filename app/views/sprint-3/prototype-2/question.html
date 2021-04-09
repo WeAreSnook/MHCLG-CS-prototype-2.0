@@ -1,7 +1,7 @@
 {% extends "layout-logged-in.html" %}
 {% block pageTitle %} Question page {% endblock %}
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/prototype-2/topic/{{ question.topic | slugify | lower }}">Back</a>
+  <a class="govuk-back-link" href="/sprint-3/prototype-2/topic/{{ question.topic | slugify | lower }}">Back</a>
 {% endblock %}
 {% block content %}
 
@@ -30,7 +30,7 @@
 }) }}
         {{ govukButton({
           text: "Continue",
-          href: "/prototype-2/result"
+          href: "/sprint-3/prototype-2/result"
         }) }}
 
       </form>
