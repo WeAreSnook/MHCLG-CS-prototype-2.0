@@ -1,0 +1,33 @@
+{% extends "sprint-5/prototype-1/layout.html" %}
+{% block pageTitle %} Question page {% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/sprint-5/prototype-1/question-2">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Incident Management</span>
+      <h1 class="govuk-heading-l">
+        Do you formally investigate information security incidents to establish their cause and their impact with a view to avoiding similar events?
+      </h1>
+      <p>
+        You must investigate incidents using a team of knowledgeable and appropriately skilled people to ensure that changes are made to prevent the incident reoccurring. You can use an external company to provide this service to you if needed
+      </p>
+      <form action="/sprint-5/prototype-1/question-4" method="post" class="form" novalidate>
+        {{ govukRadios({ 
+          idPrefix: "question-3",
+          name: "questions[question-3][answer]",
+          items: [ 
+            { value: "yes", text: "Yes" },
+            { value: "no", text: "No" }, 
+            { value: "na", text: "Not applicable" } 
+          ] })
+        }}
+        <input name="questions[question-3][level]" type="hidden" value="high">
+        <input name="questions[question-3][threat]" type="hidden" value="Do you formally investigate information security incidents to establish their cause and their impact with a view to avoiding similar events?">
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </div>
+  </div>
+
+{% endblock %}

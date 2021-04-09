@@ -1,0 +1,33 @@
+{% extends "sprint-5/prototype-1/layout.html" %}
+{% block pageTitle %} Question page {% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/sprint-5/prototype-1/question-4">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Incident Management</span>
+      <h1 class="govuk-heading-l">
+        Do you report incidents to external bodies as required, such as law enforcement for criminal activity and the relevant authorities (such as the UK ICO) for personal data breaches?
+      </h1>
+      <p>
+        You should report incidents to law enforcement for investigation where appropriate. You may also be required to report personal data breaches to your country's data protection office.
+      </p>
+      <form action="/sprint-5/prototype-1/question-6" method="post" class="form" novalidate>
+        {{ govukRadios({ 
+          idPrefix: "question-5",
+          name: "questions[question-5][answer]",
+          items: [ 
+            { value: "yes", text: "Yes" },
+            { value: "no", text: "No" }, 
+            { value: "na", text: "Not applicable" } 
+          ] })
+        }}
+        <input name="questions[question-5][level]" type="hidden" value="high">
+        <input name="questions[question-5][threat]" type="hidden" value="Do you report incidents to external bodies as required, such as law enforcement for criminal activity and the relevant authorities (such as the UK ICO) for personal data breaches?">
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </div>
+  </div>
+
+{% endblock %}

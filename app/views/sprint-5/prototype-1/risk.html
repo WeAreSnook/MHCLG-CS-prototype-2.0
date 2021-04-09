@@ -1,0 +1,58 @@
+{% extends "sprint-5/prototype-1/layout.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/sprint-5/prototype-1/question-2">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Risk assessment
+      </h1>
+      {{ govukPanel({
+        titleText: "Your risk level is " + riskLevel,
+        html: "Your scored <strong>" + score + " out of 14</strong>"
+      }) }}
+      <p>You answered "no" to the follow questions:</p>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Questions</th>
+            <th scope="col" class="govuk-table__header">Risk level</th>
+            <th scope="col" class="govuk-table__header govuk-table__header--numeric"></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          
+        {% for question in wrongQuestions %}
+          {% if question.answer == 'no' %}
+            {% if question.level == 'high' %}
+              {% set levelClass = 'govuk-tag--red' %}
+            {% elif question.level == 'medium' %}
+              {% set levelClass = 'govuk-tag--yellow' %}
+            {% else %}
+              {% set levelClass = 'govuk-tag--blue' %}
+            {% endif %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-width-two-thirds">{{question.threat}}</td>
+              <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag {{levelClass}}">{{ question.level }}</strong></td>
+              <td class="govuk-table__cell table-cell-vertical-centre govuk-table__header--numeric"><a href="">Update</a></td>
+            </tr>
+            {% endif %}
+          {% else %}
+          <li>Nothing here</li>
+        {% endfor %}
+          
+        </tbody>
+      </table>
+      
+
+    </div>
+
+  </div>
+
+{% endblock %}

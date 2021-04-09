@@ -1,0 +1,29 @@
+{% extends "sprint-5/prototype-1/layout.html" %}
+{% block pageTitle %} Question page {% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/sprint-5/prototype-1">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Incident Management</span>
+      <h1 class="govuk-heading-l">Are all information security incidents or suspected weaknesses reported and recorded, and do you provide a method for all employees and contractors to report security incidents without risk of recrimination (or anonymously)?</h1>
+      <p>You must provide a route for staff and contractors to report any security weaknesses they encounter - including staff acting incorrectly and configuration issues. It is important that staff can do this either anonymously or in a way that makes it clear there is no risk of negative consequences to them for highlighting an issue.</p>
+      <form action="/sprint-5/prototype-1/question-2" method="post" class="form" novalidate>
+        {{ govukRadios({ 
+          idPrefix: "question-1",
+          name: "questions[question-1][answer]",
+          items: [ 
+            { value: "yes", text: "Yes" },
+            { value: "no", text: "No" }, 
+            { value: "na", text: "Not applicable" } 
+          ] })
+        }}
+        <input name="questions[question-1][level]" type="hidden" value="high">
+        <input name="questions[question-1][threat]" type="hidden" value="Are all information security incidents or suspected weaknesses reported and recorded, and do you provide a method for all employees and contractors to report security incidents without risk of recrimination (or anonymously)?">
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </div>
+  </div>
+
+{% endblock %}

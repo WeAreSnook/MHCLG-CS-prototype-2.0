@@ -1,0 +1,33 @@
+{% extends "sprint-5/prototype-1/layout.html" %}
+{% block pageTitle %} Question page {% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/sprint-5/prototype-1/question-7">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Incident Management</span>
+      <h1 class="govuk-heading-l">
+        Do you test your incident response process at least once per year?
+      </h1>
+      <p>
+        You should carry out a table-top exercise where you create a plausible scenario (such as a staff member accidentally emailing data to a client) and run through the incident response process to confirm that it works for your Council. You can also treat any real incident as a test of the process.
+      </p>
+      <form action="/sprint-5/prototype-1/risk" method="post" class="form" novalidate>
+        {{ govukRadios({ 
+          idPrefix: "question-8",
+          name: "questions[question-8][answer]",
+          items: [ 
+            { value: "yes", text: "Yes" },
+            { value: "no", text: "No" }, 
+            { value: "na", text: "Not applicable" } 
+          ] })
+        }}
+        <input name="questions[question-8][level]" type="hidden" value="high">
+        <input name="questions[question-8][threat]" type="hidden" value="Do you test your incident response process at least once per year?">
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </div>
+  </div>
+
+{% endblock %}
