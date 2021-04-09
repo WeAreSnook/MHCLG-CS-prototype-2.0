@@ -15,7 +15,7 @@
     <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
         titleText: "Your risk level is " + riskLevel,
-        html: "Your scored <strong>" + score + " out of 14</strong>",
+        html: "You scored <strong>" + score + " out of 14</strong>",
         classes: "panel-" + riskSlug
       }) }}
       <p>You answered "No" to the follow questions:</p>
@@ -51,8 +51,14 @@
 
     </div>
     <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">
+        How your council compares
+      </h2>
+      <p>Your council is <strong class="govuk-tag govuk-tag--green">above average</strong> compared to other councils of your type. </p>
+      <p>Your council is <strong class="govuk-tag govuk-tag--red">below average</strong> compared to other councils in your region. </p>
+      
       <aside class="app-related-items" role="complementary">
-      <h2 class="govuk-heading-m" id="subsection-title">
+      <h2 class="govuk-heading-m">
         Case study
       </h2>
       <p>Cyber audits at the London Borough of Bexley highlighted issues with their incident management system - the system they had in place wasn’t producing the data that Bexley needed and was not being updated.</p>
