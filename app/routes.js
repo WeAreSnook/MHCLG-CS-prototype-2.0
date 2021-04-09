@@ -190,15 +190,12 @@ router.get("/sprint-5/prototype-1/risk", (req, res) => {
       }
     }
   }
-  let riskLevel = 'bad';
-  if(score >= 8) {
-    riskLevel = 'pretty bad';
+  let riskLevel = 'high';
+  if(score >= 7) {
+    riskLevel = 'medium';
   }
   if(score >= 11) {
     riskLevel = 'acceptable';
-  }
-  if(score >= 14) {
-    riskLevel = 'excellent';
   }
   let riskSlug = riskLevel.replace(/ /g, '-');
   res.render("sprint-5/prototype-1/risk", { riskLevel: riskLevel, riskSlug: riskSlug, score: score, wrongQuestions: wrongQuestionsOnly(questions) });
