@@ -8,11 +8,11 @@
 {% endblock %}
 {% block content %}
 
+<h1 class="govuk-heading-xl">
+  Your results
+</h1>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        Risk assessment
-      </h1>
       {{ govukPanel({
         titleText: "Your risk level is " + riskLevel,
         html: "Your scored <strong>" + score + " out of 14</strong>",

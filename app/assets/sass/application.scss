@@ -36,18 +36,14 @@ $govuk-assets-path: "/govuk/assets/";
   vertical-align: middle;
 }
 
-.panel-bad {
+.panel-high {
   background-color: govuk-colour("red");
 }
 
-.panel-pretty-bad {
+.panel-medium {
   background-color: govuk-colour("orange");
 }
 
-.panel-acceptable {
-  background-color: govuk-colour("turquoise");
-}
-
-.panel-excellent {
+.panel-low {
   background-color: govuk-colour("green");
 }
