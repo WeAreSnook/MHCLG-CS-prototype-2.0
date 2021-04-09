@@ -12,37 +12,29 @@
     <div class="govuk-grid-column-two-thirds">
       <strong class="govuk-tag govuk-tag--red">High Risk</strong>
       <h1 class="govuk-heading-xl govuk-!-padding-top-4">
-        No policies and procedures in place to mitigate risks to personal data
+        Do you test your incident response process at least once per year?
       </h1>
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Priority</th>
-            <th scope="col" class="govuk-table__header">Suggested action</th>
-            <th scope="col" class="govuk-table__header">Status</th>
-            <th scope="col" class="govuk-table__header"></th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag govuk-tag--red">High</strong></td>
-            <td class="govuk-table__cell govuk-!-width-one-half">Do something about it</td>
-            <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag govuk-tag--grey">To do</strong></td>
-            <td class="govuk-table__cell table-cell-vertical-centre govuk-table__header--numeric"><a href="">Update</a></td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag govuk-tag--yellow">Medium</strong></td>
-            <td class="govuk-table__cell govuk-!-width-one-half">Do something else about it</td>
-            
-            <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag">Done</strong></td>
-            <td class="govuk-table__cell table-cell-vertical-centre govuk-table__header--numeric"><a href="">Update</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <h2 class="govuk-heading-m">Threat</h2>
+      <p>This is the threat!</p>
+      <h2 class="govuk-heading-m">Take action</h2>
+      <p>Do this thing</p>
       
-
     </div>
-
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+      <h2 class="govuk-heading-m">Risk status</h2>
+      {{ govukRadios({ 
+        idPrefix: "question-1",
+        name: "questions[question-1][answer]",
+        items: [ 
+          { value: "risk-mitigated", text: "Risk mitigated" },
+          { value: "risk-managed", text: "Risk managed" }, 
+          { value: "risk-accepted", text: "Risk accepted" }
+        ] })
+      }}
+      <button class="govuk-button" data-module="govuk-button">Save</button>
+    </div>
+  </aside>
   </div>
 
 {% endblock %}
