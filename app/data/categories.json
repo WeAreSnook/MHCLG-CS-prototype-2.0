@@ -120,12 +120,12 @@
       "slug": "incident-detection"
     },
     {
-      "name": "Incident mangement",
-      "description": "",
+      "name": "Incident management",
+      "description": "All organisations should have security incident management procedures to allow any incidents (such as loss of data, malware infections and phishing attacks) to be dealt with successfully. It is important that incidents are easy to report to a responsible entity without blame and that the organisation learns the lessons from incidents.",
       "topics": "\n  Incident response protocol\n  \",\"\n  Incident reporting procedure\n  \",\"\n  Staff training & testing\n  \",\"\n  Post-incident review & learning\n  ",
       "section": "Section 4: RESPOND and RECOVER",
       "id": "",
-      "slug": "incident-mangement"
+      "slug": "incident-management"
     },
     {
       "name": "Business continuity",

@@ -164,6 +164,17 @@ router.get("/sprint-3/prototype-1/start-assessment/", (req, res) => {
   res.render("sprint-3/prototype-1/start-assessment", { sections: sections });
 });
 
+router.get("/sprint-5/prototype-1/start-assessment/", (req, res) => {
+  res.render("sprint-5/prototype-1/start-assessment", { sections: sections });
+});
+
+router.get("/sprint-5/prototype-1/category/:categorySlug", (req, res) => {
+  const category = categories.find(
+    ({ slug }) => slug === req.params.categorySlug
+  );
+  res.render("sprint-5/prototype-1/category", { category: category });
+});
+
 router.get("/sprint-5/prototype-1/risk", (req, res) => {
   const questions = req.session.data['questions'];
   let score = 0;
