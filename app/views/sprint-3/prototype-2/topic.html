@@ -4,7 +4,7 @@
   Assessment index - Prototype 2
 {% endblock %}
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/prototype-2/category/{{ topic.category | slugify | lower }}">Back</a>
+  <a class="govuk-back-link" href="/sprint-3/prototype-2/category/{{ topic.category | slugify | lower }}">Back</a>
 {% endblock %}
 {% block content %}
 
@@ -42,10 +42,10 @@
         <tbody class="govuk-table__body">
           {% for question in topic.questions %}
           <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header"><a href="/prototype-2/question/{{ question.id | slugify | lower }}" >{{ question.label }}</a></th>
+            <th scope="row" class="govuk-table__header"><a href="/sprint-3/prototype-2/question/{{ question.id | slugify | lower }}" >{{ question.label }}</a></th>
             <td class="govuk-table__cell">{{ question.stage }}</td>
             <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Not started</strong></td>
-            <td class="govuk-table__cell"><a href="/prototype-2/question/{{ question.id | slugify | lower }}">Answer</a></td>
+            <td class="govuk-table__cell"><a href="/sprint-3/prototype-2/question/{{ question.id | slugify | lower }}">Answer</a></td>
           </tr>
           {% endfor %}
         </tbody>
