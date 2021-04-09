@@ -35,3 +35,19 @@ $govuk-assets-path: "/govuk/assets/";
 .table-cell-vertical-centre {
   vertical-align: middle;
 }
+
+.panel-bad {
+  background-color: govuk-colour("red");
+}
+
+.panel-pretty-bad {
+  background-color: govuk-colour("orange");
+}
+
+.panel-acceptable {
+  background-color: govuk-colour("turquoise");
+}
+
+.panel-excellent {
+  background-color: govuk-colour("green");
+}

@@ -4,7 +4,7 @@
 
 {% endblock %}
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/sprint-5/prototype-1/question-2">Back</a>
+  <a class="govuk-back-link" href="/sprint-5/prototype-1/question-8">Back</a>
 {% endblock %}
 {% block content %}
 
@@ -15,9 +15,10 @@
       </h1>
       {{ govukPanel({
         titleText: "Your risk level is " + riskLevel,
-        html: "Your scored <strong>" + score + " out of 14</strong>"
+        html: "Your scored <strong>" + score + " out of 14</strong>",
+        classes: "panel-" + riskSlug
       }) }}
-      <p>You answered "no" to the follow questions:</p>
+      <p>You answered "No" to the follow questions:</p>
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
@@ -27,9 +28,7 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-          
         {% for question in wrongQuestions %}
-          {% if question.answer == 'no' %}
             {% if question.level == 'high' %}
               {% set levelClass = 'govuk-tag--red' %}
             {% elif question.level == 'medium' %}
@@ -42,9 +41,8 @@
               <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag {{levelClass}}">{{ question.level }}</strong></td>
               <td class="govuk-table__cell table-cell-vertical-centre govuk-table__header--numeric"><a href="">Update</a></td>
             </tr>
-            {% endif %}
           {% else %}
-          <li>Nothing here</li>
+          <tr class="govuk-table__row">Nothing here</tr>
         {% endfor %}
           
         </tbody>
