@@ -1,0 +1,59 @@
+{% extends "layout-logged-in.html" %} {% block pageTitle %} Assessment index - Prototype 1
+{% endblock %} {% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Cyber health framework self-assessment</h1>
+
+  <p class="govuk-heading-s">How to use this tool:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>Only one category is available to answer in this prototype:<br /> <a href="/sprint-5/prototype-1/category/incident-management">Incident management</a></li>
+  <li>You will need to answer a series of questions in this category to determine if you are currently meeting the requirements.</li>
+  <li>Once you’ve finished, you’ll be shown if you met the requirements or not, and will be provided with guidance to help you improve.</li>
+</ul>
+
+    {% for section in sections %}
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ section.name }}</h2>
+    <!-- <ul class="govuk-list">
+            {% for category in section.categories %}
+            <li>{{ category }}</li>
+            {% endfor %}
+        </ul> -->
+    <ul class="app-task-list__items govuk-!-padding-left-0">
+      {% for category in section.categories %}
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          {% if category == 'Incident management' %}
+          <a
+            href="/sprint-5/prototype-1/category/{{ category | slugify | lower }}"
+            aria-describedby="{{ category | slugify | lower }}"
+          >
+            {{ category }}
+          </a>
+          {% else %}
+          <p class="govuk-!-margin-bottom-0">
+          {{ category }}
+          </p>
+        </a>
+          {% endif %}
+        </span>
+        <strong
+          class="govuk-tag app-task-list__tag"
+          id="{{ category | slugify | lower }}"
+          >To do</strong
+        >
+      </li>
+      
+  
+      {% endfor %}
+      <br>
+      <br>
+   
+    {% else %}
+    <p>No sections were found</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
