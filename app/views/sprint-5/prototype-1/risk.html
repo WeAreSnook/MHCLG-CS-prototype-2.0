@@ -18,7 +18,8 @@
         html: "You scored <strong>" + score + " out of 14</strong>",
         classes: "panel-" + riskSlug
       }) }}
-      <p>You answered "No" to the follow questions:</p>
+      {% if wrongQuestions | length %}
+      <p class="govuk-body-l govuk-!-padding-top-4">You answered "No" to the following questions:</p>
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
@@ -29,26 +30,26 @@
         </thead>
         <tbody class="govuk-table__body">
         {% for question in wrongQuestions %}
-            {% if question.level == 'high' %}
-              {% set levelClass = 'govuk-tag--red' %}
-            {% elif question.level == 'medium' %}
-              {% set levelClass = 'govuk-tag--yellow' %}
-            {% else %}
-              {% set levelClass = 'govuk-tag--blue' %}
-            {% endif %}
+          {% if question.level == 'high' %}
+            {% set levelClass = 'govuk-tag--red' %}
+          {% elif question.level == 'medium' %}
+            {% set levelClass = 'govuk-tag--yellow' %}
+          {% else %}
+            {% set levelClass = 'govuk-tag--blue' %}
+          {% endif %}
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-!-width-two-thirds">{{question.threat}}</td>
               <td class="govuk-table__cell table-cell-vertical-centre"><strong class="govuk-tag {{levelClass}}">{{ question.level }}</strong></td>
               <td class="govuk-table__cell table-cell-vertical-centre govuk-table__header--numeric"><a href="/sprint-5/prototype-1/action">Update</a></td>
             </tr>
           {% else %}
-          <tr class="govuk-table__row">Nothing here</tr>
         {% endfor %}
-          
+        {% else %}
+          <p class="govuk-body-l govuk-!-padding-top-4">You have satisfactory controls in place. Therefore your risk level is considered low.</p>
+          <a href="/sprint-5/prototype-1/action">See action</a>
+        {% endif %} 
         </tbody>
       </table>
-      
-
     </div>
     <div class="govuk-grid-column-one-third">
       <h2 class="govuk-heading-m">
