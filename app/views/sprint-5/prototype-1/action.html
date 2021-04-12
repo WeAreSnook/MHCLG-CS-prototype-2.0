@@ -43,9 +43,24 @@
         idPrefix: "question-1",
         name: "questions[question-1][answer]",
         items: [ 
-          { value: "risk-mitigated", text: "Risk mitigated" },
-          { value: "risk-managed", text: "Risk managed" }, 
-          { value: "risk-accepted", text: "Risk accepted" }
+          { value: "risk-mitigated",
+           text: "Risk mitigated",
+           hint: {
+            text: "You have completed the suggested actions in this section"
+          }
+         },
+          { value: "risk-managed",
+            text: "Risk managed", 
+            hint: {
+              text: "You have done something else to manage the risk"
+            } 
+          }, 
+          { value: "risk-accepted",
+           text: "Risk accepted",
+          hint: {
+            text: "You choose to accept the risk and the potential issues this may cause"
+          }
+          }
         ] })
       }}
       <button class="govuk-button" data-module="govuk-button">Save</button>
