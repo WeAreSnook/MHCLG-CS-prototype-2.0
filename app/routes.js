@@ -12,6 +12,82 @@ let categories;
 const topicsPath = "./app/data/topics.json";
 let topics;
 
+
+const s6QuestionsPath = "./app/data/sprint6-questions.json";
+let s6Questions;
+let s6Classifiers = [];
+s6Classifiers["CyberEssentials"] = [];
+s6Classifiers["PSN"] = [];
+s6Classifiers["PCI"] = [];
+s6Classifiers["ISO27001"] = [];
+s6Classifiers["NHSDSPT"] = [];
+
+const trim_regexp = /^\"?[\n\s]*(.+?)[\n\s]*\"?$/gm;
+const subst = `$1`;
+
+
+fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
+  if (err) {
+    throw err;
+  }
+  s6Questions = JSON.parse(data);
+
+  s6Questions.forEach(function(question){
+
+    question.topic = question.topic.trim().replace(trim_regexp, subst);
+    console.log(question);
+    let questionObject = {};
+    questionObject["label"] = question.label.trim();
+    questionObject["topic"] = question.topic.trim();
+    questionObject["category"] = question.category.trim();
+    questionObject["id"] = question.id.trim();
+
+    if (question["CE"]){
+      s6Classifiers["CyberEssentials"].push(questionObject)
+    }
+
+    if (question["PSN"]){
+      s6Classifiers["PSN"].push(questionObject)
+    }
+
+    if (question["PCI"]){
+      s6Classifiers["PCI"].push(questionObject)
+    }
+
+    if (question["NHSDSPT"]){
+      s6Classifiers["NHS DSPT"].push(questionObject)
+    }
+
+    if (question["ISO 27001"]){
+      questionObject["ISO Reference"] = question["ISO 27001"]
+      s6Classifiers["ISO27001"].push(questionObject)
+    }
+
+    const groups = ["category", "topic", "section", "stage"];
+
+    groups.forEach(function(group){
+      if (question[group]){
+        if(!s6Classifiers[group]){
+          s6Classifiers[group]={};
+        }
+        if(!s6Classifiers[group][questionObject[group]] || !Array.isArray(s6Classifiers[group][questionObject[group]])) {
+          s6Classifiers[group][questionObject[group]] = [];
+        }
+        s6Classifiers[group][questionObject[group]].push(questionObject)
+      }
+    })
+
+
+
+  });
+
+
+
+  console.log(s6Classifiers);
+
+
+});
+
 fs.readFile(questionsPath, "utf8", (err, data) => {
   if (err) {
     throw err;
