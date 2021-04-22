@@ -327,40 +327,28 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (
 
 router.post("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
 
-  // NTH:  if it is blank we should display some validation?
-
-  // NTH: if a skip parameter has been set, we should route to the next question
-
-  // save valid results in the session
-
   const question = s6Classifiers.questions[req.params.questionID];
-
-  if (!question.type || question.type === "standard_radio") {
 
     let completed = false
     if (req.body.answer === "workingtowards") {
       completed = true
     }
-    console.log(req.session.question_data);
+    console.log("Adding session data", req.body);
 
     req.session.question_data[req.params.questionID] = {
-      "answer": req.body.answer,
+      "answer": "workingtowards",
       "complete": completed,
-      "workingtowards": req.body.workingtowards
+      "workingtowards_date": req.body["workingtowards-day"] + '/' + req.body["workingtowards-month"] + '/' + req.body["workingtowards-year"]
     }
 
     res.redirect("../..");
 
-  }
 });
 
 router.get("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
-
-
-  // if we are passed a url variable for an expert review then redirect somewhere?
 
   res.render("sprint-6/prototype/metwithexceptions", {
     question,
@@ -369,15 +357,48 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions"
 });
 
 
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
 
+  const question = s6Classifiers.questions[req.params.questionID];
+
+    let completed = false
+    if (req.body.answer === "metwithexceptions") {
+      completed = true
+    }
+
+    req.session.question_data[req.params.questionID] = {
+      "answer": "metwithexceptions",
+      "complete": completed,
+      "metwithexceptions": req.body["metwithexceptions"]
+    }
+
+    res.redirect("../..");
+
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+
+    let completed = false
+    if (req.body.answer === "riskaccepted") {
+      completed = true
+    }
+
+    req.session.question_data[req.params.questionID] = {
+      "answer": "riskaccepted",
+      "complete": completed,
+      "riskaccepted": req.body["riskaccepted"]
+    }
+
+    res.redirect("../..");
+
+});
 
 router.get("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
 
-
   // if we are passed a url variable for an expert review then redirect somewhere?
-
   res.render("sprint-6/prototype/riskaccepted", {
     question,
     pathway
@@ -543,7 +564,7 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
         tag = "<strong class='govuk-tag govuk-tag--red'>Not Met</strong>"
       } else if ( answer === "riskaccepted" ) {
         tag = "<strong class='govuk-tag govuk-tag--pink'>Risk Accepted</strong>"
-      } else if ( answer === "workingtowardsentered" ) {
+      } else if ( answer === "workingtowards" ) {
         tag = "<strong class='govuk-tag govuk-tag--yellow'>Working Towards</strong>"
       } else if ( answer === "metwithexceptions" ) {
         tag = "<strong class='govuk-tag govuk-tag--green'>Met with exceptions</strong>"
