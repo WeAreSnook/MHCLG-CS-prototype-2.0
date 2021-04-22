@@ -11,82 +11,87 @@ const categoriesPath = "./app/data/categories.json";
 let categories;
 const topicsPath = "./app/data/topics.json";
 let topics;
-
-
 const s6QuestionsPath = "./app/data/sprint6-questions.json";
 let s6Questions;
 let s6Classifiers = [];
-s6Classifiers["CyberEssentials"] = [];
-s6Classifiers["PSN"] = [];
-s6Classifiers["PCI"] = [];
-s6Classifiers["ISO27001"] = [];
-s6Classifiers["NHSDSPT"] = [];
+s6Classifiers.questions = {};
 
 const trim_regexp = /^\"?[\n\s]*(.+?)[\n\s]*\"?$/gm;
 const subst = `$1`;
+const assessmentTypes = [
+  {key:"CE", objectName:"CyberEssentials"},
+  {key:"PSN", objectName: "PSN"},
+  {key:"PCI", objectName: "PCI"},
+  {key:"NHSDSPT", objectName: "NHS DSPT"},
+  {key:"ISO 27001", objectName: "ISO27001"},
+];
+const classifications = ["category", "topic", "section", "stage"];
 
+function clone(a) {
+  return JSON.parse(JSON.stringify(a));
+}
+
+function copyQuestionObject(objectToCopy, keysToCopy  ){
+  let copyTo = {};
+  keysToCopy.forEach(function(key){
+    copyTo[key] = objectToCopy[key].trim();
+  });
+  return copyTo;
+}
 
 fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
   if (err) {
     throw err;
   }
-  s6Questions = JSON.parse(data);
 
+  s6Questions = JSON.parse(data);
   s6Questions.forEach(function(question){
 
     question.topic = question.topic.trim().replace(trim_regexp, subst);
-    console.log(question);
-    let questionObject = {};
-    questionObject["label"] = question.label.trim();
-    questionObject["topic"] = question.topic.trim();
-    questionObject["category"] = question.category.trim();
-    questionObject["id"] = question.id.trim();
+    const questionObject = copyQuestionObject(question, ["id","category", "topic", "section", "stage"] )
 
-    if (question["CE"]){
-      s6Classifiers["CyberEssentials"].push(questionObject)
-    }
+    // this is for creating an index of all of the questions
+    s6Classifiers.questions[questionObject.id] = questionObject
 
-    if (question["PSN"]){
-      s6Classifiers["PSN"].push(questionObject)
-    }
+    // this is for saving all of the standards into a collection
+    assessmentTypes.forEach(function(type){
 
-    if (question["PCI"]){
-      s6Classifiers["PCI"].push(questionObject)
-    }
+      if(!question[type.objectName] || !Array.isArray(question[type.objectName])){
+        question[type.objectName] = [];
+      }
 
-    if (question["NHSDSPT"]){
-      s6Classifiers["NHS DSPT"].push(questionObject)
-    }
+      if (!s6Classifiers[type.objectName]){
+        s6Classifiers[type.objectName] = [];
+      }
 
-    if (question["ISO 27001"]){
-      questionObject["ISO Reference"] = question["ISO 27001"]
-      s6Classifiers["ISO27001"].push(questionObject)
-    }
+      if(question[type.key]){
+        let questionObjectInstance = clone(questionObject);
+        questionObjectInstance.reference = question[type.key];
+        s6Classifiers[type.objectName].push(questionObject);
+        questionObjectInstance = null
+      }
+    })
 
-    const groups = ["category", "topic", "section", "stage"];
-
-    groups.forEach(function(group){
+    // this is for saving all of the classifications into a collection
+    classifications.forEach(function(group){
       if (question[group]){
         if(!s6Classifiers[group]){
           s6Classifiers[group]={};
         }
-        if(!s6Classifiers[group][questionObject[group]] || !Array.isArray(s6Classifiers[group][questionObject[group]])) {
+        if( !s6Classifiers[group][questionObject[group]] ||
+            !Array.isArray(s6Classifiers[group][questionObject[group]])) {
           s6Classifiers[group][questionObject[group]] = [];
         }
         s6Classifiers[group][questionObject[group]].push(questionObject)
       }
     })
-
-
-
   });
-
-
 
   console.log(s6Classifiers);
 
-
 });
+
+
 
 fs.readFile(questionsPath, "utf8", (err, data) => {
   if (err) {
@@ -94,6 +99,7 @@ fs.readFile(questionsPath, "utf8", (err, data) => {
   }
   questions = JSON.parse(data);
 });
+
 fs.readFile(sectionsPath, "utf8", (err, data) => {
   if (err) {
     throw err;
@@ -102,16 +108,6 @@ fs.readFile(sectionsPath, "utf8", (err, data) => {
   // Convert category CSVs into array
   sections.forEach((section) => {
     section.categories = section.categories.split(",");
-  });
-});
-fs.readFile(categoriesPath, "utf8", (err, data) => {
-  if (err) {
-    throw err;
-  }
-  categories = JSON.parse(data);
-  // Convert topic CSVs into array
-  categories.forEach((category) => {
-    category.topics = category.topics.split(",");
   });
 });
 
@@ -142,6 +138,7 @@ fs.readFile(categoriesPath, "utf8", (err, data) => {
     category.topics = category.topics.split(",");
   });
 });
+
 
 router.get("/sprint-3/prototype-2/question/:questionID", (req, res) => {
   const question = questions.find(({ id }) => id === req.params.questionID);
