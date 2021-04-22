@@ -1,0 +1,23 @@
+{% extends "sprint-6/prototype/layout.html" %} "id","category", "topic",
+"section", "stage", "Type" {% block pageTitle %} {{question.id}} -
+{{question.label}} {% endblock %} {% block beforeContent %}
+
+<a class="govuk-back-link" href="{{prevQuestionHref}}"> Previous </a>
+{% endblock %} {% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-m">What are the exceptions?</h1>
+
+    <form action="#" method="post" novalidate>
+      {# <input type="hidden" name="answer" value="riskacceptedentered" /> #}
+
+      {{ govukTextarea({ name: "exceptionsentered", id: "exceptionsentered", label: {
+      text: question.label, classes: "govuk-label--l", isPageHeading: true },
+      hint: { text: "Detail your exceptions" } }) }} {{
+      govukButton({ text: "Save and continue" }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -385,6 +385,66 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (re
 
 });
 
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
+
+  // NTH:  if it is blank we should display some validation?
+
+  // NTH: if a skip parameter has been set, we should route to the next question
+
+  // save valid results in the session
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+  if (!question.type || question.type === "standard_radio") {
+
+    let completed = false
+    if (req.body.exceptionsentered) {
+      completed = true
+    }
+    
+    req.session.question_data[req.params.questionID] = {
+      "answer": "metwithexceptions",
+      "complete": completed,
+      "exceptions": req.body.exceptionsentered
+    }
+    
+    console.log(req.session.question_data);
+    res.redirect("../..");
+
+  }
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+
+  // NTH:  if it is blank we should display some validation?
+
+  // NTH: if a skip parameter has been set, we should route to the next question
+
+  // save valid results in the session
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+  if (!question.type || question.type === "standard_radio") {
+
+    let completed = false
+    if (req.body.riskacceptedentered) {
+      completed = true
+    }
+    
+    req.session.question_data[req.params.questionID] = {
+      "answer": "riskaccepted",
+      "complete": completed,
+      "riskaccepted": req.body.riskacceptedentered
+    }
+    
+    console.log(req.session.question_data);
+    res.redirect("../..");
+
+  }
+});
+
 router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
 
   // NTH:  if it is blank we should display some validation?
@@ -414,9 +474,9 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
     }
     // if the options were special we need redirect to the appropriate special route (e.g. riskaccepted, metwithexceptions, workingtowards )
     if( special_case ) { res.redirect(req.params.questionID+"/"+req.body.answer) }
-
-    // for met or for not met, go to the index...
-    res.redirect("..");
+    else{
+      res.redirect("..");
+    }    // for met or for not met, go to the index...
 
   }
 
@@ -427,6 +487,10 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
 
 
 });
+
+router.get("/sprint-6/prototype/council-overview", (req, res) => {
+  res.render("sprint-6/prototype/council-overview")
+})
 
 
 router.get("/sprint-6/prototype/:pathWay", (req, res) => {
@@ -452,7 +516,6 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
     }
   ];
 
-  console.log("session", req.session);
   let table_rows = pathway_questions.map(function(this_row) {
 
     let tag = ""
