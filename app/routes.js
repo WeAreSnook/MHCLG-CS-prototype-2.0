@@ -327,15 +327,7 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (
 
 router.post("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
 
-  // NTH:  if it is blank we should display some validation?
-
-  // NTH: if a skip parameter has been set, we should route to the next question
-
-  // save valid results in the session
-
   const question = s6Classifiers.questions[req.params.questionID];
-
-  if (!question.type || question.type === "standard_radio") {
 
     let completed = false
     if (req.body.answer === "workingtowards") {
@@ -351,7 +343,6 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", 
 
     res.redirect("../..");
 
-  }
 });
 
 router.get("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
@@ -359,13 +350,48 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions"
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
 
-
-  // if we are passed a url variable for an expert review then redirect somewhere?
-
   res.render("sprint-6/prototype/metwithexceptions", {
     question,
     pathway
   });
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+    let completed = false
+    if (req.body.answer === "metwithexceptions") {
+      completed = true
+    }
+
+    req.session.question_data[req.params.questionID] = {
+      "answer": "metwithexceptions",
+      "complete": completed,
+      "metwithexceptions": req.body["metwithexceptions"]
+    }
+
+    res.redirect("../..");
+
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+
+    let completed = false
+    if (req.body.answer === "riskaccepted") {
+      completed = true
+    }
+
+    req.session.question_data[req.params.questionID] = {
+      "answer": "riskaccepted",
+      "complete": completed,
+      "riskaccepted": req.body["riskaccepted"]
+    }
+
+    res.redirect("../..");
+
 });
 
 router.get("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
