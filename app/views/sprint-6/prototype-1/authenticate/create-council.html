@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+{% block pageTitle %} Enter your council details {% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="email">Back</a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="create-user" method="post" novalidate>
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {% call govukFieldset({
+        legend: {
+          text: "Enter your council details",
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      <p>This information will personalise the questions and recommendations you receive.</p>
+
+        {{ govukInput({
+          label: {
+            text: 'Council name'
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "council-name",
+          name: "council"
+        }) }}
+      
+        {{ govukRadios({
+            idPrefix: "council-type",
+            name: "council-type",
+            fieldset: {
+              legend: {
+                text: "Council type"
+              }
+            },
+            items: [
+              {
+                value: "non-metropolitan-district",
+                text: "Non-metropolitan district"
+              },
+              {
+                value: "london-borough",
+                text: "London borough"
+              },
+              {
+                value: "metropolitan-district",
+                text: "Metropolitan district"
+              },
+              {
+                value: "unitary-authority",
+                text: "Unitary Authority"
+              },
+              {
+                value: "county",
+                text: "County council"
+              }
+            ]
+          }) }}
+
+          {{ govukRadios({
+            idPrefix: "council-region",
+            name: "council-region",
+            fieldset: {
+              legend: {
+                text: "Council region"
+              }
+            },
+            items: [
+            {
+                value: "east-midlands",
+                text: "East midlands"
+              },
+              {
+                value: "east-of-england",
+                text: "East of England"
+              },
+              {
+                value: "london",
+                text: "London"
+              },
+              {
+                value: "north-east",
+                text: "North East"
+              },
+              {
+                value: "north-west",
+                text: "North West"
+              },
+              {
+                value: "south-east",
+                text: "South East"
+              },
+              {
+                value: "south-west",
+                text: "South West"
+              },
+              {
+                value: "west-midlands",
+                text: "West Midlands"
+              },
+              {
+                value: "yorkshire-and-the-humber",
+                text: "Yorkshire and The Humber"
+              }
+            ]
+          }) }}
+       
+          {{ govukInput({
+            label: {
+              text: "What is your council's annual budget for Cyber Security?"
+            },
+            hint: {
+                text: "If you don't have a cyber budget please include your IT budget."
+              },
+            classes: "govuk-!-width-two-thirds",
+            id: "council-annual-budget",
+            name: "council-annual-budget"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "How many people in your council have cyber security responsibilities in their day to day role? "
+            },
+            hint: {
+                text: "e.g. Cyber in their job title"
+              },
+            classes: "govuk-!-width-two-thirds",
+            id: "council-cyber-team",
+            name: "council-cyber-team"
+          }) }}
+
+        {% endcall %}
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
