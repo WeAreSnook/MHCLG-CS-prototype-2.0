@@ -1,0 +1,52 @@
+{% extends "layout-logged-in.html" %} {% block pageTitle %} Assessment index - Prototype 1
+{% endblock %} {% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Cyber health framework self-assessment</h1>
+
+
+      <!--
+      We need to add in our spangly new graph element in here
+      --->
+  
+  
+
+
+    {% for section in sections %}
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ section.name }}</h2>
+    <!-- <ul class="govuk-list">
+            {% for category in section.categories %}
+            <li>{{ category }}</li>
+            {% endfor %}
+        </ul> -->
+    <ul class="app-task-list__items govuk-!-padding-left-0">
+      {% for category in section.categories %}
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a
+            href="/sprint-6/prototype/category/{{ category | slugify | lower }}"
+            aria-describedby="{{ category | slugify | lower }}"
+          >
+            {{ category }}
+          </a>
+        </span>
+        <strong
+          class="govuk-tag app-task-list__tag"
+          id="{{ category | slugify | lower }}"
+          >To do</strong
+        >
+      </li>
+      
+  
+      {% endfor %}
+      <br>
+      <br>
+   
+    {% else %}
+    <p>No sections were found</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

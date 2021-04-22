@@ -34,7 +34,7 @@ function clone(a) {
 function copyQuestionObject(objectToCopy, keysToCopy  ){
   let copyTo = {};
   keysToCopy.forEach(function(key){
-    copyTo[key] = objectToCopy[key].trim();
+    copyTo[key.toLowerCase()] = objectToCopy[key].trim();
   });
   return copyTo;
 }
@@ -48,7 +48,7 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
   s6Questions.forEach(function(question){
 
     question.topic = question.topic.trim().replace(trim_regexp, subst);
-    const questionObject = copyQuestionObject(question, ["id","category", "topic", "section", "stage"] )
+    const questionObject = copyQuestionObject(question, ["id","category", "topic", "section", "stage", "Type"] )
 
     // this is for creating an index of all of the questions
     s6Classifiers.questions[questionObject.id] = questionObject
@@ -246,6 +246,13 @@ router.get("/sprint-5/prototype-1/category/:categorySlug", (req, res) => {
     ({ slug }) => slug === req.params.categorySlug
   );
   res.render("sprint-5/prototype-1/category", { category: category });
+});
+
+
+// Prototype 6
+
+router.get("/sprint-6/prototype/all-questions-overview/", (req, res) => {
+  res.render("sprint-6/prototype/all-questions-overview", { sections: sections });
 });
 
 router.get("/sprint-5/prototype-1/risk", (req, res) => {
