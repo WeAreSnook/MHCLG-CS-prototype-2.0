@@ -1,0 +1,28 @@
+{% extends "sprint-6/prototype/layout.html" %} {% block pageTitle %} {{pathway.short_name}} Overview }} {%
+endblock %} {% block content %}
+<div class="govuk-grid-row">
+
+        <h1 class="govuk-heading-xl">
+            {{ pathway.long_name }}
+        </h1>
+
+        <p>
+           {{ pathway.intro_text }}
+        </p>
+
+        <!--
+        GRAPH COMPONENT GOES HERE
+        -->
+
+
+        {{ govukTable({
+        caption: pathway.short_name + " Controls",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: table_header,
+        rows: table_rows
+
+        }) }}
+    </div>
+
+{% endblock %}

@@ -22,9 +22,21 @@ const assessmentTypes = [
   {key:"CE", objectName:"CyberEssentials"},
   {key:"PSN", objectName: "PSN"},
   {key:"PCI", objectName: "PCI"},
+  {key:"GDPR", objectName: "GDPR"},
   {key:"NHSDSPT", objectName: "NHS DSPT"},
   {key:"ISO 27001", objectName: "ISO27001"},
 ];
+
+const assessments = {
+  "gdpr" : {
+    short_name: "GDPR",
+    access_key: "GDPR",
+    long_name: "General Data Protection Regulation (GDPR)",
+    intro_text: "\n" +
+      "The General Data Protection Regulation (GDPR) is a piece of UK & EU-wide legislation which determines how people’s personal data is processed and kept safe, and the legal rights individuals have in relation to their own data. It has been in place since 25 May 2018 and applies to organisations that process or handle personal data, including councils and local authorities"
+  }
+}
+
 const classifications = ["category", "topic", "section", "stage"];
 
 function clone(a) {
@@ -45,10 +57,11 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
   }
 
   s6Questions = JSON.parse(data);
+  //console.log(s6Questions.slice(0,3));
   s6Questions.forEach(function(question){
 
     question.topic = question.topic.trim().replace(trim_regexp, subst);
-    const questionObject = copyQuestionObject(question, ["id","category", "topic", "section", "stage", "Type"] )
+    const questionObject = copyQuestionObject(question, ["id", "label","category", "topic", "section", "stage", "Type"] )
 
     // this is for creating an index of all of the questions
     s6Classifiers.questions[questionObject.id] = questionObject
@@ -87,7 +100,8 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
     })
   });
 
-  console.log(s6Classifiers);
+  //console.log(s6Classifiers);
+
 
 });
 
@@ -248,13 +262,6 @@ router.get("/sprint-5/prototype-1/category/:categorySlug", (req, res) => {
   res.render("sprint-5/prototype-1/category", { category: category });
 });
 
-
-// Prototype 6
-
-router.get("/sprint-6/prototype/all-questions-overview/", (req, res) => {
-  res.render("sprint-6/prototype/all-questions-overview", { sections: sections });
-});
-
 router.get("/sprint-5/prototype-1/risk", (req, res) => {
   const questions = req.session.data['questions'];
   let score = 0;
@@ -279,6 +286,238 @@ router.get("/sprint-5/prototype-1/risk", (req, res) => {
   }
   let riskSlug = riskLevel.replace(/ /g, '-');
   res.render("sprint-5/prototype-1/risk", { riskLevel: riskLevel, riskSlug: riskSlug, score: score, wrongQuestions: wrongQuestionsOnly(questions) });
+});
+
+// Prototype 6
+
+router.get("/sprint-6/prototype/all-questions-overview/", (req, res) => {
+  res.render("sprint-6/prototype/all-questions-overview", { sections: sections });
+});
+
+router.get("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+
+  // if we are passed a url variable for an expert review then redirect somewhere?
+
+  res.render("sprint-6/prototype/question", {
+    question,
+    pathway
+  });
+
+});
+
+
+router.get("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+
+  // if we are passed a url variable for an expert review then redirect somewhere?
+
+  res.render("sprint-6/prototype/workingtowards", {
+    question,
+    pathway
+  });
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
+
+  // NTH:  if it is blank we should display some validation?
+
+  // NTH: if a skip parameter has been set, we should route to the next question
+
+  // save valid results in the session
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+  if (!question.type || question.type === "standard_radio") {
+
+    let completed = false
+    if (req.body.answer === "workingtowards") {
+      completed = true
+    }
+    console.log(req.session.question_data);
+
+    req.session.question_data[req.params.questionID] = {
+      "answer": req.body.answer,
+      "complete": completed,
+      "workingtowards": req.body.workingtowards
+    }
+
+    res.redirect("../..");
+
+  }
+});
+
+router.get("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+
+  // if we are passed a url variable for an expert review then redirect somewhere?
+
+  res.render("sprint-6/prototype/metwithexceptions", {
+    question,
+    pathway
+  });
+});
+
+
+
+
+router.get("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+
+  // if we are passed a url variable for an expert review then redirect somewhere?
+
+  res.render("sprint-6/prototype/riskaccepted", {
+    question,
+    pathway
+  });
+
+});
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
+
+  // NTH:  if it is blank we should display some validation?
+
+  // NTH: if a skip parameter has been set, we should route to the next question
+
+  // save valid results in the session
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+  if ( ! question.type || question.type === "standard_radio"){
+
+    let completed = false
+    let special_case = false
+    if( req.body.answer === "met" ) {
+      completed = true
+    } else if( req.body.answer === "riskaccepted" || req.body.answer === "metwithexceptions" ||req.body.answer === "workingtowards"   ) {
+      special_case = true
+    }
+
+    if(!req.session.question_data){
+      req.session.question_data = [];
+    }
+    req.session.question_data[req.params.questionID] = {
+      "answer" : req.body.answer,
+      "complete" : completed
+    }
+    // if the options were special we need redirect to the appropriate special route (e.g. riskaccepted, metwithexceptions, workingtowards )
+    if( special_case ) { res.redirect(req.params.questionID+"/"+req.body.answer) }
+
+    // for met or for not met, go to the index...
+    res.redirect("..");
+
+  }
+
+
+  console.log(req.params);
+  console.log(req.session);
+
+
+
+});
+
+
+router.get("/sprint-6/prototype/:pathWay", (req, res) => {
+  const pathway_key  = req.params.pathWay;
+  const pathway = assessments[pathway_key];
+  let pathway_questions = s6Classifiers[pathway.access_key]
+
+  const table_header = [
+    {
+      text: "Risk"
+    },
+    {
+      text: "Topic"
+    },
+    {
+      text: "Control"
+    },
+    {
+      text: "Status"
+    },
+    {
+      text: "Action"
+    }
+  ];
+
+  console.log("session", req.session);
+  let table_rows = pathway_questions.map(function(this_row) {
+
+    let tag = ""
+    // calculate a rand value from 0 - 100 based on a seed?
+
+    // calculate the html of the status
+
+    if (!req.session){
+      req.session = {};
+    }
+
+    if (!req.session.question_data){
+      req.session.question_data = {};
+    }
+
+    if (req.session.question_data[this_row.id])
+    {
+      let answer = req.session.question_data[this_row.id].answer
+
+      console.log("answer",answer);
+
+      if (answer === "met") {
+        tag = "<strong class='govuk-tag govuk-tag--green'>Met</strong>"
+      } else if (answer === "notmet") {
+        tag = "<strong class='govuk-tag govuk-tag--red'>Not Met</strong>"
+      } else if ( answer === "riskaccepted" ) {
+        tag = "<strong class='govuk-tag govuk-tag--pink'>Risk Accepted</strong>"
+      } else if ( answer === "workingtowardsentered" ) {
+        tag = "<strong class='govuk-tag govuk-tag--yellow'>Working Towards</strong>"
+      } else if ( answer === "metwithexceptions" ) {
+        tag = "<strong class='govuk-tag govuk-tag--green'>Met with exceptions</strong>"
+      }
+    } else {
+      tag = "<strong class='govuk-tag govuk-tag--blue'>Not Answered</strong>"
+    }
+
+    // generate the question url
+
+    let question_url = "/sprint-6/prototype/"+pathway_key+"/question/"+this_row.id;
+    let view_link = "<a href='"+question_url+"'>View</a>";
+
+    return  [
+      {
+        text: "3"
+      },
+      {
+        text: this_row.topic
+      },
+      {
+        text: this_row.label
+      },
+      {
+        html: tag
+      },
+      {
+        html: view_link
+      }
+    ];
+  });
+
+  res.render("sprint-6/prototype/pathway-overview", {
+    pathway,
+    table_header,
+    table_rows
+  });
 });
 
 // Returns an array of questions with the answer "no" or blank, sorted by level
