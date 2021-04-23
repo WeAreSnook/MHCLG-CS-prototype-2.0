@@ -425,19 +425,32 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions"
   });
 });
 
+router.get("/sprint-6/prototype/:pathWay/question/:questionID/notmet", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+  res.render("sprint-6/prototype/notmet", {
+    question,
+    pathway
+  });
+});
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/notmet", (req, res) => {
+
+
+  res.redirect("../..");
+
+});
 
 router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
 
-    let completed = false
-    if (req.body.answer === "metwithexceptions") {
-      completed = true
-    }
 
     req.session.question_data[req.params.questionID] = {
       "answer": "metwithexceptions",
-      "complete": completed,
+      "complete": true,
       "metwithexceptions": req.body["metwithexceptions"]
     }
 
@@ -448,16 +461,15 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions
 
 router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
 
-    let completed = false
-    if (req.body.answer === "riskaccepted") {
-      completed = true
-    }
-
+    console.log(req.session.question_data)
     req.session.question_data[req.params.questionID] = {
       "answer": "riskaccepted",
-      "complete": completed,
+      "complete": true,
       "riskaccepted": req.body["riskaccepted"]
     }
+
+    console.log(req.body.answer)
+    console.log(req.session.question_data)
 
     res.redirect("../..");
 
@@ -488,14 +500,11 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions
 
   if (!question.type || question.type === "standard_radio") {
 
-    let completed = false
-    if (req.body.exceptionsentered) {
-      completed = true
-    }
+
     
     req.session.question_data[req.params.questionID] = {
       "answer": "metwithexceptions",
-      "complete": completed,
+      "complete": true,
       "exceptions": req.body.exceptionsentered
     }
     
@@ -518,14 +527,10 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (r
 
   if (!question.type || question.type === "standard_radio") {
 
-    let completed = false
-    if (req.body.riskacceptedentered) {
-      completed = true
-    }
     
     req.session.question_data[req.params.questionID] = {
       "answer": "riskaccepted",
-      "complete": completed,
+      "complete": true,
       "riskaccepted": req.body.riskacceptedentered
     }
     
@@ -543,6 +548,8 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
 
   // save valid results in the session
 
+  const pathway_key = req.params.pathWay;
+  const pathwayObject = assessments[pathway_key];
   const question = s6Classifiers.questions[req.params.questionID];
 
   if ( ! question.type || question.type === "standard_radio"){
@@ -551,21 +558,42 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
     let special_case = false
     if( req.body.answer === "met" ) {
       completed = true
-    } else if( req.body.answer === "riskaccepted" || req.body.answer === "metwithexceptions" ||req.body.answer === "workingtowards"   ) {
+    } else if( req.body.answer === "riskaccepted" || req.body.answer === "metwithexceptions" ||req.body.answer === "workingtowards"  ||req.body.answer === "notmet"   ) {
       special_case = true
     }
 
     if(!req.session.question_data){
-      req.session.question_data = [];
+      req.session.question_data = {};
     }
+
     req.session.question_data[req.params.questionID] = {
       "answer" : req.body.answer,
       "complete" : completed
     }
     // if the options were special we need redirect to the appropriate special route (e.g. riskaccepted, metwithexceptions, workingtowards )
-    if( special_case ) { res.redirect(req.params.questionID+"/"+req.body.answer) }
-    else{
-      res.redirect("..");
+    if( special_case ) {
+      res.redirect(req.params.questionID+"/"+req.body.answer)
+    } else {
+      let redirect_to;
+      s6Classifiers[pathwayObject.slug].some(function(question){
+        if(req.session.question_data && req.session.question_data[question.id] &&  req.session.question_data[question.id].complete){
+          if(! req.session.question_data[question.id].complete)
+          {
+            redirect_to = question.id;
+            return true
+          }
+        } else {
+          redirect_to = question.id;
+          return true
+        }
+        return false;
+      })
+
+      if( redirect_to ){
+        console.log("redirecting to ", redirect_to)
+        res.redirect(redirect_to);
+      }
+
     }    // for met or for not met, go to the index...
 
   }
@@ -580,7 +608,12 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID", (r
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.categorySlug;
 
-
+  let snippet_content;
+  try {
+    snippet_content = fs.readFileSync(__dirname + '/snippets/' + req.params.questionID + '.html', 'utf8')
+  } catch (e){
+    snippet_content = fs.readFileSync(__dirname + '/snippets/default.html', 'utf8')
+  }
   // if we are passed a url variable for an expert review then redirect somewhere?
 
   res.render("sprint-6/prototype/question", {
@@ -607,18 +640,30 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/work
 });
 
 
-router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/workingtowards", (req, res) => {
+
+router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/notmet", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
 
-  let completed = false
-  if (req.body.answer === "workingtowards") {
-    completed = true
-  }
+  res.render("sprint-6/prototype/notmet", {
+    question,
+    pathway
+  });
+});
+
+router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/notmet", (req, res) => {
+
+
+  res.redirect("../..");
+
+});
+
+router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/workingtowards", (req, res) => {
 
   req.session.question_data[req.params.questionID] = {
     "answer": "workingtowards",
-    "complete": completed,
+    "complete": true,
     "workingtowards_date": req.body["workingtowards-day"] + '/' + req.body["workingtowards-month"] + '/' + req.body["workingtowards-year"]
   }
 
@@ -641,14 +686,10 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/metw
 router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/metwithexceptions", (req, res) => {
 
 
-  let completed = false
-  if (req.body.answer === "metwithexceptions") {
-    completed = true
-  }
 
   req.session.question_data[req.params.questionID] = {
     "answer": "metwithexceptions",
-    "complete": completed,
+    "complete": true,
     "metwithexceptions": req.body["metwithexceptions"]
   }
 
@@ -659,14 +700,11 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/met
 
 router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/riskaccepted", (req, res) => {
 
-  let completed = false
-  if (req.body.answer === "riskaccepted") {
-    completed = true
-  }
+
 
   req.session.question_data[req.params.questionID] = {
     "answer": "riskaccepted",
-    "complete": completed,
+    "complete": true,
     "riskaccepted": req.body["riskaccepted"]
   }
 
@@ -699,14 +737,10 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/met
 
   if (!question.type || question.type === "standard_radio") {
 
-    let completed = false
-    if (req.body.exceptionsentered) {
-      completed = true
-    }
 
     req.session.question_data[req.params.questionID] = {
       "answer": "metwithexceptions",
-      "complete": completed,
+      "complete": true,
       "exceptions": req.body.exceptionsentered
     }
 
@@ -729,13 +763,10 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/ris
   if (!question.type || question.type === "standard_radio") {
 
     let completed = false
-    if (req.body.riskacceptedentered) {
-      completed = true
-    }
 
     req.session.question_data[req.params.questionID] = {
       "answer": "riskaccepted",
-      "complete": completed,
+      "complete": true,
       "riskaccepted": req.body.riskacceptedentered
     }
 
@@ -766,7 +797,7 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID", (
     }
 
     if(!req.session.question_data){
-      req.session.question_data = [];
+      req.session.question_data = {};
     }
     req.session.question_data[req.params.questionID] = {
       "answer" : req.body.answer,
@@ -854,7 +885,8 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
 
   let table_rows = pathway_questions.map(function(this_row) {
 
-    let tag = ""
+    let tag = "";
+    let risk_tag = "";
     // calculate a rand value from 0 - 100 based on a seed?
 
     // calculate the html of the status
@@ -887,6 +919,14 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
       tag = "<strong class='govuk-tag govuk-tag--blue'>Not Answered</strong>"
     }
 
+    if (this_row.id.split(".")[0] < 3 ){
+      risk_tag = "<strong class='govuk-tag govuk-tag--red'>High</strong>"
+    } else if(this_row.id.split(".")[0] < 5 ){
+      risk_tag = "<strong class='govuk-tag govuk-tag--orange'>Medium</strong>"
+    } else {
+      risk_tag = "<strong class='govuk-tag govuk-tag--green'>Low</strong>"
+    }
+
     // generate the question url
 
     let question_url = "/sprint-6/prototype/"+pathway_key+"/question/"+this_row.id;
@@ -894,7 +934,7 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
 
     return  [
       {
-        text: "3"
+        html: risk_tag
       },
       {
         text: this_row.topic
@@ -942,12 +982,12 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
     req.session.question_data = {};
   }
 
-  console.log(category_questions);
 
   Object.keys(category_questions).forEach(function(question_index){
-    let question = questions[question_index];
+    let question = category_questions[question_index];
     questions_count++;
-    if ( req.session.question_data[question.id] && req.session.question_data[question.id].complete){
+    console.log(question);
+    if ( req.session.question_data && req.session.question_data[question.id] && req.session.question_data[question.id].complete){
       questions_complete++;
     }
   });
@@ -962,6 +1002,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
   let table_rows = category_questions.map(function(this_row) {
 
     let tag = ""
+    let risk_tag = ""
     // calculate a rand value from 0 - 100 based on a seed?
 
     // calculate the html of the status
@@ -978,7 +1019,6 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
     {
       let answer = req.session.question_data[this_row.id].answer
 
-
       if (answer === "met") {
         tag = "<strong class='govuk-tag govuk-tag--green'>Met</strong>"
       } else if (answer === "notmet") {
@@ -994,6 +1034,15 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
       tag = "<strong class='govuk-tag govuk-tag--blue'>Not Answered</strong>"
     }
 
+
+    if (this_row.id.split(".")[0] < 3 ){
+      risk_tag = "<strong class='govuk-tag govuk-tag--red'>High</strong>"
+    } else if(this_row.id.split(".")[0] < 5 ){
+      risk_tag = "<strong class='govuk-tag govuk-tag--orange'>Medium</strong>"
+    } else {
+      risk_tag = "<strong class='govuk-tag govuk-tag--green'>Low</strong>"
+    }
+
     // generate the question url
 
     let question_url = "/sprint-6/prototype/category/"+category_slug+"/question/"+this_row.id;
@@ -1001,7 +1050,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
 
     return  [
       {
-        text: "3"
+        html: risk_tag
       },
       {
         text: this_row.topic

@@ -7,7 +7,7 @@
 
 {% block beforeContent %}
  
-    <a class="govuk-back-link" href={{prevQuestionHref}}>
+    <a class="govuk-back-link" href="..">
       Back 
     </a>
 {% endblock %}
@@ -41,15 +41,9 @@
           {{ govukButton({
             text: "Save and continue"
             }) }}
+          <a href=".." class="govuk-button govuk-button--secondary">Go to Overview</a>
+          <a href="#" class="govuk-button govuk-button--secondary">Skip</a>
 
-          {{ govukButton({
-          text: "Save and overview",
-          classes: "govuk-button--secondary"
-          }) }}
-          {{ govukButton({
-            text: "Skip",
-            classes: "govuk-button--secondary"
-            }) }}
           <a href={{expertReviewUrl}}>
             Ask for an expert to review
           </a>
