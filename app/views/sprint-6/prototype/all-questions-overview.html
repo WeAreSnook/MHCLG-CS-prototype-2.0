@@ -1,16 +1,20 @@
-{% extends "layout-logged-in.html" %} {% block pageTitle %} Assessment index - Prototype 1
+{% extends "sprint-6/prototype/layout.html" %} {% block pageTitle %} View All Controls
 {% endblock %} {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">Cyber health framework self-assessment</h1>
+    <h1 class="govuk-heading-xl">Explore all controls</h1>
 
+    <div class="progress-container">
+      <div class="progress-info">
 
-      <!--
-      We need to add in our spangly new graph element in here
-      --->
-  
-  
+        <h2 class="govuk-heading-l">{{pathway.short_name}} controls met</h2>
+        <p class="govuk-heading-l">{{pathway.number_completed}}/{{pathway.number_of_questions}}</p>
+      </div>
+      <div class="progress__bar"><span style="width: {{ pathway.percentage_complete }}%"></span></div>
+      <p>There are {{ pathway.number_of_questions }} controls for {{ pathway.short_name }} and you have met {{ pathway.number_completed }}</p>
+
+    </div>
 
 
     {% for section in sections %}
