@@ -17,7 +17,7 @@
     "GDPR": "",
     "ISO 27001": "",
     "NHS DSPT": "",
-    "Type": "upload"
+    "Type": ""
   },
   {
     "id": "1.1.2",
@@ -37,7 +37,7 @@
     "GDPR": "A1",
     "ISO 27001": "",
     "NHS DSPT": "",
-    "Type": "textarea"
+    "Type": ""
   },
   {
     "id": "1.1.3",
