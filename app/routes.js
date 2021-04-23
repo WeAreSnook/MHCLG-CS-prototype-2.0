@@ -561,10 +561,7 @@ router.get("/sprint-6/prototype/council-overview", (req, res) => {
 router.get("/sprint-6/prototype/:pathWay", (req, res) => {
   const pathway_key  = req.params.pathWay;
   const pathway = assessments[pathway_key];
-  console.log("Access Key", pathway.slug);
   let pathway_questions = s6Classifiers[pathway.slug]
-
-  console.log(Object.keys(s6Classifiers));
 
   const table_header = [
     {
@@ -649,6 +646,28 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
     table_rows,
     pathway_questions
   });
+});
+
+router.get("/sprint-6/prototype/:pathWay/mark-as-met", (req, res) => {
+  const pathway_key  = req.params.pathWay;
+  const pathway = assessments[pathway_key];
+  let pathway_questions = s6Classifiers[pathway.slug]
+  
+  if (!req.session.question_data){
+    req.session.question_data = {};
+  }
+
+  pathway_questions.forEach(function(question){
+    if (!req.session.question_data[question.id]){
+      req.session.question_data[question.id] = {};
+    }
+    req.session.question_data[question.id].answer = 'met';
+  });
+
+  req.session.save(function(err) {
+    res.redirect('/sprint-6/prototype/' + pathway_key);
+  });
+
 });
 
 // Returns an array of questions with the answer "no" or blank, sorted by level
