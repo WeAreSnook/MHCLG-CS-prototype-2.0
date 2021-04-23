@@ -792,7 +792,7 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID", (
     let special_case = false
     if( req.body.answer === "met" ) {
       completed = true
-    } else if( req.body.answer === "riskaccepted" || req.body.answer === "metwithexceptions" ||req.body.answer === "workingtowards"   ) {
+    } else if( req.body.answer === "riskaccepted" || req.body.answer === "metwithexceptions" ||req.body.answer === "workingtowards"||req.body.answer === "notmet"   ) {
       special_case = true
     }
 
