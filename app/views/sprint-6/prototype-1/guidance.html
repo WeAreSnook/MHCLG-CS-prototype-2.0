@@ -1,10 +1,11 @@
-{% extends "sprint-5/prototype-1/layout.html" %} {% block pageTitle %} Cyberhealth Framework {%
+{% extends "sprint-6/prototype/layout.html" %} {% block pageTitle %} Cyberhealth Framework {%
     endblock %}
     
     {% block content %}
     <a class="govuk-back-link" href="../prototype-1/risk">Back</a> 
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
+        <strong class="govuk-tag govuk-tag--red">High Risk</strong>
         <h1 class="govuk-heading-xl govuk-!-margin-top-4">No known working backup at a secondary or centrally accessible site</h1>
         <h2 class="govuk-heading-l">How to mitigate this risk and why</h2>
         <p class="govuk-body">Backups must be stored at an offsite or secondary backup location that is protected against unauthorised network access from the primary network (e.g. a ransomware attack, or a complete network breach). </p>
@@ -21,7 +22,7 @@
           <li>Review the references section below for examples of Council's that suffered major expense and loss of service due lack of suitable backup to recover from following the incident.</li>
         </ul>
       </div> 
-      <div class="govuk-grid-column-one-third">
+      <div class="govuk-grid-column-one-third govuk-!-margin-top-4">
         <aside class="app-related-items" role="complementary">
           <h2 class="govuk-heading-m" id="subsection-title">References</h2>
           <nav role="navigation" aria-labelledby="subsection-title">
