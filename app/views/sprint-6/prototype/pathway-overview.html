@@ -8,7 +8,16 @@
   <!--
         GRAPH COMPONENT GOES HERE
         -->
-  <div <div class="progress__bar"><span style="width: 30%"></span></div>
+  <div class="progress-container">
+      <div class="progress-info">
+
+          <h2 class="govuk-heading-l">GDPR controls met</h2>
+          <p class="govuk-heading-l">20/40</p>
+      </div>
+      <div class="progress__bar"><span style="width: 50%"></span></div>
+      <p>There are 40 controls for level 2 and you have met 20 accross all categories</p>
+
+  </div> 
 
   {{ govukTable({ caption: pathway.short_name + " Controls", captionClasses:
   "govuk-table__caption--m", firstCellIsHeader: true, head: table_header, rows:
