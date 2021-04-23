@@ -13,6 +13,7 @@ $govuk-assets-path: "/govuk/assets/";
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
 @import "patterns/related-items";
+@import "card";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 .govuk-header__content {
@@ -46,4 +47,37 @@ $govuk-assets-path: "/govuk/assets/";
 
 .panel-low {
   background-color: govuk-colour("green");
+}
+
+.progress-container {
+  background-color: #f3f2f1;
+  padding: 40px;
+  margin-bottom: 20px;
+  margin-bottom: 50px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress__bar {
+  display: block;
+  height: 22px;
+  position: relative;
+  background-color: #bfc1c3;
+  overflow: hidden;
+  margin-top: 4px;
+  margin-bottom: 35px;
+
+  span {
+    background-color: govuk-colour("green");
+    height: 22px;
+    display: block;
+    width: 50%;
+  }
+
+  p {
+    margin-bottom: 24px;
+  }
 }

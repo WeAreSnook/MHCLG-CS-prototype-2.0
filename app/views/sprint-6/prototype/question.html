@@ -1,0 +1,73 @@
+{% extends "sprint-6/prototype/layout.html" %}
+"id","category", "topic", "section", "stage", "Type"
+
+{% block pageTitle %}
+{{question.id}} - {{question.label}}
+  {% endblock %}
+
+{% block beforeContent %}
+ 
+    <a class="govuk-back-link" href={{prevQuestionHref}}>
+      Back 
+    </a>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{question.label}}
+      </h1>
+
+      <h2 class="govuk-heading-m">What is the risk?</h2>
+      <p class="govuk-body-m">
+        Organisations should understand what level of access users need to information, services and resources in order to do their job otherwise it won't be possible to manage rights appropriately. Failure to effectively manage user accounts and privileges could result in the following risks being realised:
+      </p>
+      <h3 class="govuk-heading-s">Creation of unauthorised accounts</h3>
+      <p class="govuk-body-m">
+        Attackers, including insiders, may deliberately create unauthorised user , administrative or system accounts and misuse the privileges assigned to them.
+      </p>
+      <h3 class="govuk-heading-s">Misuse of privileges</h3>
+      <p class="govuk-body-m">
+        Users could either accidentally or deliberately misuse the privileges assigned to them. This may result in unauthorised access to information to either the user or a third party or to unauthorised system changes having a direct security or operational impact.
+      </p>
+      <h3 class="govuk-heading-s">Negating established security controls</h3>
+      <p class="govuk-body-m">
+        Negating established security controls: Where attackers have privileged system access they may make changes to security controls to enable further or future attack or might attempt to cover their tracks by making changes to audit logs.
+      </p>
+
+
+
+
+      <form action="#" method="post" novalidate>
+        {% if ( not question.type or question.type === "standard_radio" ) %}
+        {{ govukRadios({
+          idPrefix: "answer-radio",
+          name: "answer",
+          items: [
+            { value: "met", text: "Met" },
+            { value: "notmet", text: "Not Met" },
+            { value: "riskaccepted", text: "Risk accepted (and recorded in corporate risk register)" },
+            { value: "workingtowards", text: "Working towards" },
+            { value: "metwithexceptions", text: "Met with exceptions" }
+          ] })
+        }}
+        {% endif %}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+            }) }}
+          {{ govukButton({
+            text: "Skip",
+            classes: "govuk-button--secondary"
+            }) }}
+          <a href={{expertReviewUrl}}>
+            Ask for an expert to review
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

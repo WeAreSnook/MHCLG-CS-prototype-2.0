@@ -1,0 +1,39 @@
+{% extends "sprint-6/prototype/layout.html" %} {% block pageTitle %}
+{{pathway.short_name}} Overview {% endblock %} {% block content %}
+<div class="govuk-grid-row">
+  <h1 class="govuk-heading-xl">{{ pathway.long_name }}</h1>
+
+  <p>{{ pathway.intro_text }}</p>
+
+  <!--
+        GRAPH COMPONENT GOES HERE
+        -->
+  <div class="progress-container">
+      <div class="progress-info">
+
+          <h2 class="govuk-heading-l">GDPR controls met</h2>
+          <p class="govuk-heading-l">20/40</p>
+      </div>
+      <div class="progress__bar"><span style="width: 50%"></span></div>
+      <p>There are 40 controls for level 2 and you have met 20 accross all categories</p>
+
+  </div> 
+
+  {{ govukTable({ caption: pathway.short_name + " Controls", captionClasses:
+  "govuk-table__caption--m", firstCellIsHeader: true, head: table_header, rows:
+  table_rows }) }}
+</div>
+        <p>Number of questions: {{pathway_questions.length}}</p>
+
+
+        {{ govukTable({
+        caption: pathway.short_name + " Controls",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: table_header,
+        rows: table_rows
+
+        }) }}
+    </div>
+
+{% endblock %}
