@@ -175,3 +175,12 @@ a:focus {
 
   }
 }
+    padding-top: 15px;
+    padding-bottom: 0;
+}
+
+.govuk-o-grid:after {
+  content: "";
+  display: block;
+  clear: both;
+}

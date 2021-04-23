@@ -14,5 +14,17 @@
   "govuk-table__caption--m", firstCellIsHeader: true, head: table_header, rows:
   table_rows }) }}
 </div>
+        <p>Number of questions: {{pathway_questions.length}}</p>
+
+
+        {{ govukTable({
+        caption: pathway.short_name + " Controls",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: table_header,
+        rows: table_rows
+
+        }) }}
+    </div>
 
 {% endblock %}

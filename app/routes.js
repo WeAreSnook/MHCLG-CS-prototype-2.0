@@ -31,9 +31,50 @@ const assessments = {
   "gdpr" : {
     short_name: "GDPR",
     access_key: "GDPR",
+    slug: "GDPR",
     long_name: "General Data Protection Regulation (GDPR)",
     intro_text: "\n" +
       "The General Data Protection Regulation (GDPR) is a piece of UK & EU-wide legislation which determines how people’s personal data is processed and kept safe, and the legal rights individuals have in relation to their own data. It has been in place since 25 May 2018 and applies to organisations that process or handle personal data, including councils and local authorities"
+  },
+  "pci" : {
+    short_name: "PCI",
+    access_key: "PCI",
+    slug: "PCI",
+    long_name: "Payment Card Industry (PCI)",
+    intro_text: "\n" +
+      "The Payment Card Industry Data Security Standard (PCI DSS) is an information security standard for organizations that handle branded credit cards from the major card schemes.\n" +
+      "The PCI Standard is mandated by the card brands but administered by the Payment Card Industry Security Standards Council. The standard was created to increase controls around cardholder data to reduce credit card fraud."
+  },
+  "cyberessentials": {
+    short_name: "CyberEssentials",
+    access_key: "CE",
+    slug: "CE",
+    long_name: "Cyber Essentials",
+    intro_text: "Cyber Essentials is a Government-backed and industry-supported scheme that helps businesses protect themselves against the growing threat of cyber attacks and provides a clear statement of the basic controls organisations should have in place to protect themselves."
+  },
+  "psn": {
+    short_name: "PSN",
+    access_key: "PSN",
+    slug: "PSN",
+    long_name: "Public Sector Network",
+    intro_text: "The PSN uses a ‘walled garden’ approach, which enables access to Internet content and shared services to be controlled. This is because the security of any one user connected to the PSN affects both the security of all other users and the network itself."
+  },
+  "nhsdspt": {
+
+    short_name: "NHS DSPT",
+    access_key: "NHS DSPT",
+    slug: "NHSDSPT",
+    long_name: "NHS Data Security and Protection Toolkit",
+    intro_text: "The National Health Service Data Security and Protection Toolkit is an online self-assessment tool that allows organisations to measure their performance against the National Data Guardian’s 10 data security standards."
+  },
+  "iso27001": {
+
+    short_name: "ISO 27001",
+    access_key: "ISO 27001",
+    slug: "ISO27001",
+    long_name: "ISO27001",
+    intro_text: "ISO/IEC 27001 is an international standard on how to manage information security. ... It details requirements for establishing, implementing, maintaining and continually improving an information security management system (ISMS) – the aim of which is to help organizations make the information assets they hold more secure."
+
   }
 }
 
@@ -58,7 +99,11 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
 
   s6Questions = JSON.parse(data);
   //console.log(s6Questions.slice(0,3));
+
+  let index = 0;
   s6Questions.forEach(function(question){
+
+    index++;
 
     question.topic = question.topic.trim().replace(trim_regexp, subst);
     const questionObject = copyQuestionObject(question, ["id", "label","category", "topic", "section", "stage", "Type"] )
@@ -67,20 +112,21 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
     s6Classifiers.questions[questionObject.id] = questionObject
 
     // this is for saving all of the standards into a collection
-    assessmentTypes.forEach(function(type){
+    Object.keys(assessments).forEach(function(key){
 
-      if(!question[type.objectName] || !Array.isArray(question[type.objectName])){
-        question[type.objectName] = [];
+      let type = assessments[key];
+
+      let access_key = type.access_key;
+      let slug = type.slug;
+
+      if (!s6Classifiers[slug]){
+        s6Classifiers[slug] = [];
       }
 
-      if (!s6Classifiers[type.objectName]){
-        s6Classifiers[type.objectName] = [];
-      }
-
-      if(question[type.key]){
+      if(question[access_key].length > 0) {
         let questionObjectInstance = clone(questionObject);
-        questionObjectInstance.reference = question[type.key];
-        s6Classifiers[type.objectName].push(questionObject);
+        questionObjectInstance.reference = question[access_key];
+        s6Classifiers[slug].push(questionObjectInstance);
         questionObjectInstance = null
       }
     })
@@ -501,23 +547,24 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
 
   }
 
-
-  console.log(req.params);
-  console.log(req.session);
-
-
-
 });
 
 router.get("/sprint-6/prototype/council-overview", (req, res) => {
-  res.render("sprint-6/prototype/council-overview")
+  let assessment_keys = Object.keys(assessments)
+  res.render("sprint-6/prototype/council-overview", {
+    assessments,
+    assessment_keys
+  })
 })
 
 
 router.get("/sprint-6/prototype/:pathWay", (req, res) => {
   const pathway_key  = req.params.pathWay;
   const pathway = assessments[pathway_key];
-  let pathway_questions = s6Classifiers[pathway.access_key]
+  console.log("Access Key", pathway.slug);
+  let pathway_questions = s6Classifiers[pathway.slug]
+
+  console.log(Object.keys(s6Classifiers));
 
   const table_header = [
     {
@@ -556,7 +603,6 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
     {
       let answer = req.session.question_data[this_row.id].answer
 
-      console.log("answer",answer);
 
       if (answer === "met") {
         tag = "<strong class='govuk-tag govuk-tag--green'>Met</strong>"
@@ -600,7 +646,8 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
   res.render("sprint-6/prototype/pathway-overview", {
     pathway,
     table_header,
-    table_rows
+    table_rows,
+    pathway_questions
   });
 });
 
