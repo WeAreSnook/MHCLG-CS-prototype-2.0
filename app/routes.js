@@ -362,13 +362,18 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
-
-
+  let snippet_content;
+  try {
+    snippet_content = fs.readFileSync(__dirname + '/snippets/' + req.params.questionID + '.html', 'utf8')
+  } catch (e){
+    snippet_content = fs.readFileSync(__dirname + '/snippets/default.html', 'utf8')
+  }
   // if we are passed a url variable for an expert review then redirect somewhere?
 
   res.render("sprint-6/prototype/question", {
     question,
-    pathway
+    pathway,
+    snippet_content
   });
 
 });
