@@ -19,10 +19,10 @@
         {{question.label}}
       </h1>
 
-      {{snippet_content | safe}}
-
+     {{snippet_content | safe}}
 
       <form action="#" method="post" novalidate>
+
         {% if ( not question.type or question.type === "standard_radio" ) %}
         {{ govukRadios({
           idPrefix: "answer-radio",
@@ -35,6 +35,30 @@
             { value: "metwithexceptions", text: "Met with exceptions" }
           ] })
         }}
+        {% elif question.type === "upload" %}
+          <input type="hidden" name="answer" value="met">
+          {{ govukFileUpload({
+            id: "file-upload-1",
+            name: "file-upload-1",
+            label: {
+            text: "Upload a file"
+            }
+          }) }}
+
+        {% elif question.type === "textarea" %}
+        <input type="hidden" name="answer" value="met">
+        {{ govukTextarea({
+          name: "more-detail",
+          id: "more-detail",
+          label: {
+          text: "Can you provide more detail? ",
+          classes: "govuk-label--l",
+          isPageHeading: true
+          },
+          hint: {
+          text: "Do not include personal or financial information, like your National Insurance number or credit card details."
+          }
+        }) }}
         {% endif %}
 
         <div class="govuk-button-group">

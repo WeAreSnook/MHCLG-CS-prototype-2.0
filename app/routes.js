@@ -162,8 +162,6 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
     })
   });
 
-  //console.log(s6Classifiers);
-
 
 });
 
@@ -402,7 +400,6 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", 
     if (req.body.answer === "workingtowards") {
       completed = true
     }
-    console.log("Adding session data", req.body);
 
     req.session.question_data[req.params.questionID] = {
       "answer": "workingtowards",
@@ -461,15 +458,11 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions
 
 router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
 
-    console.log(req.session.question_data)
     req.session.question_data[req.params.questionID] = {
       "answer": "riskaccepted",
       "complete": true,
       "riskaccepted": req.body["riskaccepted"]
     }
-
-    console.log(req.body.answer)
-    console.log(req.session.question_data)
 
     res.redirect("../..");
 
@@ -500,15 +493,12 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions
 
   if (!question.type || question.type === "standard_radio") {
 
-
-    
     req.session.question_data[req.params.questionID] = {
       "answer": "metwithexceptions",
       "complete": true,
       "exceptions": req.body.exceptionsentered
     }
-    
-    console.log(req.session.question_data);
+
     res.redirect("../..");
 
   }
@@ -526,15 +516,13 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (r
   const question = s6Classifiers.questions[req.params.questionID];
 
   if (!question.type || question.type === "standard_radio") {
-
     
     req.session.question_data[req.params.questionID] = {
       "answer": "riskaccepted",
       "complete": true,
       "riskaccepted": req.body.riskacceptedentered
     }
-    
-    console.log(req.session.question_data);
+
     res.redirect("../..");
 
   }
@@ -552,7 +540,6 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
   const pathwayObject = assessments[pathway_key];
   const question = s6Classifiers.questions[req.params.questionID];
 
-  if ( ! question.type || question.type === "standard_radio"){
 
     let completed = false
     let special_case = false
@@ -590,13 +577,10 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
       })
 
       if( redirect_to ){
-        console.log("redirecting to ", redirect_to)
         res.redirect(redirect_to);
       }
 
     }    // for met or for not met, go to the index...
-
-  }
 
 });
 
@@ -618,7 +602,8 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID", (r
 
   res.render("sprint-6/prototype/question", {
     question,
-    pathway
+    pathway,
+    snippet_content
   });
 
 });
@@ -653,7 +638,6 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/notm
 });
 
 router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/notmet", (req, res) => {
-
 
   res.redirect("../..");
 
@@ -770,7 +754,6 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/ris
       "riskaccepted": req.body.riskacceptedentered
     }
 
-    console.log(req.session.question_data);
     res.redirect("../..");
 
   }
@@ -778,15 +761,9 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/ris
 
 router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID", (req, res) => {
 
-  // NTH:  if it is blank we should display some validation?
-
-  // NTH: if a skip parameter has been set, we should route to the next question
-
-  // save valid results in the session
 
   const question = s6Classifiers.questions[req.params.questionID];
 
-  if ( ! question.type || question.type === "standard_radio"){
 
     let completed = false
     let special_case = false
@@ -809,7 +786,6 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID", (
       res.redirect("..");
     }    // for met or for not met, go to the index...
 
-  }
 
 });
 
@@ -986,7 +962,6 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
   Object.keys(category_questions).forEach(function(question_index){
     let question = category_questions[question_index];
     questions_count++;
-    console.log(question);
     if ( req.session.question_data && req.session.question_data[question.id] && req.session.question_data[question.id].complete){
       questions_complete++;
     }
