@@ -20,31 +20,44 @@ endblock %} {% block content %}
                   </div>
                 </div>
             </div>
+            <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+                <div class="govuk-card govuk-card--contained govuk-card--selectable">
+                    <a href="/sprint-6/prototype/council-overview"></a>
+                    <div class="govuk-card__content">
+                        <h3 class="govuk-heading-m"><a href="level1">Cyber Level 2</a></h3>
+                        <p class="govuk-body">A short overview of the content that exists behind this card. For example a full page detailing what goes inside the body of a card.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+                <div class="govuk-card govuk-card--contained govuk-card--selectable">
+                    <a href="/sprint-6/prototype/council-overview"></a>
+                    <div class="govuk-card__content">
+                        <h3 class="govuk-heading-m"><a href="level1">Cyber Level 3</a></h3>
+                        <p class="govuk-body">A short overview of the content that exists behind this card. For example a full page detailing what goes inside the body of a card.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <h2 class="govuk-heading-l">Compliance demands </h2>
 
     <div class="govuk-o-grid">
+        {% for assessment in assessment_keys %}
+
         <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
             <div class="govuk-card govuk-card--contained govuk-card--selectable">
-                <a href="/sprint-6/prototype/gdpr"></a>
+                <a href="/sprint-6/prototype/{{assessment}}"></a>
                 <div class="govuk-card__content">
-                    <h3 class="govuk-heading-m"><a href="gdpr">GDPR</a></h3>
-                    <p class="govuk-body">A short overview of the content that exists behind this card. For example a full page detailing what goes inside the body of a card.
-                    </p>
+                    <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
+                    <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
                 </div>
             </div>
         </div>
-        <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
-            <div class="govuk-card govuk-card--contained govuk-card--selectable">
-                <a href="/sprint-6/prototype/pci"></a>
-                <div class="govuk-card__content">
-                    <h3 class="govuk-heading-m"><a href="pci">PCI</a></h3>
-                    <p class="govuk-body">A short overview of the content that exists behind this card. For example a full page detailing what goes inside the body of a card.
-                    </p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+
     </div>
 
             <h2 class="govuk-heading-l">Prevent Common Council Risks </h2>

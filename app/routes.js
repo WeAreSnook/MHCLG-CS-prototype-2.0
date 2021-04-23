@@ -124,7 +124,6 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
       }
 
       if(question[access_key].length > 0) {
-        console.log("Saving:", access_key, slug, index, question[access_key], "---" , question[access_key].length, typeof question[access_key]  )
         let questionObjectInstance = clone(questionObject);
         questionObjectInstance.reference = question[access_key];
         s6Classifiers[slug].push(questionObjectInstance);
@@ -551,15 +550,21 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
 });
 
 router.get("/sprint-6/prototype/council-overview", (req, res) => {
-  res.render("sprint-6/prototype/council-overview")
+  let assessment_keys = Object.keys(assessments)
+  res.render("sprint-6/prototype/council-overview", {
+    assessments,
+    assessment_keys
+  })
 })
 
 
 router.get("/sprint-6/prototype/:pathWay", (req, res) => {
   const pathway_key  = req.params.pathWay;
   const pathway = assessments[pathway_key];
-  console.log("Access Key", pathway.access_key);
-  let pathway_questions = s6Classifiers[pathway.access_key]
+  console.log("Access Key", pathway.slug);
+  let pathway_questions = s6Classifiers[pathway.slug]
+
+  console.log(Object.keys(s6Classifiers));
 
   const table_header = [
     {
