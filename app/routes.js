@@ -721,7 +721,6 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/met
 
   if (!question.type || question.type === "standard_radio") {
 
-
     req.session.question_data[req.params.questionID] = {
       "answer": "metwithexceptions",
       "complete": true,
@@ -945,7 +944,6 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
     }
   });
 
-
   let category_questions = s6Classifiers["category"][category_slug];
   let questions_count = 0;
   let questions_complete = 0;
@@ -967,11 +965,14 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
     }
   });
 
+  let percentage_complete = Math.floor(100*(questions_complete/questions_count));
+
   let pathway = {
     short_name : thisCategory.name,
     long_name : thisCategory.name,
     number_completed: questions_complete,
-    number_of_questions: questions_count
+    number_of_questions: questions_count,
+    percentage_complete: percentage_complete
   };
 
   let table_rows = category_questions.map(function(this_row) {
