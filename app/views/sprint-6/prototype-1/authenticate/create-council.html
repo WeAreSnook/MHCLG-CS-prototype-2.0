@@ -19,9 +19,6 @@
           isPageHeading: true
         }
       }) %}
-
-      <p>This information will personalise the questions and recommendations you receive.</p>
-
         {{ govukInput({
           label: {
             text: 'Council name'
@@ -136,6 +133,10 @@
           }) }}
 
         {% endcall %}
+
+        <h2 class="govuk-heading-m">How we use this information</h2>
+        <p class="govuk-body">We'll use this information to provide personalised questions and recommendations based on the details of your council.</p>
+        <p class="govuk-body">We'll also use this information to provide comparisons against similar councils.</p>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>
       </form>
