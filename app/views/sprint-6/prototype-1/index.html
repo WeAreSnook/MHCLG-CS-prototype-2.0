@@ -1,0 +1,58 @@
+{% extends "sprint-5/prototype-1/layout.html" %} {% block pageTitle %} Cyberhealth Framework {%
+  endblock %} {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {% if serviceName %} Service intro page {% endif %}
+      </h1>
+      <p>
+        Potentially include:
+      </p>
+  
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Description and goals of the framework</li>
+<li>Description of the maturity levels</li>
+<li>Which standards are mapped against which levels</li>
+<li>PSN + DSPT</li>
+<li>Maybe list or link out to topics?</li>
+      </ul>
+      
+      <a
+        href="/sprint-6/prototype-1/assessment-intro"
+        role="button"
+        draggable="false"
+        class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+        data-module="govuk-button"
+      >
+        Assess the your cyber health
+        <svg
+          class="govuk-button__start-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="17.5"
+          height="19"
+          viewBox="0 0 33 40"
+          role="presentation"
+          focusable="false"
+        >
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">Related links</h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">Framework glossary</a>
+            </li>
+            <li>
+              <a href="#">Get support with a business case</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  {% endblock %}
+  

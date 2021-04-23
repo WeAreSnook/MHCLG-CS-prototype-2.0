@@ -11,6 +11,147 @@ const categoriesPath = "./app/data/categories.json";
 let categories;
 const topicsPath = "./app/data/topics.json";
 let topics;
+const s6QuestionsPath = "./app/data/sprint6-questions.json";
+let s6Questions;
+let s6Classifiers = [];
+s6Classifiers.questions = {};
+
+const trim_regexp = /^\"?[\n\s]*(.+?)[\n\s]*\"?$/gm;
+const subst = `$1`;
+const assessmentTypes = [
+  {key:"CE", objectName:"CyberEssentials"},
+  {key:"PSN", objectName: "PSN"},
+  {key:"PCI", objectName: "PCI"},
+  {key:"GDPR", objectName: "GDPR"},
+  {key:"NHSDSPT", objectName: "NHS DSPT"},
+  {key:"ISO 27001", objectName: "ISO27001"},
+];
+
+const assessments = {
+  "gdpr" : {
+    short_name: "GDPR",
+    access_key: "GDPR",
+    slug: "GDPR",
+    long_name: "General Data Protection Regulation (GDPR)",
+    intro_text: "\n" +
+      "The General Data Protection Regulation (GDPR) is a piece of UK & EU-wide legislation which determines how people’s personal data is processed and kept safe, and the legal rights individuals have in relation to their own data. It has been in place since 25 May 2018 and applies to organisations that process or handle personal data, including councils and local authorities"
+  },
+  "pci" : {
+    short_name: "PCI",
+    access_key: "PCI",
+    slug: "PCI",
+    long_name: "Payment Card Industry (PCI)",
+    intro_text: "\n" +
+      "The Payment Card Industry Data Security Standard (PCI DSS) is an information security standard for organizations that handle branded credit cards from the major card schemes.\n" +
+      "The PCI Standard is mandated by the card brands but administered by the Payment Card Industry Security Standards Council. The standard was created to increase controls around cardholder data to reduce credit card fraud."
+  },
+  "cyberessentials": {
+    short_name: "CyberEssentials",
+    access_key: "CE",
+    slug: "CE",
+    long_name: "Cyber Essentials",
+    intro_text: "Cyber Essentials is a Government-backed and industry-supported scheme that helps businesses protect themselves against the growing threat of cyber attacks and provides a clear statement of the basic controls organisations should have in place to protect themselves."
+  },
+  "psn": {
+    short_name: "PSN",
+    access_key: "PSN",
+    slug: "PSN",
+    long_name: "Public Sector Network",
+    intro_text: "The PSN uses a ‘walled garden’ approach, which enables access to Internet content and shared services to be controlled. This is because the security of any one user connected to the PSN affects both the security of all other users and the network itself."
+  },
+  "nhsdspt": {
+
+    short_name: "NHS DSPT",
+    access_key: "NHS DSPT",
+    slug: "NHSDSPT",
+    long_name: "NHS Data Security and Protection Toolkit",
+    intro_text: "The National Health Service Data Security and Protection Toolkit is an online self-assessment tool that allows organisations to measure their performance against the National Data Guardian’s 10 data security standards."
+  },
+  "iso27001": {
+
+    short_name: "ISO 27001",
+    access_key: "ISO 27001",
+    slug: "ISO27001",
+    long_name: "ISO27001",
+    intro_text: "ISO/IEC 27001 is an international standard on how to manage information security. ... It details requirements for establishing, implementing, maintaining and continually improving an information security management system (ISMS) – the aim of which is to help organizations make the information assets they hold more secure."
+
+  }
+}
+
+const classifications = ["category", "topic", "section", "stage"];
+
+function clone(a) {
+  return JSON.parse(JSON.stringify(a));
+}
+
+function copyQuestionObject(objectToCopy, keysToCopy  ){
+  let copyTo = {};
+  keysToCopy.forEach(function(key){
+    copyTo[key.toLowerCase()] = objectToCopy[key].trim();
+  });
+  return copyTo;
+}
+
+fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
+  if (err) {
+    throw err;
+  }
+
+  s6Questions = JSON.parse(data);
+  //console.log(s6Questions.slice(0,3));
+
+  let index = 0;
+  s6Questions.forEach(function(question){
+
+    index++;
+
+    question.topic = question.topic.trim().replace(trim_regexp, subst);
+    const questionObject = copyQuestionObject(question, ["id", "label","category", "topic", "section", "stage", "Type"] )
+
+    // this is for creating an index of all of the questions
+    s6Classifiers.questions[questionObject.id] = questionObject
+
+    // this is for saving all of the standards into a collection
+    Object.keys(assessments).forEach(function(key){
+
+      let type = assessments[key];
+
+      let access_key = type.access_key;
+      let slug = type.slug;
+
+      if (!s6Classifiers[slug]){
+        s6Classifiers[slug] = [];
+      }
+
+      if(question[access_key].length > 0) {
+        let questionObjectInstance = clone(questionObject);
+        questionObjectInstance.reference = question[access_key];
+        s6Classifiers[slug].push(questionObjectInstance);
+        questionObjectInstance = null
+      }
+    })
+
+    // this is for saving all of the classifications into a collection
+    classifications.forEach(function(group){
+      if (question[group]){
+        if(!s6Classifiers[group]){
+          s6Classifiers[group]={};
+        }
+        if( !s6Classifiers[group][questionObject[group]] ||
+            !Array.isArray(s6Classifiers[group][questionObject[group]])) {
+          s6Classifiers[group][questionObject[group]] = [];
+        }
+        s6Classifiers[group][questionObject[group]].push(questionObject)
+      }
+    })
+  });
+
+  //console.log(s6Classifiers);
+
+
+});
+
+
 
 fs.readFile(questionsPath, "utf8", (err, data) => {
   if (err) {
@@ -18,6 +159,7 @@ fs.readFile(questionsPath, "utf8", (err, data) => {
   }
   questions = JSON.parse(data);
 });
+
 fs.readFile(sectionsPath, "utf8", (err, data) => {
   if (err) {
     throw err;
@@ -26,16 +168,6 @@ fs.readFile(sectionsPath, "utf8", (err, data) => {
   // Convert category CSVs into array
   sections.forEach((section) => {
     section.categories = section.categories.split(",");
-  });
-});
-fs.readFile(categoriesPath, "utf8", (err, data) => {
-  if (err) {
-    throw err;
-  }
-  categories = JSON.parse(data);
-  // Convert topic CSVs into array
-  categories.forEach((category) => {
-    category.topics = category.topics.split(",");
   });
 });
 
@@ -66,6 +198,7 @@ fs.readFile(categoriesPath, "utf8", (err, data) => {
     category.topics = category.topics.split(",");
   });
 });
+
 
 router.get("/sprint-3/prototype-2/question/:questionID", (req, res) => {
   const question = questions.find(({ id }) => id === req.params.questionID);
@@ -199,6 +332,323 @@ router.get("/sprint-5/prototype-1/risk", (req, res) => {
   }
   let riskSlug = riskLevel.replace(/ /g, '-');
   res.render("sprint-5/prototype-1/risk", { riskLevel: riskLevel, riskSlug: riskSlug, score: score, wrongQuestions: wrongQuestionsOnly(questions) });
+});
+
+// Prototype 6
+
+router.get("/sprint-6/prototype/all-questions-overview/", (req, res) => {
+  res.render("sprint-6/prototype/all-questions-overview", { sections: sections });
+});
+
+router.get("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+
+  // if we are passed a url variable for an expert review then redirect somewhere?
+
+  res.render("sprint-6/prototype/question", {
+    question,
+    pathway
+  });
+
+});
+
+
+router.get("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+
+  // if we are passed a url variable for an expert review then redirect somewhere?
+
+  res.render("sprint-6/prototype/workingtowards", {
+    question,
+    pathway
+  });
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+    let completed = false
+    if (req.body.answer === "workingtowards") {
+      completed = true
+    }
+    console.log("Adding session data", req.body);
+
+    req.session.question_data[req.params.questionID] = {
+      "answer": "workingtowards",
+      "complete": completed,
+      "workingtowards_date": req.body["workingtowards-day"] + '/' + req.body["workingtowards-month"] + '/' + req.body["workingtowards-year"]
+    }
+
+    res.redirect("../..");
+
+});
+
+router.get("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+  res.render("sprint-6/prototype/metwithexceptions", {
+    question,
+    pathway
+  });
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+    let completed = false
+    if (req.body.answer === "metwithexceptions") {
+      completed = true
+    }
+
+    req.session.question_data[req.params.questionID] = {
+      "answer": "metwithexceptions",
+      "complete": completed,
+      "metwithexceptions": req.body["metwithexceptions"]
+    }
+
+    res.redirect("../..");
+
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+
+    let completed = false
+    if (req.body.answer === "riskaccepted") {
+      completed = true
+    }
+
+    req.session.question_data[req.params.questionID] = {
+      "answer": "riskaccepted",
+      "complete": completed,
+      "riskaccepted": req.body["riskaccepted"]
+    }
+
+    res.redirect("../..");
+
+});
+
+router.get("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+  // if we are passed a url variable for an expert review then redirect somewhere?
+  res.render("sprint-6/prototype/riskaccepted", {
+    question,
+    pathway
+  });
+
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
+
+  // NTH:  if it is blank we should display some validation?
+
+  // NTH: if a skip parameter has been set, we should route to the next question
+
+  // save valid results in the session
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+  if (!question.type || question.type === "standard_radio") {
+
+    let completed = false
+    if (req.body.exceptionsentered) {
+      completed = true
+    }
+    
+    req.session.question_data[req.params.questionID] = {
+      "answer": "metwithexceptions",
+      "complete": completed,
+      "exceptions": req.body.exceptionsentered
+    }
+    
+    console.log(req.session.question_data);
+    res.redirect("../..");
+
+  }
+});
+
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+
+  // NTH:  if it is blank we should display some validation?
+
+  // NTH: if a skip parameter has been set, we should route to the next question
+
+  // save valid results in the session
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+  if (!question.type || question.type === "standard_radio") {
+
+    let completed = false
+    if (req.body.riskacceptedentered) {
+      completed = true
+    }
+    
+    req.session.question_data[req.params.questionID] = {
+      "answer": "riskaccepted",
+      "complete": completed,
+      "riskaccepted": req.body.riskacceptedentered
+    }
+    
+    console.log(req.session.question_data);
+    res.redirect("../..");
+
+  }
+});
+
+router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
+
+  // NTH:  if it is blank we should display some validation?
+
+  // NTH: if a skip parameter has been set, we should route to the next question
+
+  // save valid results in the session
+
+  const question = s6Classifiers.questions[req.params.questionID];
+
+  if ( ! question.type || question.type === "standard_radio"){
+
+    let completed = false
+    let special_case = false
+    if( req.body.answer === "met" ) {
+      completed = true
+    } else if( req.body.answer === "riskaccepted" || req.body.answer === "metwithexceptions" ||req.body.answer === "workingtowards"   ) {
+      special_case = true
+    }
+
+    if(!req.session.question_data){
+      req.session.question_data = [];
+    }
+    req.session.question_data[req.params.questionID] = {
+      "answer" : req.body.answer,
+      "complete" : completed
+    }
+    // if the options were special we need redirect to the appropriate special route (e.g. riskaccepted, metwithexceptions, workingtowards )
+    if( special_case ) { res.redirect(req.params.questionID+"/"+req.body.answer) }
+    else{
+      res.redirect("..");
+    }    // for met or for not met, go to the index...
+
+  }
+
+});
+
+router.get("/sprint-6/prototype/council-overview", (req, res) => {
+  let assessment_keys = Object.keys(assessments)
+  res.render("sprint-6/prototype/council-overview", {
+    assessments,
+    assessment_keys
+  })
+})
+
+
+router.get("/sprint-6/prototype/:pathWay", (req, res) => {
+  const pathway_key  = req.params.pathWay;
+  const pathway = assessments[pathway_key];
+  console.log("Access Key", pathway.slug);
+  let pathway_questions = s6Classifiers[pathway.slug]
+
+  console.log(Object.keys(s6Classifiers));
+
+  const table_header = [
+    {
+      text: "Risk"
+    },
+    {
+      text: "Topic"
+    },
+    {
+      text: "Control"
+    },
+    {
+      text: "Status"
+    },
+    {
+      text: "Action"
+    }
+  ];
+
+  let table_rows = pathway_questions.map(function(this_row) {
+
+    let tag = ""
+    // calculate a rand value from 0 - 100 based on a seed?
+
+    // calculate the html of the status
+
+    if (!req.session){
+      req.session = {};
+    }
+
+    if (!req.session.question_data){
+      req.session.question_data = {};
+    }
+
+    if (req.session.question_data[this_row.id])
+    {
+      let answer = req.session.question_data[this_row.id].answer
+
+
+      if (answer === "met") {
+        tag = "<strong class='govuk-tag govuk-tag--green'>Met</strong>"
+      } else if (answer === "notmet") {
+        tag = "<strong class='govuk-tag govuk-tag--red'>Not Met</strong>"
+      } else if ( answer === "riskaccepted" ) {
+        tag = "<strong class='govuk-tag govuk-tag--pink'>Risk Accepted</strong>"
+      } else if ( answer === "workingtowards" ) {
+        tag = "<strong class='govuk-tag govuk-tag--yellow'>Working Towards</strong>"
+      } else if ( answer === "metwithexceptions" ) {
+        tag = "<strong class='govuk-tag govuk-tag--green'>Met with exceptions</strong>"
+      }
+    } else {
+      tag = "<strong class='govuk-tag govuk-tag--blue'>Not Answered</strong>"
+    }
+
+    // generate the question url
+
+    let question_url = "/sprint-6/prototype/"+pathway_key+"/question/"+this_row.id;
+    let view_link = "<a href='"+question_url+"'>View</a>";
+
+    return  [
+      {
+        text: "3"
+      },
+      {
+        text: this_row.topic
+      },
+      {
+        text: this_row.label
+      },
+      {
+        html: tag
+      },
+      {
+        html: view_link
+      }
+    ];
+  });
+
+  res.render("sprint-6/prototype/pathway-overview", {
+    pathway,
+    table_header,
+    table_rows,
+    pathway_questions
+  });
 });
 
 // Returns an array of questions with the answer "no" or blank, sorted by level
