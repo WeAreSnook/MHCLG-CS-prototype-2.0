@@ -392,6 +392,22 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (
 });
 
 
+
+router.get("/sprint-6/prototype/:pathWay/question/:questionID/askanexpert", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+  const pathway  = req.params.pathWay;
+
+
+  // if we are passed a url variable for an expert review then redirect somewhere?
+
+  res.render("sprint-6/prototype/askanexpert", {
+    question,
+    pathway
+  });
+});
+
+
 router.post("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];

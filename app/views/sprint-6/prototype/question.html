@@ -1,5 +1,4 @@
 {% extends "sprint-6/prototype/layout.html" %}
-"id","category", "topic", "section", "stage", "Type"
 
 {% block pageTitle %}
 {{question.id}} - {{question.label}}
@@ -65,14 +64,19 @@
           {{ govukButton({
             text: "Save and continue"
             }) }}
-          <a href=".." class="govuk-button govuk-button--secondary">Go to Overview</a>
+          <a href="/sprint-6/prototype/{{pathway}}/" class="govuk-button govuk-button--secondary">Go to Overview</a>
           <a href="#" class="govuk-button govuk-button--secondary">Skip</a>
 
-          <a href={{expertReviewUrl}}>
-            Ask for an expert to review
-          </a>
+
         </div>
       </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m" style="border-top: 3px solid #005ea5; padding-top:8px">
+        Ask an expert
+      </h2>
+      <p>Ask a cyber security expert at the Ministry for Housing Communities and Local government about this question or risk. </p>
+      <a href="{{question.id}}/askanexpert">Ask an expert</a>
     </div>
   </div>
 
