@@ -598,6 +598,8 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID", (r
   } catch (e){
     snippet_content = fs.readFileSync(__dirname + '/snippets/default.html', 'utf8')
   }
+
+  console.log("snippet_content");
   // if we are passed a url variable for an expert review then redirect somewhere?
 
   res.render("sprint-6/prototype/question", {
