@@ -3,12 +3,12 @@
 {% block pageTitle %}
 {{question.id}} - {{question.label}}
   {% endblock %}
-
-{% block beforeContent %}
- 
-    <a class="govuk-back-link" href="..">
-      Back 
-    </a>
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+  items: breadcrumb_items
+  }) }}
+</div>
 {% endblock %}
 {% block content %}
 

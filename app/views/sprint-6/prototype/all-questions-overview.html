@@ -1,5 +1,20 @@
 {% extends "sprint-6/prototype/layout.html" %} {% block pageTitle %} View All Controls
-{% endblock %} {% block content %}
+{% endblock %}
+
+
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+  items: [
+  {
+  text: "Council Overview",
+  href: "/sprint-6/prototype/council-overview"
+  }
+  ]
+  }) }}
+</div>
+{% endblock %}
+{% block content %}
 
 <div class="govuk-grid-row">
   <h1 class="govuk-heading-xl">Explore all controls</h1>
