@@ -115,3 +115,15 @@ a:focus {
   display: block;
   clear: both;
 }
+
+
+.govuk-card-complete > .govuk-card__content > h3,
+.govuk-card-complete > .govuk-card__content > p,
+.govuk-card-complete > .govuk-card__content > h3 > a,
+.govuk-card-complete > .govuk-card__actions > ul > li > a {
+  color: #ffffff !important;
+}
+.govuk-o-grid .govuk-card-complete {
+  background-color: #00703c;
+  border-bottom-color: #00703c;
+}
