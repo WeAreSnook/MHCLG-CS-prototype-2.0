@@ -639,6 +639,8 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
 
       if( redirect_to ){
         res.redirect(redirect_to);
+      } else {
+        res.redirect("..");
       }
 
     }    // for met or for not met, go to the index...
@@ -1013,7 +1015,6 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
 router.get("/sprint-6/prototype/category/:categorySlug/mark-as-met", (req, res) => {
   const category_slug  = req.params.categorySlug;
   let category_questions = s6Classifiers["category"][category_slug];
-  console.log(category_questions);
   if (!req.session.question_data){
     req.session.question_data = {};
   }
