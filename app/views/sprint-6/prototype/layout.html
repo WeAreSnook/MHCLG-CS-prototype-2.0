@@ -76,7 +76,9 @@ config.js. #}
     }) }}
     {{ govukPhaseBanner({ tag: {
 text: "prototype" }, classes:"govuk-width-container", text: 'This is a prototype to help inform a potential new service' }) }}
+    {% block breadCrumb%}{% endblock %}
 {% endblock %}
+
 {% set mainClasses = mainClasses |
 default("govuk-main-wrapper--auto-spacing") %}
 {% if useAutoStoreData %}
