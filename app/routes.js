@@ -999,12 +999,38 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
     ];
   });
 
+  let mark_as_met = "/sprint-6/prototype/"+pathway_key+"/mark-as-met";
   res.render("sprint-6/prototype/pathway-overview", {
     pathway,
     table_header,
     table_rows,
-    pathway_questions
+    pathway_questions,
+    mark_as_met
   });
+});
+
+
+router.get("/sprint-6/prototype/category/:categorySlug/mark-as-met", (req, res) => {
+  const category_slug  = req.params.categorySlug;
+  let category_questions = s6Classifiers["category"][category_slug];
+  console.log(category_questions);
+  if (!req.session.question_data){
+    req.session.question_data = {};
+  }
+
+  category_questions.forEach(function(question){
+    if (!req.session.question_data[question.id]){
+      req.session.question_data[question.id] = {};
+    }
+    req.session.question_data[question.id].answer = 'met';
+    req.session.question_data[question.id].complete = true;
+
+  });
+
+  req.session.save(function() {
+    res.redirect('/sprint-6/prototype/category/' + category_slug);
+  });
+
 });
 
 router.get("/sprint-6/prototype/:pathWay/mark-as-met", (req, res) => {
@@ -1137,11 +1163,13 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
     ];
   });
 
+  let mark_as_met = "/sprint-6/prototype/category/"+category_slug+"/mark-as-met";
   res.render("sprint-6/prototype/pathway-overview", {
     pathway,
     table_header,
     table_rows,
-    category_questions
+    category_questions,
+    mark_as_met
   });
 });
 
