@@ -1,6 +1,23 @@
-{% extends "sprint-6/prototype/layout.html" %} {% block pageTitle %}
-{{pathway.short_name}} Overview {% endblock %} {% block content %}
+{% extends "sprint-6/prototype/layout.html" %}
+{% block pageTitle %} {{pathway.short_name}} Overview {% endblock %}
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+    items: [
+    {
+    text: "Council Overview",
+    href: "/sprint-6/prototype/council-overview"
+    }
+    ]
+    }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+
 <div class="govuk-grid-row">
+
+
   <h1 class="govuk-heading-xl">{{ pathway.long_name }}</h1>
 
   <p>{{ pathway.intro_text }}</p>
