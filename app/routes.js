@@ -31,7 +31,7 @@ const assessments = {
     slug: "GDPR",
     long_name: "General Data Protection Regulation (GDPR)",
     intro_text: "\n" +
-      "The General Data Protection Regulation (GDPR) is UK & EU-wide legislation about how personal data is processed and kept safe, and the legal rights individuals have."
+      "Legal framework that determines how personal information from individuals is collected and processed."
   },
   "pci" : {
     short_name: "PCI",
@@ -39,21 +39,21 @@ const assessments = {
     slug: "PCI",
     long_name: "Payment Card Industry (PCI)",
     intro_text: "\n" +
-      "The Payment Card Industry Data Security Standard (PCI DSS) is an information security standard for organizations that handle branded credit cards."
+      "Information security standard designed to increase controls around cardholder data to reduce credit card fraud."
   },
   "cyberessentials": {
     short_name: "CyberEssentials",
     access_key: "CE",
     slug: "CE",
     long_name: "Cyber Essentials",
-    intro_text: "Cyber Essentials is a Government-backed and industry-supported scheme that helps businesses protect themselves against the growing threat of cyber attacks."
+    intro_text: "Government-backed scheme that helps organisations protect themselves against the threat of cyber attacks, providing basic controls organisations should have in place."
   },
   "psn": {
     short_name: "PSN",
     access_key: "PSN",
     slug: "PSN",
     long_name: "Public Sector Network",
-    intro_text: "The PSN uses a ‘walled garden’ approach, which enables access to Internet content and shared services to be controlled. This is because the security of any one user connected to the PSN."
+    intro_text: "‘Walled garden’ approach that enables public sector organisations to work together and share resources in a secure, controlled environment."
   },
   "nhsdspt": {
 
@@ -61,7 +61,7 @@ const assessments = {
     access_key: "NHS DSPT",
     slug: "NHSDSPT",
     long_name: "NHS Data Security and Protection Toolkit",
-    intro_text: "The National Health Service Data Security and Protection Toolkit is an online self-assessment tool that allows organisations to measure their performance."
+    intro_text: "Self-assessment tool to provide assurance that organisations using NHS patient data are practising good data security."
   },
   "iso27001": {
 
@@ -69,7 +69,7 @@ const assessments = {
     access_key: "ISO 27001",
     slug: "ISO27001",
     long_name: "ISO27001",
-    intro_text: "ISO/IEC 27001 is an international standard on how to manage information security."
+    intro_text: "International standard on how to manage information security, with requirements for establishing, implementing, maintaining and continually improving an information security management system (ISMS)."
 
   },
 
@@ -78,8 +78,8 @@ const assessments = {
     short_name: "Level 1",
     access_key: "level1",
     slug: "level1",
-    long_name: "MHCLG Level 1",
-    intro_text: "MHCLG Level 1 is the initial level of the MHCLG framework for Local Authorities"
+    long_name: "Level 1: Baseline",
+    intro_text: "Achieves Cyber Essentials, Cyber Essentials +"
 
   },
 
@@ -88,8 +88,8 @@ const assessments = {
     short_name: "Level 2",
     access_key: "level2",
     slug: "level2",
-    long_name: "MHCLG Level 2",
-    intro_text: "MHCLG Level 1 is the initial level of the MHCLG framework for Local Authorities"
+    long_name: "Level 2: Target",
+    intro_text: "Achieves PSN, PCI DSS, GDPR"
   },
 
   "level3": {
@@ -97,8 +97,8 @@ const assessments = {
     short_name: "Level 3",
     access_key: "level3",
     slug: "level3",
-    long_name: "MHCLG Level 3",
-    intro_text: "MHCLG Level 3 is the initial level of the MHCLG framework for Local Authorities"
+    long_name: "Level 3: Advanced:",
+    intro_text: "Achieves ISO 27001, NIS-CAF"
   },
   "all":{
     short_name: "All",
