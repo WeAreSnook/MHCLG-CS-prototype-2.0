@@ -69,7 +69,7 @@ const assessments = {
     access_key: "ISO 27001",
     slug: "ISO27001",
     long_name: "ISO27001",
-    intro_text: "ISO/IEC 27001 is an international standard on how to manage information security. ... It details requirements for establishing, implementing, maintaining and continually improving an information security management system (ISMS) – the aim of which is to help organizations make the information assets they hold more secure."
+    intro_text: "ISO/IEC 27001 is an international standard on how to manage information security."
 
   },
 
