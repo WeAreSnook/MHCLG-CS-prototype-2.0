@@ -1,0 +1,48 @@
+{% extends "sprint-6/prototype/layout.html" %} {% block pageTitle %} Cyberhealth Framework {%
+    endblock %}
+    
+    {% block content %}
+    <a class="govuk-back-link" href="../../prototype-1/risk">Back</a> 
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
+        <strong class="govuk-tag govuk-tag--red">High Risk</strong>
+        <h1 class="govuk-heading-xl govuk-!-margin-top-4">Some of the Council's software applications are no longer supported by the vendor</h1>
+        <h2 class="govuk-heading-l">Why this is a risk</h2>
+        <p class="govuk-body">An easy and common entry point for ransomware and other malware is from rogue software or older software versions with out-of-date security features.</p>
+        <p class="govuk-body">Not knowing what software you have and any lack of control over licenses increases this risk. Poor license management can also lead to employees downloading software that increases the risk of attack.</p>
+        <p class="govuk-body">Without a software licensing inventory, costs can also increase and become unmanageable as well as the risk of penalties due to using unauthorised software.</p>
+        <p class="govuk-body">Fines for unlicensed software can be incredibly high. If found guilty, an organisation can be fined a value of the court’s choosing and there is no limit to this amount.</p>
+        <h2 class="govuk-heading-l">What actions you should take</h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Produce a list of all your software licenses and create a repository to record them.</li>
+          <li>Ensure all users are made aware of software policies that make clear they cannot use unlicensed software.</li>
+          <li>Make sure you know your organisation’s license entitlement - which licenses you have and the legal right to use them.</li>
+          <li>Make sure you can prove you are entitled to them by documenting related information and contracts.</li>
+          <li>Lock down account controls.</li>
+          <li>Set alerts for whenever new software is installed so you can check it complies with licensing.</li>
+          <li>Set reminders for renewals and license reminders.</li>
+          <li>Track the use of software - any software that is no longer needed should be removed</li>
+          <li>Tracking the use of software can help reduce costs</li>
+        </ul>
+      </div> 
+      <div class="govuk-grid-column-one-third govuk-!-margin-top-4">
+        <aside class="app-related-items" role="complementary">
+          <h2 class="govuk-heading-m" id="subsection-title">References</h2>
+          <nav role="navigation" aria-labelledby="subsection-title">
+            <ul class="govuk-list govuk-!-font-size-16">
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+              <li>
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-2">NASA hacked due to poor asset visibility</h3>
+                <a target="_blank" href="https://panaseer.com/business-blog/nasa-poor-asset-visibility/" class="govuk-link">Read more</a>
+              </li>
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            </ul>
+          </nav>
+        </aside>
+      </div>
+    </div>
+    
+
+     
+    {% endblock %}
+    
