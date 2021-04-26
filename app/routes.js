@@ -19,17 +19,10 @@ s6Classifiers.questions = {};
 
 const trim_regexp = /^\"?[\n\s]*(.+?)[\n\s]*\"?$/gm;
 const subst = `$1`;
-const assessmentTypes = [
-  {key:"CE", objectName:"CyberEssentials"},
-  {key:"PSN", objectName: "PSN"},
-  {key:"PCI", objectName: "PCI"},
-  {key:"GDPR", objectName: "GDPR"},
-  {key:"NHSDSPT", objectName: "NHS DSPT"},
-  {key:"ISO 27001", objectName: "ISO27001"},
-];
 
 const standards_keys = ["gdpr", "pci","cyberessentials", "iso27001"]
 const compliance_keys = ["psn", "nhsdspt"]
+const level_keys = ["level1", "level2", "level3"]
 
 const assessments = {
   "gdpr" : {
@@ -79,6 +72,34 @@ const assessments = {
     intro_text: "ISO/IEC 27001 is an international standard on how to manage information security. ... It details requirements for establishing, implementing, maintaining and continually improving an information security management system (ISMS) – the aim of which is to help organizations make the information assets they hold more secure."
 
   },
+
+  "level1": {
+
+    short_name: "Level 1",
+    access_key: "level1",
+    slug: "level1",
+    long_name: "MHCLG Level 1",
+    intro_text: "MHCLG Level 1 is the initial level of the MHCLG framework for Local Authorities"
+
+  },
+
+  "level2": {
+
+    short_name: "Level 2",
+    access_key: "level2",
+    slug: "level2",
+    long_name: "MHCLG Level 2",
+    intro_text: "MHCLG Level 1 is the initial level of the MHCLG framework for Local Authorities"
+  },
+
+  "level3": {
+
+    short_name: "Level 3",
+    access_key: "level3",
+    slug: "level3",
+    long_name: "MHCLG Level 3",
+    intro_text: "MHCLG Level 3 is the initial level of the MHCLG framework for Local Authorities"
+  },
   "all":{
     short_name: "All",
     long_name: "All controls",
@@ -127,8 +148,7 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
       let type = assessments[key];
 
       let access_key = type.access_key;
-
-      if(access_key !== "all"){
+      if(! ( access_key === "all" || access_key.substr(0,5) === "level" )) {
         let slug = type.slug;
 
         if (!s6Classifiers[slug]){
@@ -160,6 +180,12 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
         questionObjectInstance = null
       }
     })
+
+    s6Classifiers["level1"] = s6Classifiers["stage"]["level-1"];
+    s6Classifiers["level2"] = s6Classifiers["stage"]["level-2"];
+    s6Classifiers["level3"] = s6Classifiers["stage"]["level-3"];
+
+
   });
 
 
@@ -861,10 +887,20 @@ router.get("/sprint-6/prototype/council-overview", (req, res) => {
   assessment_keys.forEach(function(key){
     updateCountOnAssessment(key, req);
   });
+
+  compliance_keys.forEach(function(key){
+    updateCountOnAssessment(key, req);
+  });
+
+  level_keys.forEach(function(key){
+    updateCountOnAssessment(key, req);
+  });
+
   res.render("sprint-6/prototype/council-overview", {
     assessments,
     standards_keys,
-    compliance_keys
+    compliance_keys,
+    level_keys
   })
 })
 
