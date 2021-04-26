@@ -398,12 +398,31 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/askanexpert", (req
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
 
+  const link = '/sprint-6/prototype/' + pathway + '/question/' + question.id
+  // if we are passed a url variable for an expert review then redirect somewhere?
+
+  res.render("sprint-6/prototype/askanexpert", {
+    question,
+    pathway,
+    link
+  });
+});
+
+
+router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/askanexpert", (req, res) => {
+
+  const question = s6Classifiers.questions[req.params.questionID];
+  const categorySlug  = req.params.categorySlug;
+
+
+  const link = "/sprint-6/prototype/category/"+ categorySlug + "/question/"+question.id;
 
   // if we are passed a url variable for an expert review then redirect somewhere?
 
   res.render("sprint-6/prototype/askanexpert", {
     question,
-    pathway
+    categorySlug,
+    link
   });
 });
 
