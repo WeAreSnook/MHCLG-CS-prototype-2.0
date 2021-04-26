@@ -114,7 +114,7 @@ endblock %} {% block content %}
             {% for assessment in standards_keys %}
 
             <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
-                <div class="govuk-card govuk-card--contained govuk-card--selectable">
+                <div class="govuk-card govuk-card--contained {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}govuk-card--selectable{% endif %}">
                     <a href="/sprint-6/prototype/{{assessment}}"></a>
                     <div class="govuk-card__content">
                         <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
