@@ -971,6 +971,28 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
   });
 });
 
+router.get("/sprint-6/prototype/:pathWay/mark-as-met", (req, res) => {
+  const pathway_key  = req.params.pathWay;
+  const pathway = assessments[pathway_key];
+  let pathway_questions = s6Classifiers[pathway.slug]
+  if (!req.session.question_data){
+    req.session.question_data = {};
+  }
+
+  pathway_questions.forEach(function(question){
+    if (!req.session.question_data[question.id]){
+      req.session.question_data[question.id] = {};
+    }
+    req.session.question_data[question.id].answer = 'met';
+    req.session.question_data[question.id].complete = true;
+
+  });
+
+  req.session.save(function() {
+    res.redirect('/sprint-6/prototype/' + pathway_key);
+  });
+
+});
 
 router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
   let thisCategory = {};
@@ -988,7 +1010,6 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
   if (!req.session){
     req.session = {};
   }
-
   if (!req.session.question_data){
     req.session.question_data = {};
   }
