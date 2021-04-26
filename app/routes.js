@@ -749,12 +749,11 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
 let retrieve_category = function(category_slug){
   let final_category;
   categories.forEach(function(category){
-    if (category.slug === category_slug) {
+    if (category.slug.toLowerCase().trim() === category_slug) {
       final_category = category
     }
   });
   return final_category;
-
 }
 
 // Category based questions
@@ -772,7 +771,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID", (r
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/sprint-6/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
@@ -815,7 +814,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/work
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/sprint-6/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
@@ -855,7 +854,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/aska
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/sprint-6/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
@@ -895,7 +894,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/notm
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/sprint-6/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
@@ -946,7 +945,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/metw
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/sprint-6/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
@@ -1010,7 +1009,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/risk
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/sprint-6/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
@@ -1187,6 +1186,19 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
   const pathway_key  = req.params.pathWay;
   const pathway = assessments[pathway_key];
 
+
+  let breadcrumb_items = [
+    {
+      text: "Council overview",
+      href: "/sprint-6/prototype/council-overview"
+    },
+    {
+      text: "Explore all controls",
+      href: "/sprint-6/prototype/all-questions-overview"
+    }
+
+  ];
+
   let pathway_questions = s6Classifiers[pathway.slug]
 
   updateCountOnAssessment(pathway_key, req);
@@ -1266,7 +1278,8 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
     table_header,
     table_rows,
     pathway_questions,
-    mark_as_met
+    mark_as_met,
+
   });
 });
 
@@ -1317,13 +1330,22 @@ router.get("/sprint-6/prototype/:pathWay/mark-as-met", (req, res) => {
 });
 
 router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
-  let thisCategory = {};
-  let category_slug =req.params.categorySlug;
-  categories.forEach(function(category){
-    if (category.slug === category_slug) {
-      thisCategory = category
+
+  const category_slug  = req.params.categorySlug;
+  const thisCategory = retrieve_category(category_slug);
+
+  let breadcrumb_items = [
+    {
+      text: "Council overview",
+      href: "/sprint-6/prototype/council-overview"
+    },
+    {
+      text: "Explore all controls",
+      href: "/sprint-6/prototype/all-questions-overview"
     }
-  });
+
+  ];
+
 
   let category_questions = s6Classifiers["category"][category_slug];
   let questions_count = 0;
@@ -1429,7 +1451,8 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
     table_header,
     table_rows,
     category_questions,
-    mark_as_met
+    mark_as_met,
+    breadcrumb_items
   });
 });
 
