@@ -115,11 +115,21 @@ function clone(a) {
   return JSON.parse(JSON.stringify(a));
 }
 
-function copyQuestionObject(objectToCopy, keysToCopy  ){
+function copyQuestionObject(objectToCopy, keysToCopyRequired, keysToCopyOptional  ){
   let copyTo = {};
-  keysToCopy.forEach(function(key){
+  keysToCopyRequired.forEach(function(key){
     copyTo[key.toLowerCase()] = objectToCopy[key].trim();
   });
+
+  keysToCopyOptional.forEach(function(key) {
+    if(objectToCopy[key].trim()!== ""){
+      copyTo[key.toLowerCase()] = objectToCopy[key].trim();
+    }
+  });
+
+
+
+
   return copyTo;
 }
 
@@ -137,7 +147,8 @@ fs.readFile(s6QuestionsPath, "utf8", (err, data) => {
     index++;
 
     question.topic = question.topic.trim().replace(trim_regexp, subst);
-    const questionObject = copyQuestionObject(question, ["id", "label","category", "topic", "section", "stage", "Type"] )
+
+    const questionObject = copyQuestionObject(question, ["id", "label","category", "topic", "section", "stage", "Type"], ["Sub question 1", "Sub question 2"] )
 
     // this is for creating an index of all of the questions
     s6Classifiers.questions[questionObject.id] = questionObject
