@@ -1802,8 +1802,8 @@
   {
     "id": "4.1.9",
     "label": "Do you have an asset management policy in place",
-    "Sub question 1": "Does this make clear assets shou;d not be taken off site without the correct and prior authorisation.",
-    "Sub question 2": "Does this make clear that associated documentation must be in place if assets are taken off site",
+    "Sub question 1": "Does this make clear assets should not be taken off site without the correct and prior authorisation",
+    "Sub question 2": "Does this make  clear that associated documentation must be in place if assets are taken off site",
     "topic": "\"\n  Hardware assets register & management\n  \"",
     "category": "Asset management",
     "section": "Section 1: MANAGE security risk",

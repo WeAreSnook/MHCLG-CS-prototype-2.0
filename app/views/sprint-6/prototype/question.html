@@ -60,6 +60,36 @@
         }) }}
         {% endif %}
 
+
+        {% if ( question["sub question 1"] ) %}
+        <h3 class="govuk-heading-m">
+          {{ question["sub question 1"] }}
+        </h3>
+        {{ govukRadios({
+        idPrefix: "sub-1-radio",
+        name: "sub-answer-1",
+        items: [
+        { value: "true", text: "Yes" },
+        { value: "false", text: "No" }
+        ] })
+        }}
+        {% endif %}
+
+
+        {% if ( question["sub question 2"] ) %}
+        <h3 class="govuk-heading-m">
+          {{ question["sub question 2"] }}
+        </h3>
+        {{ govukRadios({
+        idPrefix: "sub-2-radio",
+        name: "sub-answer-2",
+        items: [
+        { value: "true", text: "Yes" },
+        { value: "false", text: "No" }
+        ] })
+        }}
+        {% endif %}
+
         <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"
