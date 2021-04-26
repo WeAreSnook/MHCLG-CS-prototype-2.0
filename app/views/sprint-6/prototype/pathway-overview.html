@@ -23,8 +23,8 @@
         </div>
         <div class="progress__bar"><span style="width: {{ pathway.percentage_complete }}%"></span></div>
         <p>There are {{ pathway.number_of_questions }} controls for {{ pathway.short_name }} and you have met {{ pathway.number_completed }}</p>
-        <p class="govuk-body">Testing purposes only: <a href="/sprint-6/prototype/{{ pathway.slug | lower }}/mark-as-met">Mark all questions as met</a></p>
     </div>
+    <p class="govuk-body">Testing purposes only: <a href="/sprint-6/prototype/{{ pathway.slug | lower }}/mark-as-met">Mark all questions as met</a></p>
 
     {% endif %}
 
