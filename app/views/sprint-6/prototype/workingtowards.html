@@ -1,17 +1,17 @@
 {% extends "sprint-6/prototype/layout.html" %}
 
-"id","category", "topic", "section", "stage", "Type"
-
 {% block pageTitle %}
 {{question.id}} - {{question.label}}
   {% endblock %}
 
-{% block beforeContent %}
- 
-    <a class="govuk-back-link" href={{prevQuestionHref}}>
-      Previous
-    </a>
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+  items: breadcrumb_items
+  }) }}
+</div>
 {% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
