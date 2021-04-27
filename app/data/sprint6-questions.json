@@ -1802,8 +1802,8 @@
   {
     "id": "4.1.9",
     "label": "Do you have an asset management policy in place",
-    "Sub question 1": "Does this make clear assets should not be taken off site without the correct and prior authorisation",
-    "Sub question 2": "Does this make  clear that associated documentation must be in place if assets are taken off site",
+    "Sub question 1": "Does this make clear assets shou;d not be taken off site without the correct and prior authorisation.",
+    "Sub question 2": "Does this make clear that associated documentation must be in place if assets are taken off site",
     "topic": "\"\n  Hardware assets register & management\n  \"",
     "category": "Asset management",
     "section": "Section 1: MANAGE security risk",
@@ -3236,7 +3236,7 @@
     "Risk": "",
     "GDPR": "",
     "ISO 27001": "",
-    "NHS DSPT": "",
+    "NHS DSPT": "2.2.1,3.2.1",
     "Type": ""
   },
   {
@@ -3256,7 +3256,7 @@
     "Risk": "",
     "GDPR": "B5",
     "ISO 27001": "",
-    "NHS DSPT": "",
+    "NHS DSPT": "2.2.1,3.2.1",
     "Type": ""
   },
   {
@@ -3276,7 +3276,7 @@
     "Risk": "",
     "GDPR": "B5",
     "ISO 27001": "",
-    "NHS DSPT": "",
+    "NHS DSPT": "3.2.1",
     "Type": ""
   },
   {
@@ -3296,7 +3296,7 @@
     "Risk": "",
     "GDPR": "B5",
     "ISO 27001": "",
-    "NHS DSPT": "",
+    "NHS DSPT": "2.2.3,3.2.2,3.4.2",
     "Type": ""
   },
   {
@@ -3316,7 +3316,7 @@
     "Risk": "",
     "GDPR": "B5",
     "ISO 27001": "",
-    "NHS DSPT": "",
+    "NHS DSPT": "3.2.1,3.2.2,3.3.1,3.3.2,3.3.3 3.4.1,3.4.2",
     "Type": ""
   },
   {
@@ -3336,7 +3336,7 @@
     "Risk": "",
     "GDPR": "B5",
     "ISO 27001": "",
-    "NHS DSPT": "",
+    "NHS DSPT": "3.4.1,3.4.2",
     "Type": ""
   },
   {
@@ -3356,7 +3356,7 @@
     "Risk": "",
     "GDPR": "",
     "ISO 27001": "7.4,A7.2.2",
-    "NHS DSPT": "",
+    "NHS DSPT": "3.4.2",
     "Type": ""
   },
   {
@@ -3376,7 +3376,7 @@
     "Risk": "",
     "GDPR": "",
     "ISO 27001": "7.4,A7.2.2",
-    "NHS DSPT": "",
+    "NHS DSPT": "3.2.2",
     "Type": ""
   },
   {
@@ -3396,7 +3396,7 @@
     "Risk": "",
     "GDPR": "",
     "ISO 27001": "",
-    "NHS DSPT": "",
+    "NHS DSPT": "3.1.1,3.2.1,3.2.2",
     "Type": ""
   },
   {
@@ -3416,7 +3416,7 @@
     "Risk": "",
     "GDPR": "",
     "ISO 27001": "",
-    "NHS DSPT": "",
+    "NHS DSPT": "3.4.1",
     "Type": ""
   },
   {
@@ -3436,7 +3436,7 @@
     "Risk": "",
     "GDPR": "",
     "ISO 27001": "",
-    "NHS DSPT": "",
+    "NHS DSPT": "3.3.1,3.3.2",
     "Type": ""
   },
   {
