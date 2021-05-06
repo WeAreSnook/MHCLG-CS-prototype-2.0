@@ -1,0 +1,122 @@
+{% extends "sprint-6/prototype/layout.html" %}
+
+{% block pageTitle %}
+{{question.id}} - {{question.label}}
+  {% endblock %}
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+  items: breadcrumb_items
+  }) }}
+</div>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{question.label}}
+      </h1>
+
+     {{snippet_content | safe}}
+
+      <form action="#" method="post" novalidate>
+
+        {% if ( question["sub question 1"] ) %}
+        <h3 class="govuk-heading-m">
+          {{ question["sub question 1"] }}
+        </h3>
+        {{ govukRadios({
+        idPrefix: "sub-1-radio",
+        name: "sub-answer-1",
+        items: [
+        { value: "true", text: "Yes" },
+        { value: "false", text: "No" }
+        ] })
+        }}
+        {% endif %}
+
+
+        {% if ( question["sub question 2"] ) %}
+        <h3 class="govuk-heading-m">
+          {{ question["sub question 2"] }}
+        </h3>
+        {{ govukRadios({
+        idPrefix: "sub-2-radio",
+        name: "sub-answer-2",
+        items: [
+        { value: "true", text: "Yes" },
+        { value: "false", text: "No" }
+        ] })
+        }}
+        {% endif %}
+
+        {% if (  question["sub question 1"] or question["sub question 2"]  ) %}
+        <h3 class="govuk-heading-m">
+          Update status
+        </h3>
+        {% endif %}
+
+
+
+        {% if ( not question.type or question.type === "standard_radio" ) %}
+        {{ govukRadios({
+          idPrefix: "answer-radio",
+          name: "answer",
+          items: [
+            { value: "met", text: "Met" },
+            { value: "notmet", text: "Not met" },
+            { value: "riskaccepted", text: "Risk accepted (and recorded in corporate risk register)" },
+            { value: "workingtowards", text: "Working towards" },
+            { value: "metwithexceptions", text: "Met with exceptions" }
+          ] })
+        }}
+        {% elif question.type === "upload" %}
+          <input type="hidden" name="answer" value="met">
+          {{ govukFileUpload({
+            id: "file-upload-1",
+            name: "file-upload-1",
+            label: {
+            text: "Upload a file"
+            }
+          }) }}
+
+        {% elif question.type === "textarea" %}
+        <input type="hidden" name="answer" value="met">
+        {{ govukTextarea({
+          name: "more-detail",
+          id: "more-detail",
+          label: {
+          text: "Can you provide more detail? ",
+          classes: "govuk-label--l",
+          isPageHeading: true
+          },
+          hint: {
+          text: "Do not include personal or financial information, like your National Insurance number or credit card details."
+          }
+        }) }}
+        {% endif %}
+
+
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+            }) }}
+          <a href="/sprint-6/prototype/{{pathway}}/" class="govuk-button govuk-button--secondary">Go to Overview</a>
+          <a href="#" class="govuk-button govuk-button--secondary">Skip</a>
+
+
+        </div>
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m" style="border-top: 3px solid #005ea5; padding-top:8px">
+        Ask an expert
+      </h2>
+      <p>Ask a cyber security expert at MHCLG about this question or risk. </p>
+      <a href="{{question.id}}/askanexpert">Ask an expert</a>
+    </div>
+  </div>
+
+{% endblock %}

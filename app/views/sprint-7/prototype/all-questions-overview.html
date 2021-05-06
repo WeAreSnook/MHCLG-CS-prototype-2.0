@@ -1,0 +1,69 @@
+{% extends "sprint-6/prototype/layout.html" %} {% block pageTitle %} View All Controls
+{% endblock %}
+
+
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+  items: [
+  {
+  text: "Council Cyber Health Overview",
+  href: "/sprint-6/prototype/council-overview"
+  }
+  ]
+  }) }}
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <h1 class="govuk-heading-xl">Explore all controls</h1>
+
+  <div class="progress-container">
+    <div class="progress-info">
+
+      <h2 class="govuk-heading-l">{{pathway.short_name}} controls met</h2>
+      <p class="govuk-heading-l">{{pathway.number_completed}}/{{pathway.number_of_questions}}</p>
+    </div>
+    <div class="progress__bar"><span style="width: {{ pathway.percentage_complete }}%"></span></div>
+    <p>There are {{ pathway.number_of_questions }} controls for {{ pathway.short_name }} and you have met {{ pathway.number_completed }}</p>
+
+  </div>
+
+
+  {% for section in sections %}
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ section.name }}</h2>
+  <!-- <ul class="govuk-list">
+          {% for category in section.categories %}
+          <li>{{ category }}</li>
+          {% endfor %}
+      </ul> -->
+  <ul class="app-task-list__items govuk-!-padding-left-0">
+    {% for category in section.categories %}
+    <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a
+                  href="/sprint-6/prototype/category/{{ category | slugify | lower }}"
+                  aria-describedby="{{ category | slugify | lower }}"
+          >
+            {{ category }}
+          </a>
+        </span>
+      <!--<strong
+        class="govuk-tag app-task-list__tag"
+        id="{{ category | slugify | lower }}"
+        >To do</strong
+      >-->
+    </li>
+
+
+    {% endfor %}
+    <br>
+    <br>
+
+    {% else %}
+    <p>No sections were found</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

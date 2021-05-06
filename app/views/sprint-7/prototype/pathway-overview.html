@@ -1,0 +1,53 @@
+{% extends "sprint-6/prototype/layout.html" %}
+{% block pageTitle %} {{pathway.short_name}} Overview {% endblock %}
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+    items: breadcrumb_items
+    }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+
+  <h1 class="govuk-heading-xl">{{ pathway.long_name }}</h1>
+
+  <p>{{ pathway.intro_text }}</p>
+
+    {% if pathway.number_completed == pathway.number_of_questions %}
+
+    {{
+        govukPanel({
+            titleText: "Congratulations",
+            html: "You have met all "+pathway.number_of_questions+" controls associated"
+        })
+    }}
+
+    {% else %}
+
+    <div class="progress-container">
+        <div class="progress-info">
+            <h2 class="govuk-heading-l">{{pathway.short_name}} controls met</h2>
+            <p class="govuk-heading-l">{{pathway.number_completed}}/{{pathway.number_of_questions}}</p>
+        </div>
+        <div class="progress__bar"><span style="width: {{ pathway.percentage_complete }}%"></span></div>
+        <p>There are {{ pathway.number_of_questions }} controls for {{ pathway.short_name }} and you have met {{ pathway.number_completed }}</p>
+        <p class="govuk-body">Testing purposes only: <a href="{{mark_as_met}}">Mark all questions as met</a></p>
+    </div>
+
+    {% endif %}
+
+        {{ govukTable({
+        caption: pathway.short_name + " Controls",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: table_header,
+        rows: table_rows
+
+        }) }}
+    </div>
+
+{% endblock %}

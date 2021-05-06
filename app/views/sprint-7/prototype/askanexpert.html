@@ -1,0 +1,43 @@
+{% extends "sprint-6/prototype/layout.html" %}
+
+
+{% block pageTitle %}
+{{question.id}} - {{question.label}}
+{% endblock %}
+
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+    items: breadcrumb_items
+    }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <form action="#" method="post" novalidate>
+
+            {{ govukTextarea({
+            name: "riskaccepted",
+            id: "riskaccepted",
+            label: {
+            text: "Ask an expert",
+            classes: "govuk-label--l",
+            isPageHeading: true
+            },
+            hint: {
+            text: "Ask us what support you need, and how we can best get in touch?"
+            }
+            }) }}
+
+            <a href="{{link}}" class="govuk-button govuk-button--secondary">Send and continue question</a>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}
