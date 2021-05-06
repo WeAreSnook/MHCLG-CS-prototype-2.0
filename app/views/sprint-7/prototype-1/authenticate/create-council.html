@@ -110,10 +110,13 @@
        
           {{ govukInput({
             label: {
-              text: "What is your council's annual budget for Cyber Security?"
+              text: "What roughly is your council's annual IT budget?"
             },
             hint: {
-                text: "If you don't have a cyber budget please include your IT budget."
+                text: "This should include all software, hardware, managed services, etc - but not internal staff costs. This information will help give us an understanding of the scale of your IT estate."
+              },
+              prefix: {
+                text: "£"
               },
             classes: "govuk-!-width-two-thirds",
             id: "council-annual-budget",
@@ -122,10 +125,10 @@
 
           {{ govukInput({
             label: {
-              text: "How many people in your council have cyber security responsibilities in their day to day role? "
+              text: "How many people in your council have cyber security responsibilities in their day to day role?"
             },
             hint: {
-                text: "e.g. Cyber in their job title"
+                text: "This should be anybody who plays a key role in identifying, managing or mitigating cyber security risks."
               },
             classes: "govuk-!-width-two-thirds",
             id: "council-cyber-team",
