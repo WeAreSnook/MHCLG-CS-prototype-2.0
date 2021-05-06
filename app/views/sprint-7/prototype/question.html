@@ -20,6 +20,13 @@
 
      {{snippet_content | safe}}
 
+     <h2 class="govuk-heading-m govuk-!-margin-top-5 govuk-!-padding-top-5" style="border-top: 3px solid #005ea5;">
+      Request help to answer this question
+    </h2>
+    <p>Ask the MHCLG team about how to best answer this question. </p>
+    <a href="{{question.id}}/askanexpert">Request help</a>
+    <hr class="govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+
       <form action="#" method="post" novalidate>
 
         {% if ( question["sub question 1"] ) %}
@@ -106,16 +113,8 @@
           <a href="/sprint-7/prototype/{{pathway}}/" class="govuk-button govuk-button--secondary">Go to Overview</a>
           <a href="#" class="govuk-button govuk-button--secondary">Skip</a>
 
-
         </div>
       </form>
-    </div>
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m" style="border-top: 3px solid #005ea5; padding-top:8px">
-        Ask an expert
-      </h2>
-      <p>Ask a cyber security expert at MHCLG about this question or risk. </p>
-      <a href="{{question.id}}/askanexpert">Ask an expert</a>
     </div>
   </div>
 
