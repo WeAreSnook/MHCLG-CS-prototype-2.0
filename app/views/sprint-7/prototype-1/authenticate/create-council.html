@@ -7,7 +7,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="create-user" method="post" novalidate>
+      <form action="data" method="post" novalidate>
         {% from "govuk/components/input/macro.njk" import govukInput %}
         {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -133,10 +133,6 @@
           }) }}
 
         {% endcall %}
-
-        <h2 class="govuk-heading-m">How we use this information</h2>
-        <p class="govuk-body">We'll use this information to provide personalised questions and recommendations based on the details of your council.</p>
-        <p class="govuk-body">We'll also use this information to provide comparisons against similar councils.</p>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>
       </form>
