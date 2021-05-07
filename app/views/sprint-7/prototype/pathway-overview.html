@@ -22,20 +22,40 @@
     {{
         govukPanel({
             titleText: "Congratulations",
-            html: "You have met all "+pathway.number_of_questions+" controls associated",
+            html: "You have met all "+pathway.number_of_questions+" associated controls",
             classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-6"
         })
     }}
 
     {% if pathway.slug == 'NHSDSPT' or pathway.slug == 'PSN' %}
-        <h2 class="govuk-heading-l govuk-!-margin-bottom-3">Submit results</h2>
-        <p class="govuk-body govuk-!-margin-bottom-4">Submit your results from this self assessment to {{ pathway.short_name }}.</p>
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">{{ pathway.short_name }} pen test submission</h2>
+        <p class="govuk-body">Now that you’ve achieved all controls in this section, you can submit your {{ pathway.short_name }} submission directly from here.</p>
+        <p class="govuk-body">To do this, you will need to upload the results of a recent penetration test as required for {{ pathway.short_name }}.</p>
         <a href="../prototype-1/submit/upload" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
             Start submission to {{ pathway.short_name }}
             <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
             </svg>
         </a>
+    </div>
+    <div class="govuk-grid-column-full">
+    {% endif %}
+
+    {% if pathway.slug == 'level1' or pathway.slug == 'level2' or pathway.slug == 'level3' %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l">External Assessment</h2>
+            <p class="govuk-body">Now that you’ve achieved this level, you can request for your responses to be externally assessed by an expert. This can help you feel reassured that you are meeting all controls in the correct way.</p>
+            <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                Send responses for external assessment
+                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                </svg>
+            </a>
+        </div>
+        <div class="govuk-grid-column-full">
     {% endif %}
 
     {% else %}
