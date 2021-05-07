@@ -1,0 +1,86 @@
+{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %} Cyberhealth Framework {%
+    endblock %}
+
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+  items: [
+  {
+  text: "Council Cyber Health Overview",
+  href: "/sprint-7/prototype/council-overview"
+  },
+  {
+  text: "Risks",
+  href: "/sprint-7/prototype-1/risk"
+  }
+  ]
+  }) }}
+</div>
+{% endblock %}
+
+    {% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
+        <strong class="govuk-tag govuk-tag--red">High Risk</strong>
+        <h1 class="govuk-heading-xl govuk-!-margin-top-4">No known working backup at a secondary or centrally accessible site</h1>
+        <h2 class="govuk-heading-l">How to mitigate this risk and why</h2>
+        <p class="govuk-body">Backups must be stored at an offsite or secondary backup location that is protected against unauthorised network access from the primary network (e.g. a ransomware attack, or a complete network breach). </p>
+        <p class="govuk-body">A common approach by attackers who want to gain access to your network is to first delete or otherwise compromise the integrity of the backup. Even modern data centres with advanced security and fire protection systems should use a remote backup site. </p>
+        <p class="govuk-body">Without regular recovery testing of the remotely stored backup, there is limited assurance the Council will successfully recover from an extreme event impacting information systems.</p>
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2 govuk-!-margin-top-7 govuk-!-padding-top-5" style="border-top: 3px solid #005ea5;">
+          Ask an expert
+        </h2>
+        <p class="govuk-!-margin-bottom-6">Ask a cyber security expert at MHCLG for advice on this risk. <a href="#">Ask an expert</a></p>
+        <hr class="govuk-!-margin-bottom-6">
+        <h2 class="govuk-heading-l">What actions you should take</h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Develop a backup strategy that uses an offsite or secondary site.</li>
+          <li>Ensure the backup information is adequately protected against unauthorised access or accidental deletion.</li>
+          <li>Confirm the backup infrastructure and remote backup data is adequately secured secure through regular firewall rule base reviews and/or network penetration testing.</li>
+          <li>Schedule and resource the regular testing (at least annually) of a major recovery simulation (e.g. data centre or server cluster).</li>
+          <li>Schedule and resource the regular testing (at least annually) of a minor recovery simulation (e.g. a core application).</li>
+          <li>Record the results of simulated recovery operations and ensure these are fed back to the Council's senior leadership team.</li>
+          <li>Review the references section below for examples of Council's that suffered major expense and loss of service due lack of suitable backup to recover from following the incident.</li>
+        </ul>
+        <h2 class="govuk-heading-l govuk-!-margin-top-5" style="border-top: 3px solid #005ea5;">
+          External support resources
+        </h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            NCSC - <a target="_blank" href="https://www.ncsc.gov.uk/blog-post/offline-backups-in-an-online-world">Offline backups in an online world</a>
+          </li>
+          <li>
+            Centre for Internet Security (CIS) - <a target="_blank" href="https://www.cisecurity.org/spotlight/ei-isac-cybersecurity-spotlight-backups/">Cybersecurity Spotlight: Backups</a>
+          </li>
+          <li>
+            NCSC - <a target="_blank" href="https://www.ncsc.gov.uk/blog-post/cloud-backup-options-for-mitigating-the-threat-of-ransomware">Cloud backup options for mitigating the threat of ransomware</a>
+          </li>
+        </ul>
+        
+      </div> 
+      <div class="govuk-grid-column-one-third govuk-!-margin-top-4">
+        <aside class="app-related-items" role="complementary">
+          <h2 class="govuk-heading-m" id="subsection-title">References</h2>
+          <nav role="navigation" aria-labelledby="subsection-title">
+            <ul class="govuk-list govuk-!-font-size-16">
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+              <li>
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Redcar cyber-attack: Council using pen and paper</h3>
+                <a target="_blank" href="https://www.bbc.co.uk/news/technology-51504482" class="govuk-link">Read more</a>
+              </li>
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+              <li>
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Fire suppression kills Glasgow City Council's IT</h3>
+                <a target="_blank" href="https://www.datacenterdynamics.com/en/news/fire-suppression-kills-glasgow-city-councils-it/" class="govuk-link">Read more</a>
+              </li>
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            </ul>
+          </nav>
+        </aside>
+      </div>
+    </div>
+    
+
+     
+    {% endblock %}
+    

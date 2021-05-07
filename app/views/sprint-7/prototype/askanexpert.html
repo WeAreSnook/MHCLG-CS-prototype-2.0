@@ -1,0 +1,44 @@
+{% extends "sprint-7/prototype/layout.html" %}
+
+
+{% block pageTitle %}
+{{question.id}} - {{question.label}}
+{% endblock %}
+
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+    items: breadcrumb_items
+    }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <form action="#" method="post" novalidate>
+
+            {{ govukTextarea({
+            name: "riskaccepted",
+            id: "riskaccepted",
+            label: {
+            text: "Request help to answer this question
+        ",
+            classes: "govuk-label--l",
+            isPageHeading: true
+            },
+            hint: {
+            text: "Let us know any queries you have about this question, and the best way to get in touch with you."
+            }
+            }) }}
+
+            <a href="{{link}}" class="govuk-button govuk-button--secondary">Send and continue question</a>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

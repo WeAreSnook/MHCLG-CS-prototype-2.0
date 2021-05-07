@@ -1,0 +1,25 @@
+{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %} Scope {%
+    endblock %}
+    {% block beforeContent %}
+    <a class="govuk-back-link" href="../authenticate/create-user">Back</a>
+  {% endblock %}
+    {% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+          Scope of the self-assessment
+        </h1>
+        <p>The scope for this self-assessment is global - it includes your full IT infrastructure and all your physical assets to ensure you are as protected as possible. </p>
+        <p>You can add in exceptions on specific questions if necessary.</p>
+        <a
+          href="/sprint-7/prototype/council-overview"
+          role="button"
+          draggable="false"
+          class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+          data-module="govuk-button"
+        >
+          Continue
+        </a>
+      </div>
+    {% endblock %}
+    

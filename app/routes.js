@@ -387,13 +387,13 @@ router.get("/sprint-5/prototype-1/category/:categorySlug", (req, res) => {
 
 // Prototype 6
 
-router.get("/sprint-6/prototype/all-questions-overview/", (req, res) => {
+router.get("/:sprint/prototype/all-questions-overview/", (req, res) => {
   updateCountOnAssessment("all", req);
   let pathway = assessments["all"]
-  res.render("sprint-6/prototype/all-questions-overview", { sections: sections, assessments, pathway });
+  res.render(req.params.sprint+"/prototype/all-questions-overview", { sections: sections, assessments, pathway });
 });
 
-router.get("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
+router.get("/:sprint/prototype/:pathWay/question/:questionID", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
@@ -402,11 +402,11 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: assessment_pathway.short_name,
-      href: "/sprint-6/prototype/" + pathway
+      href: "/"+req.params.sprint+"/prototype/" + pathway
     }
 
   ];
@@ -417,7 +417,7 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
   }
   // if we are passed a url variable for an expert review then redirect somewhere?
 
-  res.render("sprint-6/prototype/question", {
+  res.render(req.params.sprint+"/prototype/question", {
     question,
     pathway,
     snippet_content,
@@ -428,7 +428,7 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
 });
 
 
-router.get("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
+router.get("/:sprint/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
@@ -437,15 +437,15 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: assessment_pathway.short_name,
-      href: "/sprint-6/prototype/" + pathway
+      href: "/"+req.params.sprint+"/prototype/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/" + pathway + "/question/"+question.id
     }
 
   ];
@@ -453,7 +453,7 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (
 
   // if we are passed a url variable for an expert review then redirect somewhere?
 
-  res.render("sprint-6/prototype/workingtowards", {
+  res.render(req.params.sprint+"/prototype/workingtowards", {
     question,
     pathway,
     breadcrumb_items
@@ -462,7 +462,7 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (
 
 
 
-router.get("/sprint-6/prototype/:pathWay/question/:questionID/askanexpert", (req, res) => {
+router.get("/:sprint/prototype/:pathWay/question/:questionID/askanexpert", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
@@ -471,23 +471,23 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/askanexpert", (req
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: assessment_pathway.short_name,
-      href: "/sprint-6/prototype/" + pathway
+      href: "/"+req.params.sprint+"/prototype/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/" + pathway + "/question/"+question.id
     }
 
   ];
 
-  const link = '/sprint-6/prototype/' + pathway + '/question/' + question.id
+  const link = '/'+req.params.sprint+'/prototype/' + pathway + '/question/' + question.id
   // if we are passed a url variable for an expert review then redirect somewhere?
 
-  res.render("sprint-6/prototype/askanexpert", {
+  res.render(req.params.sprint+"/prototype/askanexpert", {
     question,
     pathway,
     link,
@@ -497,7 +497,7 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/askanexpert", (req
 
 
 
-router.post("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
+router.post("/:sprint/prototype/:pathWay/question/:questionID/workingtowards", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
 
@@ -516,7 +516,7 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/workingtowards", 
 
 });
 
-router.get("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
+router.get("/:sprint/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
@@ -525,27 +525,27 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions"
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: assessment_pathway.short_name,
-      href: "/sprint-6/prototype/" + pathway
+      href: "/"+req.params.sprint+"/prototype/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/" + pathway + "/question/"+question.id
     }
 
   ];
 
-  res.render("sprint-6/prototype/metwithexceptions", {
+  res.render(req.params.sprint+"/prototype/metwithexceptions", {
     question,
     pathway,
     breadcrumb_items
   });
 });
 
-router.get("/sprint-6/prototype/:pathWay/question/:questionID/notmet", (req, res) => {
+router.get("/:sprint/prototype/:pathWay/question/:questionID/notmet", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
@@ -554,34 +554,34 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/notmet", (req, res
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: assessment_pathway.short_name,
-      href: "/sprint-6/prototype/" + pathway
+      href: "/"+req.params.sprint+"/prototype/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/" + pathway + "/question/"+question.id
     }
 
   ];
 
-  res.render("sprint-6/prototype/notmet", {
+  res.render(req.params.sprint+"/prototype/notmet", {
     question,
     pathway,
     breadcrumb_items
   });
 });
 
-router.post("/sprint-6/prototype/:pathWay/question/:questionID/notmet", (req, res) => {
+router.post("/:sprint/prototype/:pathWay/question/:questionID/notmet", (req, res) => {
 
 
   res.redirect("../..");
 
 });
 
-router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
+router.post("/:sprint/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
 
@@ -597,7 +597,7 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions
 });
 
 
-router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+router.post("/:sprint/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
 
     req.session.question_data[req.params.questionID] = {
       "answer": "riskaccepted",
@@ -609,7 +609,7 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (r
 
 });
 
-router.get("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+router.get("/:sprint/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.pathWay;
   const assessment_pathway = assessments[pathway];
@@ -617,21 +617,21 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (re
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: assessment_pathway.short_name,
-      href: "/sprint-6/prototype/" + pathway
+      href: "/"+req.params.sprint+"/prototype/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/" + pathway + "/question/"+question.id
     }
 
   ];
 
   // if we are passed a url variable for an expert review then redirect somewhere?
-  res.render("sprint-6/prototype/riskaccepted", {
+  res.render(req.params.sprint+"/prototype/riskaccepted", {
     question,
     pathway,
     breadcrumb_items
@@ -640,7 +640,7 @@ router.get("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (re
 });
 
 
-router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
+router.post("/:sprint/prototype/:pathWay/question/:questionID/metwithexceptions", (req, res) => {
 
   // NTH:  if it is blank we should display some validation?
 
@@ -664,7 +664,7 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/metwithexceptions
 });
 
 
-router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
+router.post("/:sprint/prototype/:pathWay/question/:questionID/riskaccepted", (req, res) => {
 
   // NTH:  if it is blank we should display some validation?
 
@@ -687,7 +687,7 @@ router.post("/sprint-6/prototype/:pathWay/question/:questionID/riskaccepted", (r
   }
 });
 
-router.post("/sprint-6/prototype/:pathWay/question/:questionID", (req, res) => {
+router.post("/:sprint/prototype/:pathWay/question/:questionID", (req, res) => {
 
   // NTH:  if it is blank we should display some validation?
 
@@ -758,7 +758,7 @@ let retrieve_category = function(category_slug){
 
 // Category based questions
 
-router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID", (req, res) => {
+router.get("/:sprint/prototype/category/:categorySlug/question/:questionID", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.categorySlug;
@@ -767,15 +767,15 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID", (r
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/all-questions-overview"
+      href: "/"+req.params.sprint+"/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
-      href: "/sprint-6/prototype/category/" + pathway
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway
     }
 
   ];
@@ -801,7 +801,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID", (r
 
 
 
-router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/workingtowards", (req, res) => {
+router.get("/:sprint/prototype/category/:categorySlug/question/:questionID/workingtowards", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.categorySlug;
@@ -810,19 +810,19 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/work
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/all-questions-overview"
+      href: "/"+req.params.sprint+"/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
-      href: "/sprint-6/prototype/category/" + pathway
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/category/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway + "/question/"+question.id
     }
 
   ];
@@ -840,7 +840,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/work
 });
 
 
-router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/askanexpert", (req, res) => {
+router.get("/:sprint/prototype/category/:categorySlug/question/:questionID/askanexpert", (req, res) => {
 
 
   const question = s6Classifiers.questions[req.params.questionID];
@@ -850,29 +850,29 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/aska
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/all-questions-overview"
+      href: "/"+req.params.sprint+"/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
-      href: "/sprint-6/prototype/category/" + pathway
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/category/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway + "/question/"+question.id
     }
 
   ];
 
 
-  const link = "/sprint-6/prototype/category/"+ pathway + "/question/"+question.id;
+  const link = "/"+req.params.sprint+"/prototype/category/"+ pathway + "/question/"+question.id;
 
   // if we are passed a url variable for an expert review then redirect somewhere?
 
-  res.render("sprint-6/prototype/askanexpert", {
+  res.render(req.params.sprint+"/prototype/askanexpert", {
     question,
     pathway,
     link,
@@ -881,7 +881,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/aska
 });
 
 
-router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/notmet", (req, res) => {
+router.get("/:sprint/prototype/category/:categorySlug/question/:questionID/notmet", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.categorySlug;
@@ -890,37 +890,37 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/notm
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/all-questions-overview"
+      href: "/"+req.params.sprint+"/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
-      href: "/sprint-6/prototype/category/" + pathway
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/category/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway + "/question/"+question.id
     }
 
   ];
 
-  res.render("sprint-6/prototype/notmet", {
+  res.render(req.params.sprint+"/prototype/notmet", {
     question,
     pathway,
     breadcrumb_items
   });
 });
 
-router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/notmet", (req, res) => {
+router.post("/:sprint/prototype/category/:categorySlug/question/:questionID/notmet", (req, res) => {
 
   res.redirect("../..");
 
 });
 
-router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/workingtowards", (req, res) => {
+router.post("/:sprint/prototype/category/:categorySlug/question/:questionID/workingtowards", (req, res) => {
 
   req.session.question_data[req.params.questionID] = {
     "answer": "workingtowards",
@@ -932,7 +932,7 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/wor
 
 });
 
-router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/metwithexceptions", (req, res) => {
+router.get("/:sprint/prototype/category/:categorySlug/question/:questionID/metwithexceptions", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.categorySlug;
@@ -941,25 +941,25 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/metw
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/all-questions-overview"
+      href: "/"+req.params.sprint+"/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
-      href: "/sprint-6/prototype/category/" + pathway
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/category/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway + "/question/"+question.id
     }
 
   ];
 
 
-  res.render("sprint-6/prototype/metwithexceptions", {
+  res.render(req.params.sprint+"/prototype/metwithexceptions", {
     question,
     pathway,
     breadcrumb_items
@@ -967,7 +967,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/metw
 });
 
 
-router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/metwithexceptions", (req, res) => {
+router.post("/:sprint/prototype/category/:categorySlug/question/:questionID/metwithexceptions", (req, res) => {
 
 
 
@@ -982,7 +982,7 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/met
 });
 
 
-router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/riskaccepted", (req, res) => {
+router.post("/:sprint/prototype/category/:categorySlug/question/:questionID/riskaccepted", (req, res) => {
 
 
 
@@ -996,7 +996,7 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/ris
 
 });
 
-router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/riskaccepted", (req, res) => {
+router.get("/:sprint/prototype/category/:categorySlug/question/:questionID/riskaccepted", (req, res) => {
 
   const question = s6Classifiers.questions[req.params.questionID];
   const pathway  = req.params.categorySlug;
@@ -1005,25 +1005,25 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/risk
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/all-questions-overview"
+      href: "/"+req.params.sprint+"/prototype/all-questions-overview"
     },
     {
       text: assessment_pathway.name,
-      href: "/sprint-6/prototype/category/" + pathway
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway
     },
     {
       text: question.id,
-      href: "/sprint-6/prototype/category/" + pathway + "/question/"+question.id
+      href: "/"+req.params.sprint+"/prototype/category/" + pathway + "/question/"+question.id
     }
 
   ];
 
   // if we are passed a url variable for an expert review then redirect somewhere?
-  res.render("sprint-6/prototype/riskaccepted", {
+  res.render(":sprint/prototype/riskaccepted", {
     question,
     pathway,
     breadcrumb_items
@@ -1032,7 +1032,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/question/:questionID/risk
 });
 
 
-router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/metwithexceptions", (req, res) => {
+router.post("/:sprint/prototype/category/:categorySlug/question/:questionID/metwithexceptions", (req, res) => {
 
   // NTH:  if it is blank we should display some validation?
 
@@ -1056,7 +1056,7 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/met
 });
 
 
-router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/riskaccepted", (req, res) => {
+router.post("/:sprint/prototype/category/:categorySlug/question/:questionID/riskaccepted", (req, res) => {
 
   // NTH:  if it is blank we should display some validation?
 
@@ -1081,7 +1081,7 @@ router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID/ris
   }
 });
 
-router.post("/sprint-6/prototype/category/:categorySlug/question/:questionID", (req, res) => {
+router.post("/:sprint/prototype/category/:categorySlug/question/:questionID", (req, res) => {
 
 
   const question = s6Classifiers.questions[req.params.questionID];
@@ -1142,7 +1142,7 @@ let updateCountOnAssessment = function(assessment_index, req) {
 
 }
 
-router.get("/sprint-6/prototype/council-overview", (req, res) => {
+router.get("/:sprint/prototype/council-overview", (req, res) => {
   let assessment_keys = Object.keys(assessments)
   assessment_keys.forEach(function(key){
     updateCountOnAssessment(key, req);
@@ -1156,7 +1156,7 @@ router.get("/sprint-6/prototype/council-overview", (req, res) => {
     updateCountOnAssessment(key, req);
   });
 
-  res.render("sprint-6/prototype/council-overview", {
+  res.render(req.params.sprint+"/prototype/council-overview", {
     assessments,
     standards_keys,
     compliance_keys,
@@ -1182,7 +1182,7 @@ const table_header = [
   }
 ];
 
-router.get("/sprint-6/prototype/:pathWay", (req, res) => {
+router.get("/:sprint/prototype/:pathWay", (req, res) => {
   const pathway_key  = req.params.pathWay;
   const pathway = assessments[pathway_key];
 
@@ -1190,11 +1190,11 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+ req.params.sprint + "/prototype/council-overview"
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/all-questions-overview"
+      href: "/"+ req.params.sprint + "/prototype/all-questions-overview"
     }
 
   ];
@@ -1250,7 +1250,7 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
 
     // generate the question url
 
-    let question_url = "/sprint-6/prototype/"+pathway_key+"/question/"+this_row.id;
+    let question_url = "/"+req.params.sprint+"/prototype/"+pathway_key+"/question/"+this_row.id;
     let view_link = "<a href='"+question_url+"'>View</a>";
 
     return  [
@@ -1272,8 +1272,8 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
     ];
   });
 
-  let mark_as_met = "/sprint-6/prototype/"+pathway_key+"/mark-as-met";
-  res.render("sprint-6/prototype/pathway-overview", {
+  let mark_as_met = "/"+req.params.sprint+"/prototype/"+pathway_key+"/mark-as-met";
+  res.render(req.params.sprint+"/prototype/pathway-overview", {
     pathway,
     table_header,
     table_rows,
@@ -1284,7 +1284,7 @@ router.get("/sprint-6/prototype/:pathWay", (req, res) => {
 });
 
 
-router.get("/sprint-6/prototype/category/:categorySlug/mark-as-met", (req, res) => {
+router.get("/:sprint/prototype/category/:categorySlug/mark-as-met", (req, res) => {
   const category_slug  = req.params.categorySlug;
   let category_questions = s6Classifiers["category"][category_slug];
   if (!req.session.question_data){
@@ -1301,12 +1301,12 @@ router.get("/sprint-6/prototype/category/:categorySlug/mark-as-met", (req, res) 
   });
 
   req.session.save(function() {
-    res.redirect('/sprint-6/prototype/category/' + category_slug);
+    res.redirect('/'+req.params.sprint+'/prototype/category/' + category_slug);
   });
 
 });
 
-router.get("/sprint-6/prototype/:pathWay/mark-as-met", (req, res) => {
+router.get("/:sprint/prototype/:pathWay/mark-as-met", (req, res) => {
   const pathway_key  = req.params.pathWay;
   const pathway = assessments[pathway_key];
   let pathway_questions = s6Classifiers[pathway.slug]
@@ -1324,12 +1324,12 @@ router.get("/sprint-6/prototype/:pathWay/mark-as-met", (req, res) => {
   });
 
   req.session.save(function() {
-    res.redirect('/sprint-6/prototype/' + pathway_key);
+    res.redirect('/'+req.params.sprint+'/prototype/'+ pathway_key);
   });
 
 });
 
-router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
+router.get("/:sprint/prototype/category/:categorySlug/", (req, res) => {
 
   const category_slug  = req.params.categorySlug;
   const thisCategory = retrieve_category(category_slug);
@@ -1337,11 +1337,11 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
   let breadcrumb_items = [
     {
       text: "Council Cyber Health Overview",
-      href: "/sprint-6/prototype/council-overview"
+      href: "/"+req.params.sprint+"/prototype/council-overview"
     },
     {
       text: "Explore all controls",
-      href: "/sprint-6/prototype/all-questions-overview"
+      href: "/"+req.params.sprint+"/prototype/all-questions-overview"
     }
 
   ];
@@ -1423,7 +1423,7 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
 
     // generate the question url
 
-    let question_url = "/sprint-6/prototype/category/"+category_slug+"/question/"+this_row.id;
+    let question_url = "/"+category_slug+"/prototype/category/"+category_slug+"/question/"+this_row.id;
     let view_link = "<a href='"+question_url+"'>View</a>";
 
     return  [
@@ -1445,8 +1445,8 @@ router.get("/sprint-6/prototype/category/:categorySlug/", (req, res) => {
     ];
   });
 
-  let mark_as_met = "/sprint-6/prototype/category/"+category_slug+"/mark-as-met";
-  res.render("sprint-6/prototype/pathway-overview", {
+  let mark_as_met = "/"+req.params.sprint+"/prototype/category/"+category_slug+"/mark-as-met";
+  res.render(req.params.sprint+"/prototype/pathway-overview", {
     pathway,
     table_header,
     table_rows,

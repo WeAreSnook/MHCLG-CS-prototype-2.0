@@ -1,0 +1,62 @@
+{% extends "sprint-7/prototype/layout.html" %}
+
+{% block pageTitle %}
+{{question.id}} - {{question.label}}
+{% endblock %}
+
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+    items: breadcrumb_items
+    }) }}
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-m">
+            {{question.label}}
+        </h1>
+
+
+        <form action="#" method="post" novalidate>
+
+            {{ govukTextarea({
+            name: "notmet",
+            id: "notmet",
+            label: {
+            text: "Why isn’t this met?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+            },
+            hint: {
+            text: "Add details about further support if required"
+            }
+            }) }}
+
+
+        <h2 class="govuk-heading-m">
+            What support do you need most to met requirement?
+        </h2>
+        {{ govukRadios({
+        idPrefix: "answer-radio",
+        name: "answer",
+        items: [
+            { value: "funding", text: "Funding" },
+            { value: "guidance", text: "Guidance" },
+            { value: "technicalsupport", text: "Technical Support" },
+            { value: "supplier", text: "Supplier management" },
+            { value: "irrelevant", text: "Irrelevant" }
+        ] })
+        }}
+            {{ govukButton({
+            text: "Save and continue"
+            }) }}
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

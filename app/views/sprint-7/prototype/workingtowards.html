@@ -1,0 +1,49 @@
+{% extends "sprint-7/prototype/layout.html" %}
+
+{% block pageTitle %}
+{{question.id}} - {{question.label}}
+  {% endblock %}
+
+{% block breadCrumb%}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+  items: breadcrumb_items
+  }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-m">
+        When do you expect to complete this control?
+      </h1>
+
+
+      <form action="#" method="post" novalidate>
+
+        {{ govukDateInput({
+          id: "workingtowards",
+          namePrefix: "workingtowards",
+          fieldset: {
+          legend: {
+          text: question.label,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+          }
+          },
+          hint: {
+            text: "For example, 12 11 2078"
+          }
+        }) }}
+
+          {{ govukButton({
+            text: "Save and continue"
+            }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

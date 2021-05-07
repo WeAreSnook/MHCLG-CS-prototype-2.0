@@ -1,0 +1,79 @@
+{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %} Cyberhealth Framework {%
+  endblock %} {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Cyber health framework
+      </h1>
+      <p class="govuk-body">
+        Welcome to the Cyber Health Framework for local authorities in England. This framework has been developed by MHCLG to support local authorities to:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Understand the levels of cyber security they should be reaching</li>
+        <li>Determine their own organisation’s level of cyber security</li>
+        <li>Devise a path to build greater resilience</li>
+        <li>Achieve their PSN and NHS DSTP compliance</li>
+        <li>See how they map against other common standards, including Cyber Essentials, Cyber Essentials + and ISO 27001</li>
+      </ul>
+      <h1 class="govuk-heading-l">
+        Progression levels
+      </h1>
+      <p class="govuk-body">The framework includes three levels of cyber health progression, and is designed to encourage continuous cyber improvement. The three levels are:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><span class="govuk-!-font-weight-bold">Level 1 (Baseline): </span> this is the minimum level that all local authorities should be meeting.</li>
+        <li><span class="govuk-!-font-weight-bold">Level 2 (Target): </span> this level includes additional controls that local authorities should put in place to mitigate against more technically capable cyber attacks.</li>
+        <li><span class="govuk-!-font-weight-bold">Level 3 (Advanced): </span> this level is encouraged for local authorities facing the most advanced cyber or network and information security threats, or those providing the most essential public services.</li>
+      </ul>
+      <p class="govuk-body">
+        Each progression levels maps to specific compliance processes or standards, which means by achieving each progression level you will also be meeting those requirements:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><span class="govuk-!-font-weight-bold">Level 1: </span>  Cyber Essentials, Cyber Essentials +</li>
+        <li><span class="govuk-!-font-weight-bold">Level 2: </span> PSN and IT Health Checks, PCI DSS, GDPR Security Outcomes</li>
+        <li><span class="govuk-!-font-weight-bold">Level 3: </span> ISO 2700, NIS-CAF</li>
+      </ul>
+      <p class="govuk-body">
+        You can <a href="#">view the framework and accompanying guidance,</a> or click below to start the self-assessment process:
+      </p>
+      <a
+        href="/sprint-7/prototype-1/assessment-intro"
+        role="button"
+        draggable="false"
+        class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+        data-module="govuk-button"
+      >
+      Self assessment
+        <svg
+          class="govuk-button__start-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="17.5"
+          height="19"
+          viewBox="0 0 33 40"
+          role="presentation"
+          focusable="false"
+        >
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">Related links</h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">View the framework and guidance</a>
+            </li>
+            <li>
+              <a href="#">Get support with a business case</a>
+            </li>
+            <li>
+              <a href="#">Glossary of cyber terms</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  {% endblock %}
+  
