@@ -33,6 +33,7 @@ endblock %} {% block content %}
                             <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
                             <p class="govuk-body">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
                             <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
+                            <p class="govuk-body-b">{{assessments[assessment].standards}}</p>
                         </div>
                     </div>
                 </div>
