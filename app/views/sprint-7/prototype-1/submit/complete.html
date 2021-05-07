@@ -1,0 +1,20 @@
+{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %} Scope {%
+    endblock %}
+    {% block beforeContent %}
+    <a class="govuk-back-link" href="../submit/upload">Back</a>
+  {% endblock %}
+    {% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Submission complete
+          </h1>
+        </div>
+        <h2 class="govuk-heading-l govuk-!-margin-top-6">What's next?</h2>
+        <p>The scope for this self-assessment is global - it includes your full IT infrastructure and all your physical assets to ensure you are as protected as possible. </p>
+        <p>You can add in exceptions on specific questions if necessary.</p>
+        <a href="../../prototype/council-overview">Return to Cyber Health Overview</a>
+      </div>
+    {% endblock %}
+    
