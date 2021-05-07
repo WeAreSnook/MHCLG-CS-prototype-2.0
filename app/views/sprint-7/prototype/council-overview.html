@@ -30,6 +30,8 @@ endblock %} {% block content %}
                     <div class="govuk-card govuk-card--contained {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}govuk-card--selectable{% endif %}">
                         <a href="/sprint-7/prototype/{{assessment}}"></a>
                         <div class="govuk-card__content">
+                            {% if assessments[assessment].descendents_complete %}<h1>JOEL</h1>{% endif %}
+                            {% if not assessments[assessment].descendents_complete %}<h1>TOM</h1>{% endif %}
                             <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
                             <p class="govuk-body">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
                             <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
