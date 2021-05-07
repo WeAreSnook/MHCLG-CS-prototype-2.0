@@ -7,7 +7,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="create-user" method="post" novalidate>
+      <form action="data" method="post" novalidate>
         {% from "govuk/components/input/macro.njk" import govukInput %}
         {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -110,10 +110,13 @@
        
           {{ govukInput({
             label: {
-              text: "What is your council's annual budget for Cyber Security?"
+              text: "What roughly is your council's annual IT budget?"
             },
             hint: {
-                text: "If you don't have a cyber budget please include your IT budget."
+                text: "This should include all software, hardware, managed services, etc - but not internal staff costs. This information will help give us an understanding of the scale of your IT estate."
+              },
+              prefix: {
+                text: "£"
               },
             classes: "govuk-!-width-two-thirds",
             id: "council-annual-budget",
@@ -122,10 +125,10 @@
 
           {{ govukInput({
             label: {
-              text: "How many people in your council have cyber security responsibilities in their day to day role? "
+              text: "How many people in your council have cyber security responsibilities in their day to day role?"
             },
             hint: {
-                text: "e.g. Cyber in their job title"
+                text: "This should be anybody who plays a key role in identifying, managing or mitigating cyber security risks."
               },
             classes: "govuk-!-width-two-thirds",
             id: "council-cyber-team",
@@ -133,10 +136,6 @@
           }) }}
 
         {% endcall %}
-
-        <h2 class="govuk-heading-m">How we use this information</h2>
-        <p class="govuk-body">We'll use this information to provide personalised questions and recommendations based on the details of your council.</p>
-        <p class="govuk-body">We'll also use this information to provide comparisons against similar councils.</p>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>
       </form>
