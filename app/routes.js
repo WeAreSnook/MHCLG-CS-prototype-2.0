@@ -1140,6 +1140,8 @@ let updateCountOnAssessment = function(assessment_index, req) {
   assessments[assessment_index].number_of_questions = questions_count;
   assessments[assessment_index].percentage_complete = Math.floor(100*(questions_complete/questions_count));
 
+  assessments[assessment_index].is_complete = (assessments[assessment_index].number_completed === assessments[assessment_index].number_of_questions);
+
 }
 
 router.get("/:sprint/prototype/council-overview", (req, res) => {
@@ -1154,6 +1156,14 @@ router.get("/:sprint/prototype/council-overview", (req, res) => {
 
   level_keys.forEach(function(key){
     updateCountOnAssessment(key, req);
+    if(key==="level1"){
+      assessments[key].descendents_complete = true;
+    } else if(key==="level2"){
+      assessments[key].descendents_complete = assessments["level1"].is_complete;
+    } else if(key==="level3"){
+      assessments[key].descendents_complete = assessments["level1"].is_complete && assessments["level2"].is_complete;
+    }
+
   });
 
   res.render(req.params.sprint+"/prototype/council-overview", {
