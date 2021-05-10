@@ -1436,7 +1436,7 @@ router.get("/:sprint/prototype/category/:categorySlug/", (req, res) => {
 
     // generate the question url
 
-    let question_url = "/"+category_slug+"/prototype/category/"+category_slug+"/question/"+this_row.id;
+    let question_url = "/"+req.params.sprint+"/prototype/category/"+category_slug+"/question/"+this_row.id;
     let view_link = "<a href='"+question_url+"'>View</a>";
 
     return  [
