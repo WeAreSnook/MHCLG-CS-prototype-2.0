@@ -79,7 +79,8 @@ const assessments = {
     access_key: "level1",
     slug: "level1",
     long_name: "Level 1: Baseline",
-    intro_text: "Achieves Cyber Essentials, Cyber Essentials +"
+    intro_text: "The minimum level that all local authorities should be meeting for basic cyber security.",
+    standards: "Cyber Essentials, Cyber Essentials +"
 
   },
 
@@ -89,7 +90,8 @@ const assessments = {
     access_key: "level2",
     slug: "level2",
     long_name: "Level 2: Target",
-    intro_text: "Achieves PSN, PCI DSS, GDPR"
+    intro_text: "Additional controls that should be in place to mitigate against more technically capable cyber attacks.",
+    standards: "PSN, PCI DSS, GDPR"
   },
 
   "level3": {
@@ -97,8 +99,9 @@ const assessments = {
     short_name: "Level 3",
     access_key: "level3",
     slug: "level3",
-    long_name: "Level 3: Advanced:",
-    intro_text: "Achieves ISO 27001, NIS-CAF"
+    long_name: "Level 3: Advanced",
+    intro_text: "For those facing the most advanced threats, or providing the most essential public services.",
+    standards: "ISO 27001, NIS-CAF"
   },
   "all":{
     short_name: "All",
@@ -1140,6 +1143,8 @@ let updateCountOnAssessment = function(assessment_index, req) {
   assessments[assessment_index].number_of_questions = questions_count;
   assessments[assessment_index].percentage_complete = Math.floor(100*(questions_complete/questions_count));
 
+  assessments[assessment_index].is_complete = (assessments[assessment_index].number_completed === assessments[assessment_index].number_of_questions);
+
 }
 
 router.get("/:sprint/prototype/council-overview", (req, res) => {
@@ -1154,6 +1159,14 @@ router.get("/:sprint/prototype/council-overview", (req, res) => {
 
   level_keys.forEach(function(key){
     updateCountOnAssessment(key, req);
+    if(key==="level1"){
+      assessments[key].descendents_complete = true;
+    } else if(key==="level2"){
+      assessments[key].descendents_complete = assessments["level1"].is_complete;
+    } else if(key==="level3"){
+      assessments[key].descendents_complete = assessments["level1"].is_complete && assessments["level2"].is_complete;
+    }
+
   });
 
   res.render(req.params.sprint+"/prototype/council-overview", {

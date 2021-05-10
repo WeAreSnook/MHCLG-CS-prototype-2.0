@@ -117,7 +117,6 @@ a:focus {
   clear: both;
 }
 
-
 .govuk-card-complete > .govuk-card__content > h3,
 .govuk-card-complete > .govuk-card__content > p,
 .govuk-card-complete > .govuk-card__content > h3 > a,
@@ -127,4 +126,44 @@ a:focus {
 .govuk-o-grid .govuk-card-complete {
   background-color: #00703c;
   border-bottom-color: #00703c;
+}
+
+/// Sprint 7 Cards
+
+.govuk-o-grid .govuk-level-card {
+  border: 1px solid $govuk-border-colour;
+  padding: 0;
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+.govuk-o-grid .govuk-level-card .govuk-card__upper {
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+.govuk-level-card.govuk-card-complete .govuk-card__upper {
+  background-color: #00703c;
+}
+
+.govuk-level-card.govuk-card-complete .govuk-card__upper h3,
+.govuk-level-card.govuk-card-complete .govuk-card__upper p {
+  color: #fff;
+}
+
+.govuk-o-grid .govuk-level-card .govuk-card__lower {
+  padding: 20px;
+}
+
+.govuk-o-grid .govuk-button:active svg,
+.govuk-level-card .govuk-button:active,
+.govuk-level-card .govuk-button:link {
+  color: #fff !important;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-o-grid .govuk-level-card {
+    margin-bottom: 0px;
+    min-height: 410px;
+  }
 }
