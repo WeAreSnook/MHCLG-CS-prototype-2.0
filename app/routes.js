@@ -793,7 +793,7 @@ router.get("/:sprint/prototype/category/:categorySlug/question/:questionID", (re
 
   // if we are passed a url variable for an expert review then redirect somewhere?
 
-  res.render("sprint-6/prototype/question", {
+  res.render(req.params.sprint+ "/prototype/question", {
     question,
     pathway,
     snippet_content,
@@ -1026,7 +1026,7 @@ router.get("/:sprint/prototype/category/:categorySlug/question/:questionID/riska
   ];
 
   // if we are passed a url variable for an expert review then redirect somewhere?
-  res.render(":sprint/prototype/riskaccepted", {
+  res.render(req.params.sprint+"/prototype/riskaccepted", {
     question,
     pathway,
     breadcrumb_items
@@ -1436,7 +1436,7 @@ router.get("/:sprint/prototype/category/:categorySlug/", (req, res) => {
 
     // generate the question url
 
-    let question_url = "/"+category_slug+"/prototype/category/"+category_slug+"/question/"+this_row.id;
+    let question_url = "/"+req.params.sprint+"/prototype/category/"+category_slug+"/question/"+this_row.id;
     let view_link = "<a href='"+question_url+"'>View</a>";
 
     return  [
