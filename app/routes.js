@@ -793,7 +793,7 @@ router.get("/:sprint/prototype/category/:categorySlug/question/:questionID", (re
 
   // if we are passed a url variable for an expert review then redirect somewhere?
 
-  res.render("sprint-6/prototype/question", {
+  res.render(req.params.sprint+ "/prototype/question", {
     question,
     pathway,
     snippet_content,
