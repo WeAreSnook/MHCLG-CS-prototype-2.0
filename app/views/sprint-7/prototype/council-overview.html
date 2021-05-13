@@ -31,7 +31,8 @@ endblock %} {% block content %}
                         <div class="govuk-level-card {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}{% endif %}">
                             <div class="govuk-card__upper">
                                 <h3 class="govuk-heading-m govuk-!-margin-bottom-1">{{assessments[assessment].long_name}}</h3>
-                                <p class="govuk-body govuk-!-margin-bottom-0" aria-labelledby="{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}}">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-body govuk-!-margin-bottom-0" aria-hidden="true">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-visually-hidden">{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}} controls met</p>
                             </div>
                             <div class="govuk-card__lower">
                                 <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
@@ -72,7 +73,8 @@ endblock %} {% block content %}
                             <a href="/sprint-7/prototype/{{assessment}}"></a>
                             <div class="govuk-card__content">
                                 <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
-                                <p class="govuk-body">{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-visually-hidden">{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-body" aria-hidden="true">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
                                 <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
                             </div>
                         </div>
@@ -90,7 +92,8 @@ endblock %} {% block content %}
                             <a href="/sprint-7/prototype/council-overview"></a>
                             <div class="govuk-card__content">
                                 <h3 class="govuk-heading-m"><a href="ransomware">Ransomware</a></h3>
-                                <p class="govuk-body">0 out of 10 controls met</p>
+                                <p class="govuk-visually-hidden">0 out of 10 controls met</p>
+                                <p class="govuk-body" aria-hidden="true">0 / 10 controls met</p>
                                 <p class="govuk-body">10 quick controls, that can be implemented in just 1 hour, that will mitigate the risk of ransomware to your local authority.
                                 </p>
                             </div>
@@ -101,7 +104,8 @@ endblock %} {% block content %}
                             <a href="/sprint-7/prototype/council-overview"></a>
                             <div class="govuk-card__content">
                                 <h3 class="govuk-heading-m"><a href="insider">Insider attack</a></h3>
-                                <p class="govuk-body">0 out of 10 controls met</p>
+                                <p class="govuk-visually-hidden">0 out of 10 controls met</p>
+                                <p class="govuk-body" aria-hidden="true">0 / 10 controls met</p>
                                 <p class="govuk-body">10 controls that can mitigate the risk of insider attack to your organisation.
                                 </p>
                             </div>
@@ -120,7 +124,8 @@ endblock %} {% block content %}
                             <a href="/sprint-7/prototype/{{assessment}}"></a>
                             <div class="govuk-card__content">
                                 <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
-                                <p class="govuk-body">{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-visually-hidden">{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-body" aria-hidden="true">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
                                 <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
                             </div>
                         </div>

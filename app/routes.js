@@ -1264,7 +1264,7 @@ router.get("/:sprint/prototype/:pathWay", (req, res) => {
     // generate the question url
 
     let question_url = "/"+req.params.sprint+"/prototype/"+pathway_key+"/question/"+this_row.id;
-    let view_link = "<a href='"+question_url+"'>View</a>";
+    let view_link = "<a href='"+question_url+"'>View <span class='govuk-visually-hidden'>"+ this_row.label+"</span></a>";
 
     return  [
       {
