@@ -31,7 +31,7 @@ endblock %} {% block content %}
                         <div class="govuk-level-card {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}{% endif %}">
                             <div class="govuk-card__upper">
                                 <h3 class="govuk-heading-m govuk-!-margin-bottom-1">{{assessments[assessment].long_name}}</h3>
-                                <p class="govuk-body govuk-!-margin-bottom-0">{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-body govuk-!-margin-bottom-0" aria-labelledby="{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}}">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
                             </div>
                             <div class="govuk-card__lower">
                                 <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
