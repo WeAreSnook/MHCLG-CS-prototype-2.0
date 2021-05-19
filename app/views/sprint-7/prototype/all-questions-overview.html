@@ -1,4 +1,4 @@
-{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %} View All Controls
+{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %} View All Controls - {{serviceName}} - GOV.UK
 {% endblock %}
 
 
@@ -23,7 +23,8 @@
     <div class="progress-info">
 
       <h2 class="govuk-heading-l">{{pathway.short_name}} controls met</h2>
-      <p class="govuk-heading-l">{{pathway.number_completed}}/{{pathway.number_of_questions}}</p>
+      <p class="govuk-visually-hidden">{{pathway.number_completed}} out of {{pathway.number_of_questions}} controls met</p>
+      <p class="govuk-heading-l" aria-hidden="true">{{pathway.number_completed}} / {{pathway.number_of_questions}} controls met</p>
     </div>
     <div class="progress__bar"><span style="width: {{ pathway.percentage_complete }}%"></span></div>
     <p>There are {{ pathway.number_of_questions }} controls for {{ pathway.short_name }} and you have met {{ pathway.number_completed }}</p>
