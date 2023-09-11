@@ -1,4 +1,4 @@
-{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %} Cyberhealth Framework {%
+{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %}Council cyber risks - {{serviceName}} - GOV.UK{%
     endblock %}
 
 
@@ -17,80 +17,84 @@
 
     {% block content %}
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl govuk-!-margin-top-4 govuk-!-margin-bottom-4">You have 5 high risk threats</h1>
-        <!-- <p class="govuk-body-l">This means..</p> -->
-       </div>
-       <div class="govuk-grid-column-full govuk-!-margin-bottom-8">
-        <table class="govuk-table">
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Topic</th>
-                <th scope="col" class="govuk-table__header">Threat</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric"> </th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Back up policies & procedures</td>
-                  <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">The Council does not have a known working backup, at a secondary or centrally accessible site.</p> An extreme event might harm the integrity or the availability of the Council's critical information, compromising the Council’s business continuity or disaster recovery.<p class="govuk-!-margin-bottom-0 govuk-!-margin-top-2"><a href="/sprint-7/prototype-1/guidance/risk-1">Read more</a></p></td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Mobile Media/ Devices</td>
-                    <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Some of the Council's mobile devices, tablets and/or laptops do not encrypt stored information at rest.</p>If a device were lost or stolen, then a third-party may compromise sensitive information stored on the device resulting in reputational damage for your Council and the likelihood of ICO enforcement or fines.</td>
-                <tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Software assets register & management</td>
-                    <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Some of the Council's software applications are no longer supported by the vendor.</p>If unsupported software is used, then unpatched vulnerabilities will be present that could be exploited by third party attackers, resulting in loss of the confidentiality, availability and integrity of the Council's information and/or applications.<p class="govuk-!-margin-bottom-0 govuk-!-margin-top-2"><a href="/sprint-7/prototype-1/guidance/risk-3">Read more</a></p></td>
-                <tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Secure configuration</td>
-                    <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Software based firewalls are not enabled on the Council's PC and laptop endpoint devices.</p>If a device is used on a network that includes an untrusted device (e.g. hotel WiFi or a home network) then the Council's device could be exposed to network based attacks, resulting in the loss of integrity and availability of the device and information held within it.</td>
-                <tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Boundary/Firewall management</td>
-                    <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">One or more of the Council's firewalls can be remotely administered by IT staff, using a login function from the public internet.</p>If a remote attacker discovers the login page, they may launch brute force or dictionary attacks that could compromise login credentials, resulting in loss of integrity of the Council’s firewall and potential compromise of the entire network.</td>
-                <tr>
-            </tbody>
-          </table>
-        </div>
+      <section aria-labelledby="high-risk-title">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You have 5 medium risk threats</h1>
-            <!-- <p class="govuk-body">This means..</p> -->
-           </div>
-           <div class="govuk-grid-column-full">
-            <table class="govuk-table">
-                <thead class="govuk-table__head">
+          <h1 id="high-risk-title" class="govuk-heading-xl govuk-!-margin-top-4 govuk-!-margin-bottom-4">You have 5 high risk threats</h1>
+          <!-- <p class="govuk-body-l">This means..</p> -->
+        </div>
+        
+        <div class="govuk-grid-column-full govuk-!-margin-bottom-8">
+          <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Topic</th>
+                  <th scope="col" class="govuk-table__header">Threat</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
                   <tr class="govuk-table__row">
-                    <th scope="col" class="govuk-table__header">Topic</th>
-                    <th scope="col" class="govuk-table__header">Threat</th>
+                    <td class="govuk-table__cell">Back up policies & procedures</td>
+                    <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold"><a href="/sprint-7/prototype-1/guidance/risk-1">The Council does not have a known working backup, at a secondary or centrally accessible site.</p></a> An extreme event might harm the integrity or the availability of the Council's critical information, compromising the Council’s business continuity or disaster recovery.<p class="govuk-!-margin-bottom-0 govuk-!-margin-top-2"></p></td>
                   </tr>
-                </thead>
-                <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Account management</td>
-                      <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Shared access account</p>Some staff use shared system account credentials to gain access to Council resources. If a security incident occurred, then you are unable to accurately reconcile log information against user activity and the Council’s business requirements, resulting in a failed security incident investigation.</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">Identity authentication</td>
-                        <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Multi factor authentication is not enabled for the Council's social media accounts.</p>Multi factor authentication is not enabled for the Council's social media accounts. If the basic logon credentials were discovered by a third party, then the Council’s social media accounts could be defaced, resulting in potentially devastating reputational and political damage.</td>
-                    <tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">Security Monitoring</td>
-                        <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">The monitoring capability has the ability to identify the unauthorised or accidental misuse of systems processing personal data and user access to that data, including anomalous user activity. It can tie specific users to suspicious activity.</p>The Council does not use a System Information and Event Management (SIEM) capability to identify misuse of systems processing personal data, or suspicious user activity within such systems. If there is an insider threat, or a targeted social engineering attack, then personal information may be stolen, resulting in a breach of data protection legislation, reputational damage and likely financial penalties</td>
-                    <tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">Incident response protocol</td>
-                        <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Specialist training for incidend response team</p>Your incident response team have not undergone specialist training. If there is a security incident with pressing needs (i.e. dealing with press enquiries and a serious data breach whilst usual senior contacts are unavailable); then staff are unequipped to deal with the incident timeously, resulting in the likelihood of a failed incident response and reduced chance of a positive lessons learned outcome.</td>
-                    <tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">Data recovery capability</td>
-                        <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">The Council does not maintain an accurate log of security incidents</p>The Council does not maintain an accurate log of security incidents. If there is no centralised and complete logging of security incident and event information, then it is not possible to recognise trends or patterns, resulting in more widespread suspicious activity going unnoticed amongst the ‘noise’ of isolated log review activities.</td>
-                    <tr>
-                </tbody>
-              </table>
+                  <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Mobile Media/ Devices</td>
+                      <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Some of the Council's mobile devices, tablets and/or laptops do not encrypt stored information at rest.</p>If a device were lost or stolen, then a third-party may compromise sensitive information stored on the device resulting in reputational damage for your Council and the likelihood of ICO enforcement or fines.</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Software assets register & management</td>
+                      <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold"><a href="/sprint-7/prototype-1/guidance/risk-3">Some of the Council's software applications are no longer supported by the vendor.</a></p>If unsupported software is used, then unpatched vulnerabilities will be present that could be exploited by third party attackers, resulting in loss of the confidentiality, availability and integrity of the Council's information and/or applications.<p class="govuk-!-margin-bottom-0 govuk-!-margin-top-2"></p></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Secure configuration</td>
+                      <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Software based firewalls are not enabled on the Council's PC and laptop endpoint devices.</p>If a device is used on a network that includes an untrusted device (e.g. hotel WiFi or a home network) then the Council's device could be exposed to network based attacks, resulting in the loss of integrity and availability of the device and information held within it.</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Boundary/Firewall management</td>
+                      <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">One or more of the Council's firewalls can be remotely administered by IT staff, using a login function from the public internet.</p>If a remote attacker discovers the login page, they may launch brute force or dictionary attacks that could compromise login credentials, resulting in loss of integrity of the Council’s firewall and potential compromise of the entire network.</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section aria-labelledby="medium-risk-title">
+          <div class="govuk-grid-column-two-thirds">
+              <h1 id="medium-risk-title" class="govuk-heading-xl govuk-!-margin-bottom-4">You have 5 medium risk threats</h1>
+              <!-- <p class="govuk-body">This means..</p> -->
             </div>
-    </div>
+            <div class="govuk-grid-column-full">
+              <table class="govuk-table">
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header">Topic</th>
+                      <th scope="col" class="govuk-table__header">Threat</th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Account management</td>
+                        <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Shared access account</p>Some staff use shared system account credentials to gain access to Council resources. If a security incident occurred, then you are unable to accurately reconcile log information against user activity and the Council’s business requirements, resulting in a failed security incident investigation.</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">Identity authentication</td>
+                          <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Multi factor authentication is not enabled for the Council's social media accounts.</p>Multi factor authentication is not enabled for the Council's social media accounts. If the basic logon credentials were discovered by a third party, then the Council’s social media accounts could be defaced, resulting in potentially devastating reputational and political damage.</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">Security Monitoring</td>
+                          <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">The monitoring capability has the ability to identify the unauthorised or accidental misuse of systems processing personal data and user access to that data, including anomalous user activity. It can tie specific users to suspicious activity.</p>The Council does not use a System Information and Event Management (SIEM) capability to identify misuse of systems processing personal data, or suspicious user activity within such systems. If there is an insider threat, or a targeted social engineering attack, then personal information may be stolen, resulting in a breach of data protection legislation, reputational damage and likely financial penalties</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">Incident response protocol</td>
+                          <td class="govuk-table__cell govuk-!-width-two-thirds"><p class="govuk-body govuk-!-font-weight-bold">Specialist training for incident response team</p>Your incident response team have not undergone specialist training. If there is a security incident with pressing needs (i.e. dealing with press enquiries and a serious data breach whilst usual senior contacts are unavailable); then staff are unequipped to deal with the incident timeously, resulting in the likelihood of a failed incident response and reduced chance of a positive lessons learned outcome.</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">Data recovery capability</td>
+                          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">The Council does not maintain an accurate log of security incidents</p>The Council does not maintain an accurate log of security incidents. If there is no centralised and complete logging of security incident and event information, then it is not possible to recognise trends or patterns, resulting in more widespread suspicious activity going unnoticed amongst the ‘noise’ of isolated log review activities.</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </section>
       </div>
 
      

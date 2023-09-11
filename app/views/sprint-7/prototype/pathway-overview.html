@@ -1,5 +1,5 @@
 {% extends "sprint-7/prototype/layout.html" %}
-{% block pageTitle %} {{pathway.short_name}} Overview {% endblock %}
+{% block pageTitle %} {{pathway.short_name}} overview - {{serviceName}} - GOV.UK{% endblock %}
 {% block breadCrumb%}
 <div class="govuk-width-container ">
     {{ govukBreadcrumbs({
@@ -63,7 +63,8 @@
     <div class="progress-container">
         <div class="progress-info">
             <h2 class="govuk-heading-l">{{pathway.short_name}} controls met</h2>
-            <p class="govuk-heading-l">{{pathway.number_completed}}/{{pathway.number_of_questions}}</p>
+            <p class="govuk-visually-hidden">{{pathway.number_completed}} out of {{pathway.number_of_questions}}</p>
+            <p class="govuk-heading-l" aria-hidden="true">{{pathway.number_completed}} / {{pathway.number_of_questions}}</p>
         </div>
         <div class="progress__bar"><span style="width: {{ pathway.percentage_complete }}%"></span></div>
         <p>There are {{ pathway.number_of_questions }} controls for {{ pathway.short_name }} and you have met {{ pathway.number_completed }}</p>

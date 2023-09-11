@@ -1,4 +1,4 @@
-{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %} Cyberhealth Framework {%
+{% extends "sprint-7/prototype/layout.html" %} {% block pageTitle %}Council Cyber Health Overview - {{serviceName}} - GOV.UK{%
 endblock %} {% block content %}
 <div class="govuk-grid-row" id="council-overview-layout">
     <div class="govuk-grid-column-two-thirds">
@@ -21,109 +21,124 @@ endblock %} {% block content %}
     </div>
     <div class="govuk-grid-row" id="council-overview-layout">
         <div class="govuk-grid-column-full">
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Cyber progression levels</h2>
-            <p class="govuk-!-margin-bottom-6">The framework includes three levels of cyber health progression, and is designed to encourage continuous cyber improvement.</p>
-            <div class="govuk-o-grid">
-                {% for assessment in level_keys %}
-                <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
-                    <div class="govuk-level-card {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}{% endif %}">
-                        <div class="govuk-card__upper">
-                            <h3 class="govuk-heading-m govuk-!-margin-bottom-1">{{assessments[assessment].long_name}}</h3>
-                            <p class="govuk-body govuk-!-margin-bottom-0">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
+            <section aria-labelledby="levels-title">
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <h2 id="levels-title" class="govuk-heading-l govuk-!-margin-bottom-2">Cyber progression levels</h2>
+                <p class="govuk-!-margin-bottom-6">The framework includes three levels of cyber health progression, and is designed to encourage continuous cyber improvement.</p>
+                <div class="govuk-o-grid">
+                    {% for assessment in level_keys %}
+                    <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+                        <div class="govuk-level-card {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}{% endif %}">
+                            <div class="govuk-card__upper">
+                                <h3 class="govuk-heading-m govuk-!-margin-bottom-1">{{assessments[assessment].long_name}}</h3>
+                                <p class="govuk-body govuk-!-margin-bottom-0" aria-hidden="true">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-visually-hidden">{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}} controls met</p>
+                            </div>
+                            <div class="govuk-card__lower">
+                                <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
+                                <h4 class="govuk-heading-s govuk-!-margin-bottom-1">This achieves</h4>
+                                <p class="govuk-body">{{assessments[assessment].standards}}</p>
+                                {% if assessments[assessment].descendents_complete and not assessments[assessment].number_completed %}
+                                    {{ govukButton({
+                                        text: "Start now",
+                                        href: "/sprint-7/prototype/"+ assessment,
+                                        isStartButton: true,
+                                        classes: "govuk-!-margin-bottom-1"
+                                    }) }}
+                                {% endif %}
+                                {% if assessments[assessment].descendents_complete and assessments[assessment].number_completed >= 1 and assessments[assessment].number_completed < assessments[assessment].number_of_questions %}
+                                    {{ govukButton({
+                                        text: "Continue",
+                                        href: "/sprint-7/prototype/"+ assessment,
+                                        classes: "govuk-!-margin-bottom-1"
+                                    }) }}    
+                                {% endif %}
+                                {% if assessments[assessment].descendents_complete and assessments[assessment].number_completed == assessments[assessment].number_of_questions or not assessments[assessment].descendents_complete%}
+                                    <a href="/sprint-7/prototype/{{assessment}}">{{assessments[assessment].short_name }} controls</a>
+                                {% endif %}
+                            </div>
                         </div>
-                        <div class="govuk-card__lower">
-                            <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
-                            <h4 class="govuk-heading-s govuk-!-margin-bottom-1">Achieves</h4>
-                            <p class="govuk-body">{{assessments[assessment].standards}}</p>
-                            {% if assessments[assessment].descendents_complete and not assessments[assessment].number_completed %}
-                                {{ govukButton({
-                                    text: "Start now",
-                                    href: "/sprint-7/prototype/"+ assessment,
-                                    isStartButton: true,
-                                    classes: "govuk-!-margin-bottom-1"
-                                }) }}
-                            {% endif %}
-                            {% if assessments[assessment].descendents_complete and assessments[assessment].number_completed >= 1 and assessments[assessment].number_completed < assessments[assessment].number_of_questions %}
-                                {{ govukButton({
-                                    text: "Continue",
-                                    href: "/sprint-7/prototype/"+ assessment,
-                                    classes: "govuk-!-margin-bottom-1"
-                                }) }}    
-                            {% endif %}
-                            {% if assessments[assessment].descendents_complete and assessments[assessment].number_completed == assessments[assessment].number_of_questions or not assessments[assessment].descendents_complete%}
-                                <a href="/sprint-7/prototype/{{assessment}}">{{assessments[assessment].short_name }} controls</a>
-                            {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            <section aria-labelledby="compliance-title">
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <h2 id="compliance-title" class="govuk-heading-l govuk-!-margin-bottom-2">Compliance demands </h2>
+                <p class="govuk-!-margin-bottom-6">The compliance requirements that you can achieve through this self assessment:</p>
+                <div class="govuk-o-grid">
+                    {% for assessment in compliance_keys %}
+                    <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+                        <div class="govuk-card govuk-card--contained {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}govuk-card--selectable{% endif %}">
+                            <a href="/sprint-7/prototype/{{assessment}}"></a>
+                            <div class="govuk-card__content">
+                                <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
+                                <p class="govuk-visually-hidden">{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-body" aria-hidden="true">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            <section aria-labelledby="common-risks-title">
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <h2 id="common-risks-title" class="govuk-heading-l govuk-!-margin-bottom-2">Common council risks</h2>
+                <p class="govuk-!-margin-bottom-6">Specific cyber problem areas that you can address through this self assessment:</p>
+                <div class="govuk-o-grid">
+                    <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+                        <div class="govuk-card govuk-card--contained govuk-card--selectable">
+                            <a href="/sprint-7/prototype/council-overview"></a>
+                            <div class="govuk-card__content">
+                                <h3 class="govuk-heading-m"><a href="ransomware">Ransomware</a></h3>
+                                <p class="govuk-visually-hidden">0 out of 10 controls met</p>
+                                <p class="govuk-body" aria-hidden="true">0 / 10 controls met</p>
+                                <p class="govuk-body">10 quick controls, that can be implemented in just 1 hour, that will mitigate the risk of ransomware to your local authority.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+                        <div class="govuk-card govuk-card--contained govuk-card--selectable">
+                            <a href="/sprint-7/prototype/council-overview"></a>
+                            <div class="govuk-card__content">
+                                <h3 class="govuk-heading-m"><a href="insider">Insider attack</a></h3>
+                                <p class="govuk-visually-hidden">0 out of 10 controls met</p>
+                                <p class="govuk-body" aria-hidden="true">0 / 10 controls met</p>
+                                <p class="govuk-body">10 controls that can mitigate the risk of insider attack to your organisation.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Compliance demands </h2>
-            <p class="govuk-!-margin-bottom-6">The compliance requirements that you can achieve through this self assessment:</p>
-            <div class="govuk-o-grid">
-                {% for assessment in compliance_keys %}
-                <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
-                    <div class="govuk-card govuk-card--contained {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}govuk-card--selectable{% endif %}">
-                        <a href="/sprint-7/prototype/{{assessment}}"></a>
-                        <div class="govuk-card__content">
-                            <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
-                            <p class="govuk-body">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
-                            <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
+            </section>
+            <section aria-labelledby="other-standard-title">
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <h2 id="other-standard-title" class="govuk-heading-l govuk-!-margin-bottom-2">Other common standards</h2>
+                <p class="govuk-!-margin-bottom-6">Other standards that you can see how you map against based on your self assessment answers.</p>
+                <div class="govuk-o-grid">
+                    {% for assessment in standards_keys %}
+                    <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+                        <div class="govuk-card govuk-card--contained {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}govuk-card--selectable{% endif %}">
+                            <a href="/sprint-7/prototype/{{assessment}}"></a>
+                            <div class="govuk-card__content">
+                                <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
+                                <p class="govuk-visually-hidden">{{assessments[assessment].number_completed}} out of {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-body" aria-hidden="true">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
+                                <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Common council risks</h2>
-            <p class="govuk-!-margin-bottom-6">Specific cyber problem areas that you can address through this self assessment:</p>
-            <div class="govuk-o-grid">
-                <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
-                    <div class="govuk-card govuk-card--contained govuk-card--selectable">
-                        <a href="/sprint-7/prototype/council-overview"></a>
-                        <div class="govuk-card__content">
-                            <h3 class="govuk-heading-m"><a href="ransomware">Ransomware</a></h3>
-                            <p class="govuk-body">0 / 10 controls met</p>
-                            <p class="govuk-body">10 quick controls, that can be implemented in just 1 hour, that will mitigate the risk of ransomware to your local authority.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
-                    <div class="govuk-card govuk-card--contained govuk-card--selectable">
-                        <a href="/sprint-7/prototype/council-overview"></a>
-                        <div class="govuk-card__content">
-                            <h3 class="govuk-heading-m"><a href="insider">Insider attack</a></h3>
-                            <p class="govuk-body">0 / 10 controls met</p>
-                            <p class="govuk-body">10 controls that can mitigate the risk of insider attack to your organisation.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Other common standards</h2>
-            <p class="govuk-!-margin-bottom-6">Other standards that you can see how you map against based on your self assessment answers.</p>
-            <div class="govuk-o-grid">
-                {% for assessment in standards_keys %}
-                <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
-                    <div class="govuk-card govuk-card--contained {% if assessments[assessment].number_completed == assessments[assessment].number_of_questions %}govuk-card-complete{% else %}govuk-card--selectable{% endif %}">
-                        <a href="/sprint-7/prototype/{{assessment}}"></a>
-                        <div class="govuk-card__content">
-                            <h3 class="govuk-heading-m"><a href="{{assessment}}">{{assessments[assessment].short_name}}</a></h3>
-                            <p class="govuk-body">{{assessments[assessment].number_completed}} / {{assessments[assessment].number_of_questions}} controls met</p>
-                            <p class="govuk-body">{{assessments[assessment].intro_text}}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l">Browse all</h2>
-            <h3 class="govuk-heading-m"><a href="/sprint-7/prototype/all-questions-overview">Explore all controls</a></h3>
-            <p>See progress against every control in the cyber health framework</p>
+            </section>
+                <section aria-labelledby="browse-all-title">
+                    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                    <h2 id="browse-all-title" class="govuk-heading-l">Browse all</h2>
+                    <h3 class="govuk-heading-m"><a href="/sprint-7/prototype/all-questions-overview">Explore all controls</a></h3>
+                    <p>See progress against every control in the cyber health framework</p>
+                </section>
         </div>
     </div>
 </div>
